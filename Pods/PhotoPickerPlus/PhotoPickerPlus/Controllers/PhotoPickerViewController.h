@@ -33,6 +33,11 @@
 @interface PhotoPickerViewController : UINavigationController
 
 /**
+ Initializes a PhotoPickerViewController with the specified navigation title (shown in the center).
+ */
+- (id)initWithTitle:(NSString*)title;
+
+/**
  The PhotoPickerViewController and UINavigationController delegate object.
  
  @see PhotoPickerViewControllerDelegate

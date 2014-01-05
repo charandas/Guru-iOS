@@ -13,6 +13,10 @@
 
 @interface GCPhotoPickerViewController : UITableViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+/**
+ The navigation title used by the GCPhotoPickerViewController.
+ */
+@property (strong, nonatomic) NSString *navigationTitle;
 
 /**
  The PhotoPickerViewController and UINavigationController delegate object.

@@ -37,6 +37,12 @@
     }
     return self;
 }
+- (id)initWithTitle:(NSString*)title
+{
+    self = [self init];
+    [self.photoPickerViewController setNavigationTitle:title];
+    return self;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

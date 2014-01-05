@@ -23,6 +23,7 @@
 		388329C3187995D4004836A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 388329C1187995D4004836A2 /* InfoPlist.strings */; };
 		388329C5187995D4004836A2 /* guruTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 388329C4187995D4004836A2 /* guruTests.m */; };
 		38D42B531879B45A00326B89 /* GCConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38D42B521879B45A00326B89 /* GCConfiguration.plist */; };
+		38D42B59187A073200326B89 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D42B58187A073200326B89 /* SettingsViewController.m */; };
 		C7FE591BE5F24BDD8AF53011 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 606C5121DC32406CA0B8E06B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,8 @@
 		388329C2187995D4004836A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		388329C4187995D4004836A2 /* guruTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = guruTests.m; sourceTree = "<group>"; };
 		38D42B521879B45A00326B89 /* GCConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GCConfiguration.plist; sourceTree = "<group>"; };
+		38D42B57187A073200326B89 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		38D42B58187A073200326B89 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		606C5121DC32406CA0B8E06B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		866BBDA7B3824B44A28810E4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +132,8 @@
 				388329AB187995D4004836A2 /* Main_iPad.storyboard */,
 				388329AE187995D4004836A2 /* ViewController.h */,
 				388329AF187995D4004836A2 /* ViewController.m */,
+				38D42B57187A073200326B89 /* SettingsViewController.h */,
+				38D42B58187A073200326B89 /* SettingsViewController.m */,
 				388329B1187995D4004836A2 /* Images.xcassets */,
 				3883299D187995D4004836A2 /* Supporting Files */,
 			);
@@ -309,6 +314,7 @@
 				388329B0187995D4004836A2 /* ViewController.m in Sources */,
 				388329A7187995D4004836A2 /* AppDelegate.m in Sources */,
 				388329A3187995D4004836A2 /* main.m in Sources */,
+				38D42B59187A073200326B89 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

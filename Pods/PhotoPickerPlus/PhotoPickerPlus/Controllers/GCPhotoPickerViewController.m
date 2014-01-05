@@ -36,6 +36,7 @@
 
 @synthesize delegate, isMultipleSelectionEnabled = _isMultipleSelectionEnabled;
 @synthesize isItDevice;
+@synthesize navigationTitle = _navigationTitle;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -49,7 +50,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"Photo Picker";
+    self.navigationItem.title = self.navigationTitle? self.navigationTitle: @"Photo Picker";
     
     [self setNavBarItems];
 
