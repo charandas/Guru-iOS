@@ -1,13 +1,22 @@
 //
 //  ViewController.h
-//  guru
+//  PhotoPickerPlus-SampleApp
 //
-//  Created by Karan Batra-Daitch on 1/5/14.
-//  Copyright (c) 2014 Karan Batra-Daitch. All rights reserved.
+//  Created by Aleksandar Trpeski on 7/28/13.
+//  Copyright (c) 2013 Chute. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "PhotoPickerViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <PhotoPickerViewControllerDelegate, UINavigationControllerDelegate,UIScrollViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (strong, nonatomic) UIPopoverController   *popoverController;
+
+- (IBAction)pickPhotoSelected:(id)sender;
+- (IBAction)pickMultiplePhotosSelected:(id)sender;
+- (IBAction)changePage:(id)sender;
 
 @end
