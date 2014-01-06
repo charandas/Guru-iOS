@@ -7,7 +7,7 @@
         <!--View Controller - Yourself-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="Yourself" id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cdL-bV-DR2"/>
                         <viewControllerLayoutGuide type="bottom" id="Wk4-Lf-DNa"/>
@@ -30,9 +30,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Yourself" id="83V-Dp-FZn">
-                        <barButtonItem key="rightBarButtonItem" title="Select" id="vuJ-Hu-4FG">
+                        <barButtonItem key="leftBarButtonItem" title="Select" id="vuJ-Hu-4FG">
                             <connections>
                                 <action selector="pickPhotoSelected:" destination="vXZ-lx-hvc" id="iF0-P2-6wm"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="qlM-DL-Ti2">
+                            <connections>
+                                <segue destination="wE3-8T-Wpv" kind="push" id="gV3-PX-5mM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -42,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="824" y="-402"/>
+            <point key="canvasLocation" x="744" y="-402"/>
         </scene>
         <!--Navigation Controller - Yourself-->
         <scene sceneID="HSx-mN-vzQ">
@@ -62,6 +67,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TRW-cw-Hc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="298" y="-402"/>
+        </scene>
+        <!--View Controller - Guru-->
+        <scene sceneID="OVo-8K-C8s">
+            <objects>
+                <viewController title="Guru" id="wE3-8T-Wpv" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0TZ-kJ-dUc"/>
+                        <viewControllerLayoutGuide type="bottom" id="OKO-Hb-63F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rZj-88-rzn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mm5-yH-hNV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mm5-yH-hNV" firstAttribute="leading" secondItem="rZj-88-rzn" secondAttribute="leading" id="9PN-Ou-szy"/>
+                            <constraint firstAttribute="bottom" secondItem="mm5-yH-hNV" secondAttribute="bottom" id="KuE-Nw-G14"/>
+                            <constraint firstItem="mm5-yH-hNV" firstAttribute="top" secondItem="rZj-88-rzn" secondAttribute="top" id="XQd-nm-GsA"/>
+                            <constraint firstAttribute="trailing" secondItem="mm5-yH-hNV" secondAttribute="trailing" id="eaA-Tf-I8r"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Guru" id="fNH-9K-88J">
+                        <barButtonItem key="leftBarButtonItem" title="Select" id="bZo-Gr-OtA">
+                            <connections>
+                                <action selector="pickPhotoSelected:" destination="wE3-8T-Wpv" id="Qbb-AD-7gI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="2df-2w-Hbp"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="scrollView" destination="mm5-yH-hNV" id="CjX-EB-DR9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TlH-eh-hBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1239" y="-402"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

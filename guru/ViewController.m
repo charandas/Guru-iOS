@@ -69,7 +69,7 @@
 
 - (IBAction)pickPhotoSelected:(id)sender
 {
-    PhotoPickerViewController *picker = [[PhotoPickerViewController alloc ] initWithTitle:@"Yourself"];
+    PhotoPickerViewController *picker = [[PhotoPickerViewController alloc ] initWithTitle:[NSString stringWithFormat:@"Photo of %@", self.title]];
     [picker setDelegate:self];
     [picker setIsMultipleSelectionEnabled:NO];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
