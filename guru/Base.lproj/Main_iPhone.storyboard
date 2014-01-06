@@ -16,12 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7N-Me-MVd">
-                                <rect key="frame" x="20" y="69" width="280" height="499"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7N-Me-MVd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="J7N-Me-MVd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="RRU-ak-YUN"/>
+                            <constraint firstAttribute="bottom" secondItem="J7N-Me-MVd" secondAttribute="bottom" id="o0b-8d-5Ju"/>
+                            <constraint firstItem="J7N-Me-MVd" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="wZf-bG-iFn"/>
+                            <constraint firstAttribute="trailing" secondItem="J7N-Me-MVd" secondAttribute="trailing" id="y2n-gW-oP3"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Yourself" id="83V-Dp-FZn">
                         <barButtonItem key="rightBarButtonItem" title="Select" id="vuJ-Hu-4FG">
@@ -31,7 +37,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="scrollView" destination="J7N-Me-MVd" id="XZN-e8-TwH"/>
+                        <outlet property="scrollView" destination="J7N-Me-MVd" id="1jb-xd-fZW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
