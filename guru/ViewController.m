@@ -9,23 +9,26 @@
 #import "ViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 //#import "GCPopoverBackgroundView.h"
+#import "BFCropInterface.h"
 
 @interface ViewController () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIImage *originalImage;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) BFCropInterface *cropper;
 
 @end
 
 @implementation ViewController
 
-@synthesize popoverController;
+@synthesize popoverController, cropper = _cropper, originalImage = _originalImage;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.scrollView addSubview:self.imageView];
+    //[self.scrollView addSubview:self.imageView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,6 +56,30 @@
     return _imageView;
 }
 
+- (UIImage *)originalImage
+{
+    return _originalImage;
+}
+
+- (void)setOriginalImage:(UIImage *)originalImage
+{
+    _originalImage = originalImage;
+}
+
+- (BFCropInterface *)cropper
+{
+    if (!_cropper)
+    {
+        _cropper = [[BFCropInterface alloc]initWithFrame:self.imageView.bounds andImage:self.image];
+    }
+    return _cropper;
+}
+
+- (void)setCropper:(BFCropInterface *)cropper
+{
+    _cropper = cropper;
+}
+
 - (UIImage *)image
 {
     return self.imageView.image;
@@ -60,9 +87,16 @@
 
 - (void)setImage:(UIImage *)image
 {
+    [self.cropper removeFromSuperview];
+    self.cropper = nil;
+    
     self.imageView.image = image;
     [self.imageView sizeToFit];
     self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
+    
+    self.cropper.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.60];
+    self.cropper.borderColor = [UIColor whiteColor];
+    [self.scrollView addSubview:self.cropper];
 }
 
 #pragma mark - IBActions
@@ -88,12 +122,31 @@
     }
 }
 
+- (IBAction)cropPressed:(id)sender {
+    // crop image
+    UIImage *croppedImage = [self.cropper getCroppedImage];
+    
+    // remove crop interface from superview
+    [self.cropper removeFromSuperview];
+    self.cropper = nil;
+    
+    // display new cropped image
+    self.image = croppedImage;
+}
+
+- (IBAction)originalPressed:(id)sender {
+    // set main image view to original image and add cropper if not already added
+    self.image = nil;
+    self.image = self.originalImage;
+}
+
 #pragma mark - PhotoPickerViewController Delegate Methods
 
 
 - (void)imagePickerController:(PhotoPickerViewController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    self.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    self.originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    self.image = self.originalImage;
     
     //[imageView setContentMode:UIViewContentModeScaleAspectFit];
     

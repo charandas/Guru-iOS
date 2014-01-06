@@ -14,5 +14,7 @@
 @property (strong, nonatomic) UIPopoverController   *popoverController;
 
 - (IBAction)pickPhotoSelected:(id)sender;
+- (IBAction)cropPressed:(id)sender;
+- (IBAction)originalPressed:(id)sender;
 
 @end

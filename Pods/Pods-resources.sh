@@ -41,6 +41,8 @@ install_resource()
       ;;
   esac
 }
+install_resource "BFCropInterface/CropDemo/CropDemo/node.png"
+install_resource "BFCropInterface/CropDemo/CropDemo/node@2x.png"
 install_resource "PhotoPickerPlus/PhotoPickerPlus/Configuration/GCConfiguration-Sample.plist"
 install_resource "PhotoPickerPlus/PhotoPickerPlus/Resources/album_default.png"
 install_resource "PhotoPickerPlus/PhotoPickerPlus/Resources/camera.png"

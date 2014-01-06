@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38639A42187ABD6400AE1A9E /* GuruIcon120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 38639A3C187ABD6400AE1A9E /* GuruIcon120x120.png */; };
+		38639A43187ABD6400AE1A9E /* GuruIcon152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 38639A3D187ABD6400AE1A9E /* GuruIcon152x152.png */; };
+		38639A44187ABD6400AE1A9E /* GuruIcon40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 38639A3E187ABD6400AE1A9E /* GuruIcon40x40.png */; };
+		38639A45187ABD6400AE1A9E /* GuruIcon60x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 38639A3F187ABD6400AE1A9E /* GuruIcon60x60.png */; };
+		38639A46187ABD6400AE1A9E /* GuruIcon76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 38639A40187ABD6400AE1A9E /* GuruIcon76x76.png */; };
+		38639A47187ABD6400AE1A9E /* GuruIcon80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 38639A41187ABD6400AE1A9E /* GuruIcon80x80.png */; };
 		38832997187995D4004836A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38832996187995D4004836A2 /* Foundation.framework */; };
 		38832999187995D4004836A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38832998187995D4004836A2 /* CoreGraphics.framework */; };
 		3883299B187995D4004836A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3883299A187995D4004836A2 /* UIKit.framework */; };
@@ -38,6 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38639A3C187ABD6400AE1A9E /* GuruIcon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GuruIcon120x120.png; sourceTree = "<group>"; };
+		38639A3D187ABD6400AE1A9E /* GuruIcon152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GuruIcon152x152.png; sourceTree = "<group>"; };
+		38639A3E187ABD6400AE1A9E /* GuruIcon40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GuruIcon40x40.png; sourceTree = "<group>"; };
+		38639A3F187ABD6400AE1A9E /* GuruIcon60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GuruIcon60x60.png; sourceTree = "<group>"; };
+		38639A40187ABD6400AE1A9E /* GuruIcon76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GuruIcon76x76.png; sourceTree = "<group>"; };
+		38639A41187ABD6400AE1A9E /* GuruIcon80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GuruIcon80x80.png; sourceTree = "<group>"; };
 		38832993187995D4004836A2 /* guru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = guru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38832996187995D4004836A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		38832998187995D4004836A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -90,9 +102,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38639A3B187ABD6400AE1A9E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				38639A3C187ABD6400AE1A9E /* GuruIcon120x120.png */,
+				38639A3D187ABD6400AE1A9E /* GuruIcon152x152.png */,
+				38639A3E187ABD6400AE1A9E /* GuruIcon40x40.png */,
+				38639A3F187ABD6400AE1A9E /* GuruIcon60x60.png */,
+				38639A40187ABD6400AE1A9E /* GuruIcon76x76.png */,
+				38639A41187ABD6400AE1A9E /* GuruIcon80x80.png */,
+			);
+			name = Images;
+			path = guru/Images;
+			sourceTree = "<group>";
+		};
 		3883298A187995D4004836A2 = {
 			isa = PBXGroup;
 			children = (
+				38639A3B187ABD6400AE1A9E /* Images */,
 				3883299C187995D4004836A2 /* guru */,
 				388329BE187995D4004836A2 /* guruTests */,
 				38832995187995D4004836A2 /* Frameworks */,
@@ -226,6 +253,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Karan Batra-Daitch";
 				TargetAttributes = {
+					38832992187995D4004836A2 = {
+						DevelopmentTeam = 6F99DVC598;
+					};
 					388329B6187995D4004836A2 = {
 						TestTargetID = 38832992187995D4004836A2;
 					};
@@ -255,11 +285,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38639A44187ABD6400AE1A9E /* GuruIcon40x40.png in Resources */,
+				38639A42187ABD6400AE1A9E /* GuruIcon120x120.png in Resources */,
 				388329AD187995D4004836A2 /* Main_iPad.storyboard in Resources */,
+				38639A47187ABD6400AE1A9E /* GuruIcon80x80.png in Resources */,
 				388329B2187995D4004836A2 /* Images.xcassets in Resources */,
+				38639A46187ABD6400AE1A9E /* GuruIcon76x76.png in Resources */,
 				38D42B531879B45A00326B89 /* GCConfiguration.plist in Resources */,
 				388329AA187995D4004836A2 /* Main_iPhone.storyboard in Resources */,
 				388329A1187995D4004836A2 /* InfoPlist.strings in Resources */,
+				38639A45187ABD6400AE1A9E /* GuruIcon60x60.png in Resources */,
+				38639A43187ABD6400AE1A9E /* GuruIcon152x152.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +488,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "guru/guru-Prefix.pch";
 				INFOPLIST_FILE = "guru/guru-Info.plist";
@@ -466,6 +503,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "guru/guru-Prefix.pch";
 				INFOPLIST_FILE = "guru/guru-Info.plist";

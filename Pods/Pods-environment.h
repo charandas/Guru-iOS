@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking 3
 
+// BFCropInterface
+#define COCOAPODS_POD_AVAILABLE_BFCropInterface
+#define COCOAPODS_VERSION_MAJOR_BFCropInterface 1
+#define COCOAPODS_VERSION_MINOR_BFCropInterface 0
+#define COCOAPODS_VERSION_PATCH_BFCropInterface 0
+
 // Chute-SDK
 #define COCOAPODS_POD_AVAILABLE_Chute_SDK
 #define COCOAPODS_VERSION_MAJOR_Chute_SDK 2
