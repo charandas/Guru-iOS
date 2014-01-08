@@ -7,7 +7,6 @@
         <!--Home Screen Table View Controller - Root View Controller-->
         <scene sceneID="3Ix-W2-EY9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7dS-PN-Z11" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="uZc-ml-zBx" customClass="HomeScreenTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iqg-Ez-S6O">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="852"/>
@@ -72,6 +71,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="kzL-Kg-ngo"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7dS-PN-Z11" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1953" y="-1025"/>
         </scene>
@@ -130,13 +130,7 @@
                             <constraint firstItem="RRV-Wl-cmo" firstAttribute="top" secondItem="Hwx-PR-8za" secondAttribute="top" id="DlG-06-ImP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="D76-L6-bMx">
-                        <barButtonItem key="rightBarButtonItem" title="Select" id="3Nw-Ob-YcH">
-                            <connections>
-                                <action selector="pickPhotoSelected:" destination="eon-iz-Eiu" id="m25-4n-04e"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="D76-L6-bMx"/>
                     <connections>
                         <outlet property="scrollView" destination="RRV-Wl-cmo" id="uVr-nl-9Ws"/>
                     </connections>
@@ -145,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="1699" y="101"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Customize-->
         <scene sceneID="xOS-tt-YIb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X79-lU-xow" sceneMemberID="viewController">
+                <navigationController title="Customize" automaticallyAdjustsScrollViewInsets="NO" id="X79-lU-xow" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Zy-zd-NQD">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>

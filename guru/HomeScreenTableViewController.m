@@ -35,14 +35,6 @@
     return titles;
 }
 
-@synthesize destinationControllerData = _destinationControllerData;
-
-- (NSMapTable*)destinationControllerData
-{
-    if (!_destinationControllerData) _destinationControllerData = [[NSMapTable alloc] init];
-    return _destinationControllerData;
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -59,6 +51,7 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Only ipad can get the detail
     id detail = self.splitViewController.viewControllers[1];
     if ([detail isKindOfClass:[UINavigationController class]])
     {
@@ -67,9 +60,7 @@
         {
             ViewController* vc = (ViewController*)nvc.topViewController;
             NSString *title = [HomeScreenTableViewController viewControllerTitles][indexPath.row];
-            vc.title = title;
-            vc.sourceController = self;
-            [vc refreshImage];
+            if (![vc.title isEqualToString:title])[vc moveToImageWithTitle:title];
         }
     }
 }
@@ -86,24 +77,7 @@
         vc = (ViewController *)segue.destinationViewController;
         NSString *title = [HomeScreenTableViewController viewControllerTitles][indexPath.row];
         vc.title = title;
-        vc.sourceController = self;
-        // TODO: investigate why this breaks for the iPhone
-        //[vc refreshImage];
     }
-    
-    /*
-    NSIndexPath *path = [self.tableView indexPathForCell:sender];
-    
-    if (vc && path)
-    {
-        if (path.row == CELL_YOURSELF)
-        {
-        }
-        else if (path.row == CELL_GURU)
-        {
-        }
-    }
-    */
 }
 
 -(void)awakeFromNib

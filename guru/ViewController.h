@@ -13,9 +13,8 @@
 @interface ViewController : UIViewController <PhotoPickerViewControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UIPopoverController *popoverController;
-@property (weak, nonatomic) HomeScreenTableViewController *sourceController;
 
-- (void)refreshImage;
+- (void)moveToImageWithTitle:(NSString *)title;
 - (IBAction)pickPhotoSelected:(id)sender;
 - (IBAction)cropPressed:(id)sender;
 - (IBAction)originalPressed:(id)sender;

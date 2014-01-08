@@ -10,7 +10,6 @@
 
 @interface HomeScreenTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSMapTable *destinationControllerData;
 + (NSArray*)viewControllerTitles;
 
 @end

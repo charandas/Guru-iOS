@@ -17,6 +17,9 @@
 @property (nonatomic, strong) UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
+- (UIImage *)savedImageWithTitle:(NSString *)title;
+- (void)setSavedImage:(UIImage *)image withTitle:(NSString *)title;
+
 @end
 
 @implementation ViewController
@@ -26,12 +29,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self refreshImage];
+    if (self.title) [self moveToImageWithTitle:self.title];
 }
 
-- (void)refreshImage
+- (void)moveToImageWithTitle:(NSString *)title
 {
-    self.image = [self.sourceController.destinationControllerData objectForKey:self.title];
+    self.image = [self savedImageWithTitle:title];
+    self.title = title;
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,6 +51,22 @@
     _scrollView.maximumZoomScale = 2;
     _scrollView.delegate = self;
     self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
+}
+
+- (UIImage *)savedImageWithTitle:(NSString *)title {
+    NSString *key = [NSString stringWithFormat:@"savedImageData.%@", title];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData* myEncodedImageData = [defaults objectForKey:key];
+    UIImage* image = [UIImage imageWithData:myEncodedImageData];
+    return image;
+}
+
+- (void)setSavedImage:(UIImage *)image withTitle:(NSString *)title {
+    NSString *key = [NSString stringWithFormat:@"savedImageData.%@", title];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData* imageData = UIImagePNGRepresentation(image);
+    [defaults setObject:imageData forKey:key];
+    [defaults synchronize];
 }
 
 - (UIImageView *)imageView
@@ -87,7 +107,6 @@
     self.imageView.image = image;
     self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
     self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
-    [self.sourceController.destinationControllerData setObject:self.image forKey:self.title];
 }
 
 #pragma mark - IBActions
@@ -125,6 +144,7 @@
     self.originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     //[info objectForKey:UIImagePickerControllerReferenceURL]
     self.image = self.originalImage;
+    [self setSavedImage:self.image withTitle:self.title];
     
     //[imageView setContentMode:UIViewContentModeScaleAspectFit];
     
