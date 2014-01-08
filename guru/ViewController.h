@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "PhotoPickerViewController.h"
+#import "HomeScreenTableViewController.h"
 
 @interface ViewController : UIViewController <PhotoPickerViewControllerDelegate, UINavigationControllerDelegate>
 
-@property (strong, nonatomic) UIPopoverController   *popoverController;
+@property (strong, nonatomic) UIPopoverController *popoverController;
+@property (weak, nonatomic) HomeScreenTableViewController *sourceController;
 
+- (void)refreshImage;
 - (IBAction)pickPhotoSelected:(id)sender;
 - (IBAction)cropPressed:(id)sender;
 - (IBAction)originalPressed:(id)sender;

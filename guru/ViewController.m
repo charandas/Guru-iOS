@@ -8,27 +8,30 @@
 
 #import "ViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
-//#import "GCPopoverBackgroundView.h"
-#import "BFCropInterface.h"
+#import "GetChute.h"
 
-@interface ViewController () <UIScrollViewDelegate>
+@interface ViewController () <UIScrollViewDelegate, UISplitViewControllerDelegate>
 
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIImage *originalImage;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) BFCropInterface *cropper;
 
 @end
 
 @implementation ViewController
 
-@synthesize popoverController, cropper = _cropper, originalImage = _originalImage;
+@synthesize popoverController, originalImage = _originalImage;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self.scrollView addSubview:self.imageView];
+    [self refreshImage];
+}
+
+- (void)refreshImage
+{
+    self.image = [self.sourceController.destinationControllerData objectForKey:self.title];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,18 +44,18 @@
 {
     _scrollView = scrollView;
     _scrollView.minimumZoomScale = 0.2;
-    _scrollView.maximumZoomScale = 2.0;
+    _scrollView.maximumZoomScale = 2;
     _scrollView.delegate = self;
     self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
-}
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
-    return self.imageView;
 }
 
 - (UIImageView *)imageView
 {
-    if (!_imageView) _imageView = [[UIImageView alloc] init];
+    if (!_imageView)
+    {
+        _imageView = [[UIImageView alloc] init];
+        [self.scrollView addSubview:_imageView];
+    }
     return _imageView;
 }
 
@@ -66,20 +69,6 @@
     _originalImage = originalImage;
 }
 
-- (BFCropInterface *)cropper
-{
-    if (!_cropper)
-    {
-        _cropper = [[BFCropInterface alloc]initWithFrame:self.imageView.bounds andImage:self.image];
-    }
-    return _cropper;
-}
-
-- (void)setCropper:(BFCropInterface *)cropper
-{
-    _cropper = cropper;
-}
-
 - (UIImage *)image
 {
     return self.imageView.image;
@@ -87,16 +76,18 @@
 
 - (void)setImage:(UIImage *)image
 {
-    [self.cropper removeFromSuperview];
-    self.cropper = nil;
+    //CGRect workingFrame = self.scrollView.frame;
+    //workingFrame.origin.x = 0;
+    //[self.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    //self.imageView.frame = workingFrame;
+    //workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
+    //[self.scrollView setContentSize:CGSizeMake(workingFrame.origin.x, workingFrame.size.height)];
     
+    self.scrollView.zoomScale = 1.0;
     self.imageView.image = image;
-    [self.imageView sizeToFit];
+    self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
     self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
-    
-    self.cropper.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.60];
-    self.cropper.borderColor = [UIColor whiteColor];
-    [self.scrollView addSubview:self.cropper];
+    [self.sourceController.destinationControllerData setObject:self.image forKey:self.title];
 }
 
 #pragma mark - IBActions
@@ -110,7 +101,7 @@
         if (![[self popoverController] isPopoverVisible]) {
             UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:picker];
             // [popover setPopoverBackgroundViewClass:[GCPopoverBackgroundView class]];
-            [popover presentPopoverFromRect:[sender frame] inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            [popover presentPopoverFromBarButtonItem:sender permittedArrowDirections:YES animated:YES];
             self.popoverController = popover;
         }
         else {
@@ -123,29 +114,16 @@
 }
 
 - (IBAction)cropPressed:(id)sender {
-    // crop image
-    UIImage *croppedImage = [self.cropper getCroppedImage];
-    
-    // remove crop interface from superview
-    [self.cropper removeFromSuperview];
-    self.cropper = nil;
-    
-    // display new cropped image
-    self.image = croppedImage;
 }
 
 - (IBAction)originalPressed:(id)sender {
-    // set main image view to original image and add cropper if not already added
-    self.image = nil;
-    self.image = self.originalImage;
 }
 
-#pragma mark - PhotoPickerViewController Delegate Methods
-
-
+#pragma mark - PhotoPickerViewControllerDelegate
 - (void)imagePickerController:(PhotoPickerViewController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     self.originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    //[info objectForKey:UIImagePickerControllerReferenceURL]
     self.image = self.originalImage;
     
     //[imageView setContentMode:UIViewContentModeScaleAspectFit];
@@ -167,6 +145,34 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     
+}
+
+# pragma mark - UISplitViewControllerDelegate
+- (void)awakeFromNib
+{
+    self.splitViewController.delegate = self;
+}
+
+- (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
+{
+    return UIInterfaceOrientationIsPortrait(orientation);
+}
+
+- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc
+{
+    barButtonItem.title = aViewController.title;
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+}
+
+- (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    self.navigationItem.leftBarButtonItem = nil;
+}
+
+#pragma mark - UIScrollViewDelegate
+- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.imageView;
 }
 
 @end

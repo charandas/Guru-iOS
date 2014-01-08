@@ -1,9 +1,93 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="DOH-e3-68t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="oH6-0Q-fHK">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
+        <!--Home Screen Table View Controller - Home-->
+        <scene sceneID="q5b-t2-fDg">
+            <objects>
+                <tableViewController id="e8q-Dq-gN4" customClass="HomeScreenTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mds-4g-UXJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="kP2-7L-gAy">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="yourselfCell" textLabel="LLN-2e-pZD" imageView="o50-JQ-VGM" style="IBUITableViewCellStyleDefault" id="7TV-J7-Nho">
+                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7TV-J7-Nho" id="2Iz-ny-9s2">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Yourself" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LLN-2e-pZD">
+                                                    <rect key="frame" x="73" y="0.0" width="232" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="GuruIcon120x120.png" id="o50-JQ-VGM">
+                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vXZ-lx-hvc" kind="push" id="Bnl-86-8XB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="guruCell" textLabel="8OL-9E-cdM" imageView="zwS-pR-RIU" style="IBUITableViewCellStyleDefault" id="x7p-10-3aN">
+                                        <rect key="frame" x="0.0" y="108" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x7p-10-3aN" id="iLw-cu-H9D">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Guru" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8OL-9E-cdM">
+                                                    <rect key="frame" x="73" y="0.0" width="232" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="GuruIcon120x120.png" id="zwS-pR-RIU">
+                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="wE3-8T-Wpv" kind="push" id="d3r-Vr-IuA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Home" id="aJ6-ca-p7C"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fnL-SG-MFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="992" y="-402"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OF6-cw-CQW">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="oH6-0Q-fHK" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="grN-k7-UBH">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="e8q-Dq-gN4" kind="relationship" relationship="rootViewController" id="eej-Qg-5r1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="19q-vM-WAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="458" y="-402"/>
+        </scene>
         <!--View Controller - Yourself-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -13,62 +97,29 @@
                         <viewControllerLayoutGuide type="bottom" id="Wk4-Lf-DNa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7N-Me-MVd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="491"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XqC-aM-2yi">
-                                <rect key="frame" x="20" y="489" width="43" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Select">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pickPhotoSelected:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="UKc-lC-l7R"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyt-d5-Xcj">
-                                <rect key="frame" x="134" y="489" width="53" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Original">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="originalPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dJn-Ka-bgf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qct-HJ-WLV">
-                                <rect key="frame" x="254" y="489" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Crop">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cropPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eYF-44-5yN"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="XqC-aM-2yi" secondAttribute="bottom" id="ATF-Xp-EVZ"/>
-                            <constraint firstItem="eyt-d5-Xcj" firstAttribute="baseline" secondItem="qct-HJ-WLV" secondAttribute="baseline" id="Ce8-gN-6DS"/>
-                            <constraint firstItem="J7N-Me-MVd" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Kju-ec-TaX"/>
-                            <constraint firstItem="qct-HJ-WLV" firstAttribute="leading" secondItem="eyt-d5-Xcj" secondAttribute="trailing" constant="67" id="TLr-Rt-rfc"/>
-                            <constraint firstItem="eyt-d5-Xcj" firstAttribute="baseline" secondItem="XqC-aM-2yi" secondAttribute="baseline" id="WDa-gG-pvJ"/>
-                            <constraint firstItem="XqC-aM-2yi" firstAttribute="centerX" secondItem="J7N-Me-MVd" secondAttribute="centerX" constant="-118.5" id="nFU-C1-dDF"/>
-                            <constraint firstItem="J7N-Me-MVd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="t3j-8s-Bou"/>
-                            <constraint firstItem="Wk4-Lf-DNa" firstAttribute="top" secondItem="J7N-Me-MVd" secondAttribute="bottom" constant="28" id="tfa-OH-4DN"/>
-                            <constraint firstItem="eyt-d5-Xcj" firstAttribute="centerX" secondItem="J7N-Me-MVd" secondAttribute="centerX" id="vbp-yg-qe3"/>
-                            <constraint firstAttribute="trailing" secondItem="J7N-Me-MVd" secondAttribute="trailing" id="wAr-h4-fsh"/>
+                            <constraint firstAttribute="bottom" secondItem="J7N-Me-MVd" secondAttribute="bottom" id="Eys-7T-MB6"/>
+                            <constraint firstItem="J7N-Me-MVd" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="gEf-Oi-e7o"/>
+                            <constraint firstItem="J7N-Me-MVd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="jnD-gc-yfJ"/>
+                            <constraint firstAttribute="trailing" secondItem="J7N-Me-MVd" secondAttribute="trailing" id="nWa-l9-yRK"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Yourself" id="v6E-o3-25k"/>
                     <navigationItem key="navigationItem" title="Yourself" id="83V-Dp-FZn">
-                        <barButtonItem key="leftBarButtonItem" title="Select" id="vuJ-Hu-4FG"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="qlM-DL-Ti2"/>
+                        <barButtonItem key="rightBarButtonItem" title="Select" id="PUJ-OS-Olk">
+                            <connections>
+                                <action selector="pickPhotoSelected:" destination="vXZ-lx-hvc" id="Ner-2r-X20"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="J7N-Me-MVd" id="1jb-xd-fZW"/>
@@ -76,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1270" y="-402"/>
+            <point key="canvasLocation" x="1428" y="-402"/>
         </scene>
         <!--View Controller - Guru-->
         <scene sceneID="OVo-8K-C8s">
@@ -87,62 +138,29 @@
                         <viewControllerLayoutGuide type="bottom" id="OKO-Hb-63F"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rZj-88-rzn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mm5-yH-hNV">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="491"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aZ-42-erl">
-                                <rect key="frame" x="20" y="489" width="43" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Select">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pickPhotoSelected:" destination="wE3-8T-Wpv" eventType="touchUpInside" id="gEH-5e-wGo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lpz-eC-umN">
-                                <rect key="frame" x="146" y="489" width="53" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Original">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="originalPressed:" destination="wE3-8T-Wpv" eventType="touchUpInside" id="HUb-cj-gCK"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qEl-oZ-K3e">
-                                <rect key="frame" x="266" y="489" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Crop">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cropPressed:" destination="wE3-8T-Wpv" eventType="touchUpInside" id="3Hk-m3-Dxn"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="7aZ-42-erl" secondAttribute="bottom" id="4RH-BB-eCg"/>
-                            <constraint firstItem="qEl-oZ-K3e" firstAttribute="leading" secondItem="Lpz-eC-umN" secondAttribute="trailing" constant="67" id="C6K-Uj-jmS"/>
-                            <constraint firstAttribute="trailing" secondItem="mm5-yH-hNV" secondAttribute="trailing" id="D18-Qb-rJy"/>
-                            <constraint firstItem="qEl-oZ-K3e" firstAttribute="baseline" secondItem="7aZ-42-erl" secondAttribute="baseline" id="NdG-7P-SKM"/>
-                            <constraint firstItem="mm5-yH-hNV" firstAttribute="top" secondItem="rZj-88-rzn" secondAttribute="top" id="SWK-6S-7hk"/>
-                            <constraint firstItem="OKO-Hb-63F" firstAttribute="top" secondItem="mm5-yH-hNV" secondAttribute="bottom" constant="28" id="dz6-HA-WsK"/>
-                            <constraint firstItem="qEl-oZ-K3e" firstAttribute="baseline" secondItem="Lpz-eC-umN" secondAttribute="baseline" id="gHu-kf-0IX"/>
-                            <constraint firstAttribute="trailing" secondItem="qEl-oZ-K3e" secondAttribute="trailing" constant="20" symbolic="YES" id="hjc-D4-LTV"/>
-                            <constraint firstItem="mm5-yH-hNV" firstAttribute="centerX" secondItem="7aZ-42-erl" secondAttribute="centerX" constant="118.5" id="kkd-qA-2q5"/>
-                            <constraint firstItem="mm5-yH-hNV" firstAttribute="leading" secondItem="rZj-88-rzn" secondAttribute="leading" id="pMs-rv-yUo"/>
+                            <constraint firstAttribute="trailing" secondItem="mm5-yH-hNV" secondAttribute="trailing" id="12b-jm-ba3"/>
+                            <constraint firstItem="mm5-yH-hNV" firstAttribute="top" secondItem="rZj-88-rzn" secondAttribute="top" id="DOU-ug-rsU"/>
+                            <constraint firstAttribute="bottom" secondItem="mm5-yH-hNV" secondAttribute="bottom" id="WQw-rM-RkY"/>
+                            <constraint firstItem="mm5-yH-hNV" firstAttribute="leading" secondItem="rZj-88-rzn" secondAttribute="leading" id="gfb-fG-ytT"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Guru" id="kXM-Vb-PJ4"/>
                     <navigationItem key="navigationItem" title="Guru" id="fNH-9K-88J">
-                        <barButtonItem key="leftBarButtonItem" title="Select" id="bZo-Gr-OtA"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="2df-2w-Hbp"/>
+                        <barButtonItem key="rightBarButtonItem" title="Select" id="wQS-Aa-LUb">
+                            <connections>
+                                <action selector="pickPhotoSelected:" destination="wE3-8T-Wpv" id="0gb-C1-LWd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="mm5-yH-hNV" id="CjX-EB-DR9"/>
@@ -150,28 +168,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TlH-eh-hBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1765" y="-402"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="YKH-oL-sc7">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="DOH-e3-68t" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="JhW-JO-0fQ">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="YxE-VB-IH8"/>
-                        <segue destination="wE3-8T-Wpv" kind="relationship" relationship="viewControllers" id="YTE-1B-6Fj"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vDg-O2-5vl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="744" y="-402"/>
+            <point key="canvasLocation" x="1854" y="-402"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="GuruIcon120x120.png" width="120" height="120"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
