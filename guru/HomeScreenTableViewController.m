@@ -82,8 +82,13 @@
     ViewController* vc;
     if ([segue.destinationViewController isKindOfClass:[ViewController class]])
     {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         vc = (ViewController *)segue.destinationViewController;
+        NSString *title = [HomeScreenTableViewController viewControllerTitles][indexPath.row];
+        vc.title = title;
         vc.sourceController = self;
+        // TODO: investigate why this breaks for the iPhone
+        //[vc refreshImage];
     }
     
     /*
