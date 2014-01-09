@@ -24,6 +24,8 @@
 		38639A46187ABD6400AE1A9E /* GuruIcon76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 38639A40187ABD6400AE1A9E /* GuruIcon76x76.png */; };
 		38639A47187ABD6400AE1A9E /* GuruIcon80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 38639A41187ABD6400AE1A9E /* GuruIcon80x80.png */; };
 		3868EA93187B260E0084B794 /* HomeScreenTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3868EA92187B260E0084B794 /* HomeScreenTableViewController.m */; };
+		3879A97C187F14A500C26371 /* ParseImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3879A97B187F14A500C26371 /* ParseImagePickerController.m */; };
+		3879A97F187F1D5D00C26371 /* GuruViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3879A97E187F1D5D00C26371 /* GuruViewController.m */; };
 		38832997187995D4004836A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38832996187995D4004836A2 /* Foundation.framework */; };
 		38832999187995D4004836A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38832998187995D4004836A2 /* CoreGraphics.framework */; };
 		3883299B187995D4004836A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3883299A187995D4004836A2 /* UIKit.framework */; };
@@ -73,6 +75,10 @@
 		38639A41187ABD6400AE1A9E /* GuruIcon80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GuruIcon80x80.png; sourceTree = "<group>"; };
 		3868EA91187B260E0084B794 /* HomeScreenTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeScreenTableViewController.h; sourceTree = "<group>"; };
 		3868EA92187B260E0084B794 /* HomeScreenTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScreenTableViewController.m; sourceTree = "<group>"; };
+		3879A97A187F14A500C26371 /* ParseImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseImagePickerController.h; sourceTree = "<group>"; };
+		3879A97B187F14A500C26371 /* ParseImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseImagePickerController.m; sourceTree = "<group>"; };
+		3879A97D187F1D5D00C26371 /* GuruViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuruViewController.h; sourceTree = "<group>"; };
+		3879A97E187F1D5D00C26371 /* GuruViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuruViewController.m; sourceTree = "<group>"; };
 		38832993187995D4004836A2 /* guru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = guru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38832996187995D4004836A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		38832998187995D4004836A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -202,6 +208,10 @@
 				388329AB187995D4004836A2 /* Main_iPad.storyboard */,
 				388329AE187995D4004836A2 /* ViewController.h */,
 				388329AF187995D4004836A2 /* ViewController.m */,
+				3879A97D187F1D5D00C26371 /* GuruViewController.h */,
+				3879A97E187F1D5D00C26371 /* GuruViewController.m */,
+				3879A97A187F14A500C26371 /* ParseImagePickerController.h */,
+				3879A97B187F14A500C26371 /* ParseImagePickerController.m */,
 				3868EA91187B260E0084B794 /* HomeScreenTableViewController.h */,
 				3868EA92187B260E0084B794 /* HomeScreenTableViewController.m */,
 				388329B1187995D4004836A2 /* Images.xcassets */,
@@ -391,9 +401,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				388329B0187995D4004836A2 /* ViewController.m in Sources */,
+				3879A97C187F14A500C26371 /* ParseImagePickerController.m in Sources */,
 				388329A7187995D4004836A2 /* AppDelegate.m in Sources */,
 				3868EA93187B260E0084B794 /* HomeScreenTableViewController.m in Sources */,
 				388329A3187995D4004836A2 /* main.m in Sources */,
+				3879A97F187F1D5D00C26371 /* GuruViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

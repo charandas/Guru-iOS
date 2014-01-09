@@ -15,7 +15,7 @@
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIImage *originalImage;
 @property (nonatomic, strong) UIImageView *imageView;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (UIImage *)savedImageWithTitle:(NSString *)title;
 - (void)setSavedImage:(UIImage *)image withTitle:(NSString *)title;

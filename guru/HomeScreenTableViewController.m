@@ -80,9 +80,4 @@
     }
 }
 
--(void)awakeFromNib
-{
-//    self.tableView.delegate = self;
-}
-
 @end

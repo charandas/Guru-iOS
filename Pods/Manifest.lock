@@ -17,10 +17,14 @@ PODS:
   - MBProgressHUD (0.8)
   - PhotoPickerPlus (2.0.3):
     - Chute-SDK (~> 2.0.5)
+  - SDWebImage (3.5.2):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.5.2)
 
 DEPENDENCIES:
   - Chute-SDK (= 2.0.5)
   - PhotoPickerPlus (= 2.0.3)
+  - SDWebImage (= 3.5.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
@@ -30,5 +34,6 @@ SPEC CHECKSUMS:
   Lockbox: 56ac5c11e51d46baa4408960a5a35b355a32840e
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   PhotoPickerPlus: 3a8c25ae525eaba92ae71e623c08014301f54d06
+  SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e
 
 COCOAPODS: 0.29.0

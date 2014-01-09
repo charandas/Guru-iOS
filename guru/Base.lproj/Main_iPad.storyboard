@@ -130,7 +130,13 @@
                             <constraint firstItem="RRV-Wl-cmo" firstAttribute="top" secondItem="Hwx-PR-8za" secondAttribute="top" id="DlG-06-ImP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="D76-L6-bMx"/>
+                    <navigationItem key="navigationItem" id="D76-L6-bMx">
+                        <barButtonItem key="rightBarButtonItem" title="Select" id="Mxb-Ke-hY2">
+                            <connections>
+                                <action selector="pickPhotoSelected:" destination="eon-iz-Eiu" id="qXA-mu-AS9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="RRV-Wl-cmo" id="uVr-nl-9Ws"/>
                     </connections>
