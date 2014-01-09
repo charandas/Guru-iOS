@@ -14,13 +14,14 @@
 
 @interface ParseImagePickerController ()
 
-@property (strong, nonatomic) NSArray* guruMetadata;
+@property (strong, nonatomic) NSArray* photoMetadata;
+- (UIImage *)thumbnailForImage:(UIImage*)image ofSize:(CGSize)size;
 
 @end
 
 @implementation ParseImagePickerController
 
-@synthesize guruMetadata = _guruMetadata;
+@synthesize photoMetadata = _photoMetadata;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,29 +37,29 @@
     [super viewDidLoad];
     self.clearsSelectionOnViewWillAppear = NO;
     
-    // Get guru metadata from Parse
+    // Get photo metadata from Parse
     PFQuery *query = [PFQuery queryWithClassName:@"Guru"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.guruMetadata = objects;
+                self.photoMetadata = objects;
             });
         }
         else {
-            NSLog(@"WARN: error loading guru image metadata from parse");
+            NSLog(@"WARN: error loading photo metadata from parse");
         }
     }];
     
 }
 
-- (NSArray*)guruMetadata
+- (NSArray*)photoMetadata
 {
-    return _guruMetadata;
+    return _photoMetadata;
 }
 
-- (void) setGuruMetadata:(NSArray *)guruMetadata
+- (void) setPhotoMetadata:(NSArray *)photoMetadata
 {
-    _guruMetadata = guruMetadata;
+    _photoMetadata = photoMetadata;
     [self.tableView reloadData];
 }
 
@@ -66,24 +67,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (!self.guruMetadata)
+    if (!self.photoMetadata)
         return 0;
-    return self.guruMetadata.count;
+    return self.photoMetadata.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (!self.guruMetadata)
+    if (!self.photoMetadata)
         return 0;
     
-    id guru = self.guruMetadata[section];
-    if ([guru isKindOfClass:[PFObject class]])
+    id photo = self.photoMetadata[section];
+    if ([photo isKindOfClass:[PFObject class]])
     {
-        PFObject* guruObject = (PFObject*)guru;
-        id images = guruObject[@"images"];
+        PFObject* photoObject = (PFObject*)photo;
+        id images = photoObject[@"images"];
         if ([images isKindOfClass:[NSArray class]])
         {
-            NSLog(@"Photos for %@: %d\n", guruObject[@"name"], ((NSArray*)images).count);
             return ((NSArray*)images).count;
         }
     }
@@ -93,12 +93,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GuruPhotoCell"];
-    PFObject *guru = self.guruMetadata[indexPath.section];
-    NSString* urlString = guru[@"images"][indexPath.row][@"url"];
+    PFObject *photo = self.photoMetadata[indexPath.section];
+    NSString* urlString = photo[@"images"][indexPath.row][@"url"];
     NSURL* url = [NSURL URLWithString:urlString];
     
-    cell.textLabel.text = guru[@"name"];
-    cell.detailTextLabel.text = guru[@"description"];
+    //cell.textLabel.text = photo[@"name"];
+    //cell.detailTextLabel.text = photo[@"description"];
 
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     [manager downloadWithURL:url
@@ -109,13 +109,34 @@
          if (image && finished)
          {
              dispatch_async(dispatch_get_main_queue(), ^(){
-                 cell.imageView.image = image;
+                 UIImage *thumb = [self thumbnailForImage:image ofSize:CGSizeMake(60,60)];
+                 cell.imageView.image = thumb;
                  [cell setNeedsLayout];
              });
          }
      }];
 
     return cell;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
+    /* Create custom view to display section header... */
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 18)];
+    [label setFont:[UIFont boldSystemFontOfSize:12]];
+    PFObject *photo = self.photoMetadata[section];
+    NSString *string;
+    if (photo[@"description"])
+        string = [NSString stringWithFormat:@"%@ - %@", photo[@"name"], photo[@"description"]];
+    else
+        string = [NSString stringWithFormat:@"%@", photo[@"name"]];
+    
+    /* Section header is in 0th index... */
+    [label setText:string];
+    [view addSubview:label];
+    [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:1.0]]; //your background color...
+    return view;
 }
 
 
@@ -126,14 +147,31 @@
     if ([segue.destinationViewController isKindOfClass:[GuruViewController class]])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        PFObject *guru = self.guruMetadata[indexPath.section];
-        NSString* urlString = guru[@"images"][indexPath.row][@"url"];
+        PFObject *photo = self.photoMetadata[indexPath.section];
+        NSString* urlString = photo[@"images"][indexPath.row][@"url"];
 
         UITableViewCell *cell = sender;
         GuruViewController *vc = (GuruViewController *)segue.destinationViewController;
         vc.title = cell.textLabel.text;
         vc.imageURL = [NSURL URLWithString:urlString];
     }
+}
+
+- (UIImage *)thumbnailForImage:(UIImage*)image ofSize:(CGSize)size {
+    UIGraphicsBeginImageContext(size);
+    
+    // draw scaled image into thumbnail context
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    
+    UIImage *newThumbnail = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // pop the context
+    UIGraphicsEndImageContext();
+    
+    if(newThumbnail == nil)
+        NSLog(@"could not scale image");
+    
+    return newThumbnail;
 }
 
 @end

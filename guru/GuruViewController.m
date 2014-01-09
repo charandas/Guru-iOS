@@ -10,7 +10,7 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface GuruViewController ()
+@interface GuruViewController () <UIScrollViewAccessibilityDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
