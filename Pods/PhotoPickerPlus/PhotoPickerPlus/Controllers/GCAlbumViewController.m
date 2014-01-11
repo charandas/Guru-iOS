@@ -10,7 +10,7 @@
 #import "GCAssetsCollectionViewController.h"
 #import "GCAccountMediaViewController.h"
 #import "GCAccountAlbum.h"
-#import "PhotoPickerCell.h"
+#import "GCPhotoPickerCell.h"
 
 #import "GetChute.h"
 
@@ -68,12 +68,12 @@
     return [self.albums count];
 }
 
-- (PhotoPickerCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (GCPhotoPickerCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    PhotoPickerCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    GCPhotoPickerCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[PhotoPickerCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[GCPhotoPickerCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     if([self isItDevice])
     {

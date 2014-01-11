@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PhotoCell : UICollectionViewCell
+@interface GCPhotoCell : UICollectionViewCell
 
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImageView *overlayView;

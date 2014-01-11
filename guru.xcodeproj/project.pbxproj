@@ -43,6 +43,7 @@
 		388329C5187995D4004836A2 /* guruTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 388329C4187995D4004836A2 /* guruTests.m */; };
 		38BC862C187C627B000B70B2 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BC862B187C627A000B70B2 /* FacebookSDK.framework */; };
 		38D42B531879B45A00326B89 /* GCConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38D42B521879B45A00326B89 /* GCConfiguration.plist */; };
+		38F8F78518808E5C0031B4DC /* PhotoPickerPlus.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38F8F78318808E5C0031B4DC /* PhotoPickerPlus.strings */; };
 		3D4EA4BF3C92428E8C2F072D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5B7AC5FEFE4897B379D4E5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		388329C4187995D4004836A2 /* guruTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = guruTests.m; sourceTree = "<group>"; };
 		38BC862B187C627A000B70B2 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		38D42B521879B45A00326B89 /* GCConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GCConfiguration.plist; sourceTree = "<group>"; };
+		38F8F78418808E5C0031B4DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Pods/PhotoPickerPlus/PhotoPickerPlus/Resources/Localizations/en.lproj/PhotoPickerPlus.strings; sourceTree = "<group>"; };
 		866BBDA7B3824B44A28810E4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		CB5B7AC5FEFE4897B379D4E5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -157,6 +159,7 @@
 		3883298A187995D4004836A2 = {
 			isa = PBXGroup;
 			children = (
+				38F8F78318808E5C0031B4DC /* PhotoPickerPlus.strings */,
 				3883299C187995D4004836A2 /* guru */,
 				388329BE187995D4004836A2 /* guruTests */,
 				38832995187995D4004836A2 /* Frameworks */,
@@ -338,6 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38F8F78518808E5C0031B4DC /* PhotoPickerPlus.strings in Resources */,
 				38639A44187ABD6400AE1A9E /* GuruIcon40x40.png in Resources */,
 				38639A42187ABD6400AE1A9E /* GuruIcon120x120.png in Resources */,
 				388329AD187995D4004836A2 /* Main_iPad.storyboard in Resources */,
@@ -458,6 +462,14 @@
 				388329C2187995D4004836A2 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		38F8F78318808E5C0031B4DC /* PhotoPickerPlus.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38F8F78418808E5C0031B4DC /* en */,
+			);
+			name = PhotoPickerPlus.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

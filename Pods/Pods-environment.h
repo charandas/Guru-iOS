@@ -60,8 +60,8 @@
 // PhotoPickerPlus
 #define COCOAPODS_POD_AVAILABLE_PhotoPickerPlus
 #define COCOAPODS_VERSION_MAJOR_PhotoPickerPlus 2
-#define COCOAPODS_VERSION_MINOR_PhotoPickerPlus 0
-#define COCOAPODS_VERSION_PATCH_PhotoPickerPlus 3
+#define COCOAPODS_VERSION_MINOR_PhotoPickerPlus 1
+#define COCOAPODS_VERSION_PATCH_PhotoPickerPlus 0
 
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage

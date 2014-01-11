@@ -15,7 +15,6 @@
 @interface ParseImagePickerController ()
 
 @property (strong, nonatomic) NSArray* photoMetadata;
-- (UIImage *)thumbnailForImage:(UIImage*)image ofSize:(CGSize)size;
 
 @end
 
@@ -94,7 +93,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GuruPhotoCell"];
     PFObject *photo = self.photoMetadata[indexPath.section];
-    NSString* urlString = photo[@"images"][indexPath.row][@"url"];
+    NSString* urlString = photo[@"images"][indexPath.row][@"@2x"][@"url"];
     NSURL* url = [NSURL URLWithString:urlString];
     
     //cell.textLabel.text = photo[@"name"];
@@ -109,8 +108,7 @@
          if (image && finished)
          {
              dispatch_async(dispatch_get_main_queue(), ^(){
-                 UIImage *thumb = [self thumbnailForImage:image ofSize:CGSizeMake(60,60)];
-                 cell.imageView.image = thumb;
+                 cell.imageView.image = image;
                  [cell setNeedsLayout];
              });
          }
@@ -148,30 +146,13 @@
     {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         PFObject *photo = self.photoMetadata[indexPath.section];
-        NSString* urlString = photo[@"images"][indexPath.row][@"url"];
+        NSString* urlString = photo[@"images"][indexPath.row][@"normal"][@"url"];
 
         UITableViewCell *cell = sender;
         GuruViewController *vc = (GuruViewController *)segue.destinationViewController;
         vc.title = cell.textLabel.text;
         vc.imageURL = [NSURL URLWithString:urlString];
     }
-}
-
-- (UIImage *)thumbnailForImage:(UIImage*)image ofSize:(CGSize)size {
-    UIGraphicsBeginImageContext(size);
-    
-    // draw scaled image into thumbnail context
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    
-    UIImage *newThumbnail = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // pop the context
-    UIGraphicsEndImageContext();
-    
-    if(newThumbnail == nil)
-        NSLog(@"could not scale image");
-    
-    return newThumbnail;
 }
 
 @end

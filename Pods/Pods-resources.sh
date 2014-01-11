@@ -41,7 +41,6 @@ install_resource()
       ;;
   esac
 }
-install_resource "PhotoPickerPlus/PhotoPickerPlus/Configuration/GCConfiguration-Sample.plist"
 install_resource "PhotoPickerPlus/PhotoPickerPlus/Resources/album_default.png"
 install_resource "PhotoPickerPlus/PhotoPickerPlus/Resources/camera.png"
 install_resource "PhotoPickerPlus/PhotoPickerPlus/Resources/chute.png"
@@ -67,6 +66,7 @@ install_resource "PhotoPickerPlus/PhotoPickerPlus/Resources/popover_arrow.png"
 install_resource "PhotoPickerPlus/PhotoPickerPlus/Resources/popover_border.png"
 install_resource "PhotoPickerPlus/PhotoPickerPlus/Resources/skydrive.png"
 install_resource "PhotoPickerPlus/PhotoPickerPlus/Resources/skydrive@2x.png"
+install_resource "PhotoPickerPlus/PhotoPickerPlus/Resources/Localizations"
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then

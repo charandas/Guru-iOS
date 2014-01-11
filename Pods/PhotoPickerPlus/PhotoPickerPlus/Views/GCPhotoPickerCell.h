@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PhotoPickerCell : UITableViewCell
+@interface GCPhotoPickerCell : UITableViewCell
 
 @property (strong, nonatomic) UILabel *titleLabel;
 

@@ -15,7 +15,7 @@ PODS:
   - DCKeyValueObjectMapping (1.4)
   - Lockbox (1.4.6)
   - MBProgressHUD (0.8)
-  - PhotoPickerPlus (2.0.3):
+  - PhotoPickerPlus (2.1.0):
     - Chute-SDK (~> 2.0.5)
   - SDWebImage (3.5.2):
     - SDWebImage/Core
@@ -23,7 +23,7 @@ PODS:
 
 DEPENDENCIES:
   - Chute-SDK (= 2.0.5)
-  - PhotoPickerPlus (= 2.0.3)
+  - PhotoPickerPlus (= 2.1.0)
   - SDWebImage (= 3.5.2)
 
 SPEC CHECKSUMS:
@@ -33,7 +33,7 @@ SPEC CHECKSUMS:
   DCKeyValueObjectMapping: 39adaf0a54ff6368a22d9221db60f0696d81ad7b
   Lockbox: 56ac5c11e51d46baa4408960a5a35b355a32840e
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  PhotoPickerPlus: 3a8c25ae525eaba92ae71e623c08014301f54d06
+  PhotoPickerPlus: 9cf01061bca046583310a758246e7d35f5f80894
   SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e
 
 COCOAPODS: 0.29.0

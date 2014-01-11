@@ -7,7 +7,7 @@
 //
 
 #import "GCAssetsCollectionViewController.h"
-#import "PhotoCell.h"
+#import "GCPhotoCell.h"
 #import "GCAccountAssets.h"
 #import "GCServicePicker.h"
 #import "NSDictionary+ALAsset.h"
@@ -71,7 +71,7 @@
     if(self.isItDevice)
         [self getLocalAssets];
     
-    [self.collectionView registerClass:[PhotoCell class] forCellWithReuseIdentifier:@"Cell"];
+    [self.collectionView registerClass:[GCPhotoCell class] forCellWithReuseIdentifier:@"Cell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,9 +87,9 @@
     return [self.assets count];
 }
 
--(PhotoCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+-(GCPhotoCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PhotoCell *cell = (PhotoCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    GCPhotoCell *cell = (GCPhotoCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
     if(self.isItDevice)
     {

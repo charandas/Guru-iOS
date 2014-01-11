@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Aleksandar Trpeski. All rights reserved.
 //
 
-#import "PhotoCell.h"
+#import "GCPhotoCell.h"
 
-@implementation PhotoCell
+@implementation GCPhotoCell
 
 @synthesize imageView;
 @synthesize overlayView;

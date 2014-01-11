@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Aleksandar Trpeski. All rights reserved.
 //
 
-#import "PhotoPickerCell.h"
+#import "GCPhotoPickerCell.h"
 
-@implementation PhotoPickerCell
+@implementation GCPhotoPickerCell
 @synthesize titleLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
