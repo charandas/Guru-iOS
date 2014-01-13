@@ -81,9 +81,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for your Guru" id="vkn-uC-Dyd">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="G2V-1h-ZQy" id="GAt-Sv-2od"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GuruPhotoCell" id="tkq-zc-y8r">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GuruPhotoCell" id="tkq-zc-y8r" customClass="ParseImagePickerTableViewCell">
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tkq-zc-y8r" id="n5N-TF-cbe">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -100,8 +108,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Guru" id="vkb-QI-Jmz"/>
+                    <connections>
+                        <outlet property="searchBar" destination="vkn-uC-Dyd" id="Hgg-fz-AYS"/>
+                        <outlet property="searchDisplayController" destination="2zv-OU-fiZ" id="6Fu-KM-tzx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Qo-dG-M6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="2zv-OU-fiZ">
+                    <connections>
+                        <outlet property="delegate" destination="G2V-1h-ZQy" id="sY0-bm-7Dp"/>
+                        <outlet property="searchBar" destination="vkn-uC-Dyd" id="sSb-vM-JvE"/>
+                        <outlet property="searchContentsController" destination="G2V-1h-ZQy" id="fPG-Kq-xle"/>
+                        <outlet property="searchResultsDataSource" destination="G2V-1h-ZQy" id="lLA-JN-svB"/>
+                        <outlet property="searchResultsDelegate" destination="G2V-1h-ZQy" id="O5X-1B-Q1h"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1998" y="289"/>
         </scene>
@@ -117,22 +138,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZ2-fk-F5J">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </scrollView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hsS-Hp-tZ9">
+                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NZ2-fk-F5J" firstAttribute="top" secondItem="gKL-h7-daM" secondAttribute="top" id="91D-Q5-bUV"/>
-                            <constraint firstItem="NZ2-fk-F5J" firstAttribute="leading" secondItem="gKL-h7-daM" secondAttribute="leading" id="K9a-rG-qro"/>
-                            <constraint firstAttribute="bottom" secondItem="NZ2-fk-F5J" secondAttribute="bottom" id="Ndd-dK-3Kz"/>
-                            <constraint firstAttribute="trailing" secondItem="NZ2-fk-F5J" secondAttribute="trailing" id="hev-w8-JKj"/>
+                            <constraint firstItem="hsS-Hp-tZ9" firstAttribute="top" secondItem="o3F-rE-0cD" secondAttribute="bottom" constant="1" id="8oV-7Y-plQ"/>
+                            <constraint firstAttribute="trailing" secondItem="hsS-Hp-tZ9" secondAttribute="trailing" id="GpF-1F-9IY"/>
+                            <constraint firstItem="hsS-Hp-tZ9" firstAttribute="leading" secondItem="gKL-h7-daM" secondAttribute="leading" id="WHc-cm-yJJ"/>
+                            <constraint firstAttribute="bottom" secondItem="hsS-Hp-tZ9" secondAttribute="bottom" id="dGR-Rm-ZGN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="WAE-kZ-Ncy"/>
+                    <navigationItem key="navigationItem" id="WAE-kZ-Ncy">
+                        <barButtonItem key="rightBarButtonItem" title="Finalize" id="mCB-cA-GZU">
+                            <connections>
+                                <action selector="launchEdit:" destination="ZXA-oA-xht" id="VNi-ke-Umm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="scrollView" destination="NZ2-fk-F5J" id="mxF-a9-YZv"/>
+                        <outlet property="imageView" destination="hsS-Hp-tZ9" id="EZx-Ta-r28"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfW-Wc-QuD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -166,26 +193,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2T8-ZA-I3s">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bnc-Gv-T0d">
+                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </scrollView>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abg-45-bH6">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="Y1K-xx-skc">
+                                        <barButtonItem key="leftBarButtonItem" title="Select" id="hl5-vJ-aj7">
+                                            <connections>
+                                                <action selector="pickPhotoSelected:" destination="fEt-1N-aJL" id="M4N-aR-poD"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Finalize" id="TE8-xt-U5X">
+                                            <connections>
+                                                <action selector="launchEdit:" destination="fEt-1N-aJL" id="0Y4-gv-hdf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2T8-ZA-I3s" firstAttribute="leading" secondItem="iii-Cp-diT" secondAttribute="leading" id="L88-nP-1yW"/>
-                            <constraint firstItem="2T8-ZA-I3s" firstAttribute="top" secondItem="iii-Cp-diT" secondAttribute="top" id="bOe-PF-JFY"/>
+                            <constraint firstItem="abg-45-bH6" firstAttribute="leading" secondItem="Bnc-Gv-T0d" secondAttribute="leading" id="MgV-I5-9FD"/>
+                            <constraint firstItem="abg-45-bH6" firstAttribute="trailing" secondItem="Bnc-Gv-T0d" secondAttribute="trailing" id="OIn-rj-dr3"/>
+                            <constraint firstItem="Bnc-Gv-T0d" firstAttribute="top" secondItem="Yee-0U-Av9" secondAttribute="bottom" id="YHv-Va-euf"/>
+                            <constraint firstItem="abg-45-bH6" firstAttribute="top" secondItem="Bnc-Gv-T0d" secondAttribute="bottom" id="Z2m-Eb-g53"/>
+                            <constraint firstItem="Bnc-Gv-T0d" firstAttribute="leading" secondItem="iii-Cp-diT" secondAttribute="leading" id="hUv-FF-4Co"/>
+                            <constraint firstAttribute="bottom" secondItem="Bnc-Gv-T0d" secondAttribute="bottom" constant="44" id="qJN-7T-RtR"/>
+                            <constraint firstAttribute="trailing" secondItem="Bnc-Gv-T0d" secondAttribute="trailing" id="vH0-Iu-eKg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="e3E-Y6-rdi">
-                        <barButtonItem key="rightBarButtonItem" title="Select" id="TE8-xt-U5X">
-                            <connections>
-                                <action selector="pickPhotoSelected:" destination="fEt-1N-aJL" id="UWV-ge-Hgt"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="e3E-Y6-rdi"/>
                     <connections>
-                        <outlet property="scrollView" destination="2T8-ZA-I3s" id="eNc-jO-wl1"/>
+                        <outlet property="imageView" destination="Bnc-Gv-T0d" id="B3K-gE-ahs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xo0-OS-bgp" userLabel="First Responder" sceneMemberID="firstResponder"/>

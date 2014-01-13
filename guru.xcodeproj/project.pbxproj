@@ -41,8 +41,13 @@
 		388329BB187995D4004836A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3883299A187995D4004836A2 /* UIKit.framework */; };
 		388329C3187995D4004836A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 388329C1187995D4004836A2 /* InfoPlist.strings */; };
 		388329C5187995D4004836A2 /* guruTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 388329C4187995D4004836A2 /* guruTests.m */; };
+		389038841881F4B70058D29B /* UIPhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 389038831881F4B70058D29B /* UIPhotoEditViewController.m */; };
+		389038881881F5850058D29B /* UIPhotoDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 389038871881F5850058D29B /* UIPhotoDescription.m */; };
 		38BC862C187C627B000B70B2 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BC862B187C627A000B70B2 /* FacebookSDK.framework */; };
 		38D42B531879B45A00326B89 /* GCConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38D42B521879B45A00326B89 /* GCConfiguration.plist */; };
+		38D81D6C188195F800336655 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D81D6A188195F800336655 /* placeholder.png */; };
+		38D81D6D188195F800336655 /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D81D6B188195F800336655 /* placeholder@2x.png */; };
+		38D81D7118819A8F00336655 /* ParseImagePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D81D7018819A8F00336655 /* ParseImagePickerTableViewCell.m */; };
 		38F8F78518808E5C0031B4DC /* PhotoPickerPlus.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38F8F78318808E5C0031B4DC /* PhotoPickerPlus.strings */; };
 		3D4EA4BF3C92428E8C2F072D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5B7AC5FEFE4897B379D4E5 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -100,8 +105,16 @@
 		388329C0187995D4004836A2 /* guruTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "guruTests-Info.plist"; sourceTree = "<group>"; };
 		388329C2187995D4004836A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		388329C4187995D4004836A2 /* guruTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = guruTests.m; sourceTree = "<group>"; };
+		389038821881F4B70058D29B /* UIPhotoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPhotoEditViewController.h; sourceTree = "<group>"; };
+		389038831881F4B70058D29B /* UIPhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPhotoEditViewController.m; sourceTree = "<group>"; };
+		389038861881F5850058D29B /* UIPhotoDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPhotoDescription.h; sourceTree = "<group>"; };
+		389038871881F5850058D29B /* UIPhotoDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPhotoDescription.m; sourceTree = "<group>"; };
 		38BC862B187C627A000B70B2 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		38D42B521879B45A00326B89 /* GCConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GCConfiguration.plist; sourceTree = "<group>"; };
+		38D81D6A188195F800336655 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		38D81D6B188195F800336655 /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
+		38D81D6F18819A8F00336655 /* ParseImagePickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseImagePickerTableViewCell.h; sourceTree = "<group>"; };
+		38D81D7018819A8F00336655 /* ParseImagePickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseImagePickerTableViewCell.m; sourceTree = "<group>"; };
 		38F8F78418808E5C0031B4DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Pods/PhotoPickerPlus/PhotoPickerPlus/Resources/Localizations/en.lproj/PhotoPickerPlus.strings; sourceTree = "<group>"; };
 		866BBDA7B3824B44A28810E4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		CB5B7AC5FEFE4897B379D4E5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +159,8 @@
 		38639A3B187ABD6400AE1A9E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				38D81D6A188195F800336655 /* placeholder.png */,
+				38D81D6B188195F800336655 /* placeholder@2x.png */,
 				38639A3C187ABD6400AE1A9E /* GuruIcon120x120.png */,
 				38639A3D187ABD6400AE1A9E /* GuruIcon152x152.png */,
 				38639A3E187ABD6400AE1A9E /* GuruIcon40x40.png */,
@@ -159,7 +174,6 @@
 		3883298A187995D4004836A2 = {
 			isa = PBXGroup;
 			children = (
-				38F8F78318808E5C0031B4DC /* PhotoPickerPlus.strings */,
 				3883299C187995D4004836A2 /* guru */,
 				388329BE187995D4004836A2 /* guruTests */,
 				38832995187995D4004836A2 /* Frameworks */,
@@ -203,6 +217,8 @@
 		3883299C187995D4004836A2 /* guru */ = {
 			isa = PBXGroup;
 			children = (
+				389038851881F5850058D29B /* Model */,
+				38D81D6E18819A4B00336655 /* Views */,
 				38639A3B187ABD6400AE1A9E /* Images */,
 				38D42B511879B45A00326B89 /* Configuration */,
 				388329A5187995D4004836A2 /* AppDelegate.h */,
@@ -217,6 +233,8 @@
 				3879A97B187F14A500C26371 /* ParseImagePickerController.m */,
 				3868EA91187B260E0084B794 /* HomeScreenTableViewController.h */,
 				3868EA92187B260E0084B794 /* HomeScreenTableViewController.m */,
+				389038821881F4B70058D29B /* UIPhotoEditViewController.h */,
+				389038831881F4B70058D29B /* UIPhotoEditViewController.m */,
 				388329B1187995D4004836A2 /* Images.xcassets */,
 				3883299D187995D4004836A2 /* Supporting Files */,
 			);
@@ -252,12 +270,31 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		389038851881F5850058D29B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				389038861881F5850058D29B /* UIPhotoDescription.h */,
+				389038871881F5850058D29B /* UIPhotoDescription.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		38D42B511879B45A00326B89 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				38F8F78318808E5C0031B4DC /* PhotoPickerPlus.strings */,
 				38D42B521879B45A00326B89 /* GCConfiguration.plist */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		38D81D6E18819A4B00336655 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				38D81D6F18819A8F00336655 /* ParseImagePickerTableViewCell.h */,
+				38D81D7018819A8F00336655 /* ParseImagePickerTableViewCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,10 +381,12 @@
 				38F8F78518808E5C0031B4DC /* PhotoPickerPlus.strings in Resources */,
 				38639A44187ABD6400AE1A9E /* GuruIcon40x40.png in Resources */,
 				38639A42187ABD6400AE1A9E /* GuruIcon120x120.png in Resources */,
+				38D81D6C188195F800336655 /* placeholder.png in Resources */,
 				388329AD187995D4004836A2 /* Main_iPad.storyboard in Resources */,
 				38639A47187ABD6400AE1A9E /* GuruIcon80x80.png in Resources */,
 				388329B2187995D4004836A2 /* Images.xcassets in Resources */,
 				38639A46187ABD6400AE1A9E /* GuruIcon76x76.png in Resources */,
+				38D81D6D188195F800336655 /* placeholder@2x.png in Resources */,
 				38D42B531879B45A00326B89 /* GCConfiguration.plist in Resources */,
 				388329AA187995D4004836A2 /* Main_iPhone.storyboard in Resources */,
 				388329A1187995D4004836A2 /* InfoPlist.strings in Resources */,
@@ -406,7 +445,10 @@
 			files = (
 				388329B0187995D4004836A2 /* ViewController.m in Sources */,
 				3879A97C187F14A500C26371 /* ParseImagePickerController.m in Sources */,
+				389038881881F5850058D29B /* UIPhotoDescription.m in Sources */,
 				388329A7187995D4004836A2 /* AppDelegate.m in Sources */,
+				389038841881F4B70058D29B /* UIPhotoEditViewController.m in Sources */,
+				38D81D7118819A8F00336655 /* ParseImagePickerTableViewCell.m in Sources */,
 				3868EA93187B260E0084B794 /* HomeScreenTableViewController.m in Sources */,
 				388329A3187995D4004836A2 /* main.m in Sources */,
 				3879A97F187F1D5D00C26371 /* GuruViewController.m in Sources */,
@@ -470,6 +512,7 @@
 				38F8F78418808E5C0031B4DC /* en */,
 			);
 			name = PhotoPickerPlus.strings;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

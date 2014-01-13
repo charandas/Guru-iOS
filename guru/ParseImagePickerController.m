@@ -7,20 +7,23 @@
 //
 
 #import "ParseImagePickerController.h"
+#import "ParseImagePickerTableViewCell.h"
 #import "GuruViewController.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <Parse/Parse.h>
 
-@interface ParseImagePickerController ()
+@interface ParseImagePickerController () <UISearchBarDelegate, UISearchDisplayDelegate>
 
-@property (strong, nonatomic) NSArray* photoMetadata;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSArray *photoMetadata;
+@property (strong, nonatomic) NSMutableArray *filteredPhotoMetadata;
 
 @end
 
 @implementation ParseImagePickerController
 
-@synthesize photoMetadata = _photoMetadata;
+@synthesize photoMetadata = _photoMetadata, searchBar, filteredPhotoMetadata = _filteredPhotoMetadata;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,14 +37,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Don't show the scope bar or cancel button until editing begins
+    [self.searchBar setShowsScopeBar:NO];
+    [self.searchBar sizeToFit];
+    
     self.clearsSelectionOnViewWillAppear = NO;
     
     // Get photo metadata from Parse
     PFQuery *query = [PFQuery queryWithClassName:@"Guru"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
+            NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"name"                                                                         ascending:YES];
+            NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
+            NSArray *sortedArray = [objects sortedArrayUsingDescriptors:sortDescriptors];
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.photoMetadata = objects;
+                self.photoMetadata = sortedArray;
             });
         }
         else {
@@ -59,24 +70,48 @@
 - (void) setPhotoMetadata:(NSArray *)photoMetadata
 {
     _photoMetadata = photoMetadata;
+    self.filteredPhotoMetadata = [NSMutableArray arrayWithArray:_photoMetadata];
+    
     [self.tableView reloadData];
+}
+
+- (NSMutableArray *)filteredPhotoMetadata {
+    if (!_filteredPhotoMetadata) {
+        _filteredPhotoMetadata = [[NSMutableArray alloc] initWithCapacity:self.photoMetadata.count];
+    }
+    
+    return _filteredPhotoMetadata;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (!self.photoMetadata)
+    NSArray *photoMetadata;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        photoMetadata = self.filteredPhotoMetadata;
+    } else {
+        photoMetadata = self.photoMetadata;
+    }
+    
+    if (!photoMetadata)
         return 0;
-    return self.photoMetadata.count;
+    return photoMetadata.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (!self.photoMetadata)
+    NSArray *photoMetadata;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        photoMetadata = self.filteredPhotoMetadata;
+    } else {
+        photoMetadata = self.photoMetadata;
+    }
+    
+    if (!photoMetadata)
         return 0;
     
-    id photo = self.photoMetadata[section];
+    id photo = photoMetadata[section];
     if ([photo isKindOfClass:[PFObject class]])
     {
         PFObject* photoObject = (PFObject*)photo;
@@ -89,41 +124,48 @@
     return 0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GuruPhotoCell"];
-    PFObject *photo = self.photoMetadata[indexPath.section];
-    NSString* urlString = photo[@"images"][indexPath.row][@"@2x"][@"url"];
-    NSURL* url = [NSURL URLWithString:urlString];
+    static NSString *cellIdentifier = @"GuruPhotoCell";
+    ParseImagePickerTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[ParseImagePickerTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    NSArray *photoMetadata;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        photoMetadata = self.filteredPhotoMetadata;
+    } else {
+        photoMetadata = self.photoMetadata;
+    }
+    
+    PFObject *photo = photoMetadata[indexPath.section];
+    NSString* urlString = photo[@"images"][indexPath.row][@"@1x"][@"url"];
+
     
     //cell.textLabel.text = photo[@"name"];
     //cell.detailTextLabel.text = photo[@"description"];
 
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    [manager downloadWithURL:url
-                options:0
-                progress:nil
-                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
-     {
-         if (image && finished)
-         {
-             dispatch_async(dispatch_get_main_queue(), ^(){
-                 cell.imageView.image = image;
-                 [cell setNeedsLayout];
-             });
-         }
-     }];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:urlString]
+                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 
     return cell;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    NSArray *photoMetadata;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        photoMetadata = self.filteredPhotoMetadata;
+    } else {
+        photoMetadata = self.photoMetadata;
+    }
+    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
     /* Create custom view to display section header... */
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 18)];
     [label setFont:[UIFont boldSystemFontOfSize:12]];
-    PFObject *photo = self.photoMetadata[section];
+    PFObject *photo = photoMetadata[section];
     NSString *string;
     if (photo[@"description"])
         string = [NSString stringWithFormat:@"%@ - %@", photo[@"name"], photo[@"description"]];
@@ -144,8 +186,19 @@
 {
     if ([segue.destinationViewController isKindOfClass:[GuruViewController class]])
     {
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        PFObject *photo = self.photoMetadata[indexPath.section];
+        NSIndexPath *indexPath;
+        PFObject *photo;
+        
+        if (self.searchDisplayController.active) {
+            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            photo = self.filteredPhotoMetadata[indexPath.section];
+        }
+        else {
+            indexPath = [self.tableView indexPathForCell:sender];
+            photo = self.photoMetadata[indexPath.section];
+        }
+        
+
         NSString* urlString = photo[@"images"][indexPath.row][@"normal"][@"url"];
 
         UITableViewCell *cell = sender;
@@ -154,5 +207,38 @@
         vc.imageURL = [NSURL URLWithString:urlString];
     }
 }
+
+#pragma mark Content Filtering
+-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    // Update the filtered array based on the search text and scope.
+    // Remove all objects from the filtered search array
+    [self.filteredPhotoMetadata removeAllObjects];
+    // Filter the array using NSPredicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@",searchText];
+    self.filteredPhotoMetadata = [NSMutableArray arrayWithArray:[self.photoMetadata filteredArrayUsingPredicate:predicate]];
+}
+
+#pragma mark - UISearchDisplayController Delegate Methods
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    // Tells the table data source to reload when text changes
+    [self filterContentForSearchText:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    // Tells the table data source to reload when scope bar selection changes
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+#pragma mark - UISearchBarController Delegate Methods
+/*-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    NSLog(@"begin editing");
+}*/
 
 @end

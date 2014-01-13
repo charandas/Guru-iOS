@@ -7,29 +7,38 @@
 //
 
 #import "ViewController.h"
+#import "UIPhotoEditViewController.h"
+
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "GetChute.h"
 
 @interface ViewController () <UIScrollViewDelegate, UISplitViewControllerDelegate>
 
-@property (nonatomic, strong) UIImage *image;
-@property (nonatomic, strong) UIImage *originalImage;
-@property (nonatomic, strong) UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
 - (UIImage *)savedImageWithTitle:(NSString *)title;
 - (void)setSavedImage:(UIImage *)image withTitle:(NSString *)title;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
 @implementation ViewController
 
-@synthesize popoverController, originalImage = _originalImage;
+@synthesize popoverController;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     if (self.title) [self moveToImageWithTitle:self.title];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (!self.image) {
+        PhotoPickerViewController *picker = [[PhotoPickerViewController alloc ] initWithTitle:[NSString stringWithFormat:@"Photo of %@", self.title]];
+        [picker setDelegate:self];
+        [picker setIsMultipleSelectionEnabled:NO];
+        [self presentViewController:picker animated:animated completion:nil];
+    }
 }
 
 - (void)moveToImageWithTitle:(NSString *)title
@@ -42,15 +51,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)setScrollView:(UIScrollView *)scrollView
-{
-    _scrollView = scrollView;
-    _scrollView.minimumZoomScale = 0.2;
-    _scrollView.maximumZoomScale = 2;
-    _scrollView.delegate = self;
-    self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
 }
 
 - (UIImage *)savedImageWithTitle:(NSString *)title {
@@ -69,26 +69,6 @@
     [defaults synchronize];
 }
 
-- (UIImageView *)imageView
-{
-    if (!_imageView)
-    {
-        _imageView = [[UIImageView alloc] init];
-        [self.scrollView addSubview:_imageView];
-    }
-    return _imageView;
-}
-
-- (UIImage *)originalImage
-{
-    return _originalImage;
-}
-
-- (void)setOriginalImage:(UIImage *)originalImage
-{
-    _originalImage = originalImage;
-}
-
 - (UIImage *)image
 {
     return self.imageView.image;
@@ -96,20 +76,16 @@
 
 - (void)setImage:(UIImage *)image
 {
-    //CGRect workingFrame = self.scrollView.frame;
-    //workingFrame.origin.x = 0;
-    //[self.imageView setContentMode:UIViewContentModeScaleAspectFit];
-    //self.imageView.frame = workingFrame;
-    //workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
-    //[self.scrollView setContentSize:CGSizeMake(workingFrame.origin.x, workingFrame.size.height)];
-    
-    self.scrollView.zoomScale = 1.0;
     self.imageView.image = image;
-    self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-    self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 #pragma mark - IBActions
+
+- (IBAction)launchEdit:(id)sender {
+    UIPhotoEditViewController *photoEditViewController = [[UIPhotoEditViewController alloc] initWithImage:self.image cropMode:UIPhotoEditViewControllerCropModeCircular];
+    [self.navigationController pushViewController:photoEditViewController animated:YES];
+}
 
 - (IBAction)pickPhotoSelected:(id)sender
 {
@@ -141,12 +117,9 @@
 #pragma mark - PhotoPickerViewControllerDelegate
 - (void)imagePickerController:(PhotoPickerViewController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    self.originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    self.image = [info objectForKey:UIImagePickerControllerOriginalImage];
     //[info objectForKey:UIImagePickerControllerReferenceURL]
-    self.image = self.originalImage;
     [self setSavedImage:self.image withTitle:self.title];
-    
-    //[imageView setContentMode:UIViewContentModeScaleAspectFit];
     
     if (self.popoverController) {
         [self.popoverController dismissPopoverAnimated:YES];
@@ -187,12 +160,6 @@
 - (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
     self.navigationItem.leftBarButtonItem = nil;
-}
-
-#pragma mark - UIScrollViewDelegate
-- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
-    return self.imageView;
 }
 
 @end
