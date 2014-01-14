@@ -114,7 +114,7 @@
                                                 <action selector="pickPhotoSelected:" destination="fEt-1N-aJL" id="M4N-aR-poD"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Finalize" id="TE8-xt-U5X">
+                                        <barButtonItem key="rightBarButtonItem" title="Crop" id="TE8-xt-U5X">
                                             <connections>
                                                 <action selector="launchEdit:" destination="fEt-1N-aJL" id="0Y4-gv-hdf"/>
                                             </connections>
@@ -167,9 +167,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="wZK-2w-zux" kind="push" id="hCq-gd-PbS"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -218,7 +215,7 @@
                                                 <action selector="selectPhoto:" destination="wZK-2w-zux" id="dx5-sa-QT2"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Finalize" id="3mx-In-IAI">
+                                        <barButtonItem key="rightBarButtonItem" title="Crop" id="3mx-In-IAI">
                                             <connections>
                                                 <action selector="launchEdit:" destination="wZK-2w-zux" id="KWR-gI-fzb"/>
                                             </connections>
@@ -274,7 +271,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="hCq-gd-PbS"/>
-    </inferredMetricsTieBreakers>
 </document>

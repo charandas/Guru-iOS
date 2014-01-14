@@ -20,6 +20,20 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
+/*
+ * Proxy class method to be called whenever the user picks a photo.
+ *
+ * @param editedImage The image result after edition.
+ * @param cropRect The applied rectangle on the cropping. If no edited, the default value is CGRectZero.
+ * @param originalImage The original image before edition.
+ * @param referenceURL The source url of the original image.
+ * @param authorName The name of the author of the photo.
+ * @param sourceName The name of the servicer provider where the photo was fetched.
+ */
++ (void)didFinishPickingImageURL:(NSURL *)imageURL
+                  withAuthorName:(NSString *)authorName
+                  withSourceName:(NSString *)sourceName;
+
 @end
 
 @implementation ParseImagePickerController
@@ -184,33 +198,21 @@
     return view;
 }
 
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([segue.destinationViewController isKindOfClass:[GuruViewController class]])
-    {
-        NSIndexPath *indexPath;
-        PFObject *photo;
-        
-        if (self.searchDisplayController.active) {
-            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
-            photo = self.filteredPhotoMetadata[indexPath.section];
-        }
-        else {
-            indexPath = [self.tableView indexPathForCell:sender];
-            photo = self.photoMetadata[indexPath.section];
-        }
-        
-
-        NSString* urlString = photo[@"images"][indexPath.row][@"normal"][@"url"];
-
-        UITableViewCell *cell = sender;
-        GuruViewController *vc = (GuruViewController *)segue.destinationViewController;
-        vc.title = cell.textLabel.text;
-        vc.imageURL = [NSURL URLWithString:urlString];
+    PFObject *photo;
+    
+    if (self.searchDisplayController.active) {
+        photo = self.filteredPhotoMetadata[indexPath.section];
     }
+    else {
+        photo = self.photoMetadata[indexPath.section];
+    }
+    
+    NSString* urlString = photo[@"images"][indexPath.row][@"normal"][@"url"];
+    
+    [ParseImagePickerController didFinishPickingImageURL:[NSURL URLWithString:urlString] withAuthorName:nil withSourceName:nil];
+
 }
 
 #pragma mark Content Filtering
@@ -240,10 +242,24 @@
     return YES;
 }
 
-#pragma mark - UISearchBarController Delegate Methods
-/*-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
-{
-    NSLog(@"begin editing");
-}*/
++ (void)didFinishPickingImageURL:(NSURL *)imageURL
+                   withAuthorName:(NSString *)authorName
+                   withSourceName:(NSString *)sourceName {
+    static NSString *UIPhotoPickerControllerAuthorCredits = @"UIPhotoPickerControllerAuthorCredits";
+    static NSString *UIPhotoPickerControllerSourceName = @"UIPhotoPickerControllerAuthorCredits";
+    static NSString *kParseImagePickerDidFinishPickingNotification = @"kParseImagePickerDidFinishPickingNotification";
+    
+    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                     @"public.image",UIImagePickerControllerMediaType,
+                                     nil];
+    
+    if (imageURL != nil) [userInfo setObject:imageURL.absoluteString forKey:UIImagePickerControllerReferenceURL];
+    if (authorName != nil) [userInfo setObject:authorName forKey:UIPhotoPickerControllerAuthorCredits];
+    if (sourceName != nil) [userInfo setObject:sourceName forKey:UIPhotoPickerControllerSourceName];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kParseImagePickerDidFinishPickingNotification object:nil userInfo:userInfo];
+}
+
+
 
 @end

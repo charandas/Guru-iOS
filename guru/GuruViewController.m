@@ -11,7 +11,7 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface GuruViewController () <UIScrollViewAccessibilityDelegate>
+@interface GuruViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 - (void)moveToImageWithTitle:(NSString *)title;
@@ -30,6 +30,9 @@
     [super awakeFromNib];
     static NSString *kUIPhotoPickerDidFinishPickingNotification = @"kUIPhotoPickerDidFinishPickingNotification";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPickPhoto:) name:kUIPhotoPickerDidFinishPickingNotification object:nil];
+    
+    static NSString *kParseImagePickerDidFinishPickingNotification = @"kParseImagePickerDidFinishPickingNotification";
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPickPhotoURL:) name:kParseImagePickerDidFinishPickingNotification object:nil];
 }
 
 - (void)viewDidLoad
@@ -38,7 +41,7 @@
     if (self.title) [self moveToImageWithTitle:self.title];
 }
 
-#pragma IBAction methods
+#pragma mark - IBAction methods
 
 - (IBAction)selectPhoto:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
@@ -82,6 +85,7 @@
 {
     self.imageView.image = image;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self setSavedImage:image withTitle:self.title];
 }
 
 - (void)setImageURL:(NSURL *)imageURL
@@ -102,6 +106,17 @@
     
 }
 
+#pragma mark - ParseImagePickerController methods
+
+/*
+ * Called by a notification whenever the user picks a photo.
+ */
+- (void)didPickPhotoURL:(NSNotification *)notification
+{
+    self.imageURL = [notification.userInfo objectForKey:UIImagePickerControllerReferenceURL];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - UIPhotoPickerController methods
 
 /*
@@ -113,8 +128,6 @@
     if (!image) image = [notification.userInfo objectForKey:UIImagePickerControllerOriginalImage];
     
     self.image = image;
-    [self setSavedImage:image withTitle:self.title];
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
