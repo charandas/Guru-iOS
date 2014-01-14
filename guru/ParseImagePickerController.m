@@ -26,6 +26,10 @@
 
 @synthesize photoMetadata = _photoMetadata, searchBar, filteredPhotoMetadata = _filteredPhotoMetadata;
 
+- (IBAction)dismissSelf:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];

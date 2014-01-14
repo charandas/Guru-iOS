@@ -144,6 +144,9 @@
 - (void)awakeFromNib
 {
     self.splitViewController.delegate = self;
+    
+    static NSString *kUIPhotoPickerDidFinishPickingNotification = @"kUIPhotoPickerDidFinishPickingNotification";
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPickPhoto:) name:kUIPhotoPickerDidFinishPickingNotification object:nil];
 }
 
 - (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
@@ -160,6 +163,30 @@
 - (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
     self.navigationItem.leftBarButtonItem = nil;
+}
+
+#pragma mark - UIPhotoPickerController methods
+
+/*
+ * Called by a notification whenever the user picks a photo.
+ */
+- (void)didPickPhoto:(NSNotification *)notification
+{
+    UIImage *image = [notification.userInfo objectForKey:UIImagePickerControllerEditedImage];
+    if (!image) image = [notification.userInfo objectForKey:UIImagePickerControllerOriginalImage];
+    
+    self.image = image;
+    [self setSavedImage:image withTitle:self.title];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+/*
+ * Called whenever the user cancels the picker.
+ */
+- (void)cancelPicker:(id)sender
+{
+    
 }
 
 @end

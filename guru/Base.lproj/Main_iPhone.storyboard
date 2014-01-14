@@ -177,7 +177,13 @@
                             <outlet property="delegate" destination="dv8-BX-65G" id="C3L-uy-f73"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Guru" id="oGQ-sf-chw"/>
+                    <navigationItem key="navigationItem" title="Guru" id="oGQ-sf-chw">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Myg-7G-zXE">
+                            <connections>
+                                <action selector="dismissSelf:" destination="dv8-BX-65G" id="yv6-UZ-LHd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="BO4-NP-xdj" id="JWc-vW-EF3"/>
                     </connections>
@@ -198,7 +204,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDX-95-NHK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fDX-95-NHK">
                                 <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -212,7 +218,11 @@
                                                 <action selector="selectPhoto:" destination="wZK-2w-zux" id="dx5-sa-QT2"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Finalize" id="3mx-In-IAI"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Finalize" id="3mx-In-IAI">
+                                            <connections>
+                                                <action selector="launchEdit:" destination="wZK-2w-zux" id="KWR-gI-fzb"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
