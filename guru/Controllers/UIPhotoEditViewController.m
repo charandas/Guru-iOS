@@ -15,6 +15,10 @@
 
 #define kInnerEdgeInset 15.0
 
+NSString * const kUIPhotoPickerDidFinishPickingNotification = @"kUIPhotoPickerDidFinishPickingNotification";
+NSString * const UIPhotoPickerControllerAuthorCredits = @"UIPhotoPickerControllerAuthorCredits";
+NSString * const UIPhotoPickerControllerSourceName = @"UIPhotoPickerControllerAuthorCredits";
+
 static CGFloat _lastZoomScale;
 
 typedef NS_ENUM(NSInteger, UIPhotoAspect) {

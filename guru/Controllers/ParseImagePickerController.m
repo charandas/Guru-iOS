@@ -8,10 +8,13 @@
 
 #import "ParseImagePickerController.h"
 #import "ParseImagePickerTableViewCell.h"
-#import "GuruViewController.h"
+#import "UIPhotoEditViewController.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <Parse/Parse.h>
+
+NSString * const kParseImagePickerDidFinishPickingNotification = @"kParseImagePickerDidFinishPickingNotification";
+NSString * const kParseImagePickerDidCancelPickingNotification = @"kParseImagePickerDidCancelPickingNotification";
 
 @interface ParseImagePickerController () <UISearchBarDelegate, UISearchDisplayDelegate>
 
@@ -31,6 +34,7 @@
 + (void)didFinishPickingImageURL:(NSURL *)imageURL
                   withAuthorName:(NSString *)authorName
                   withSourceName:(NSString *)sourceName;
++ (void)didCancelPickingImageURL;
 
 @end
 
@@ -39,7 +43,7 @@
 @synthesize photoMetadata = _photoMetadata, filteredPhotoMetadata = _filteredPhotoMetadata;
 
 - (IBAction)dismissSelf:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [ParseImagePickerController didCancelPickingImageURL];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -54,6 +58,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) { /// iOS 7 or above
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
     // Don't show the scope bar or cancel button until editing begins
     [self.searchDisplayController.searchBar setShowsScopeBar:NO];
@@ -179,7 +187,7 @@
     }
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
-    /* Create custom view to display section header... */
+    // Create custom view to display section header...
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 18)];
     [label setFont:[UIFont boldSystemFontOfSize:12]];
     PFObject *photo = photoMetadata[section];
@@ -189,7 +197,7 @@
     else
         string = [NSString stringWithFormat:@"%@", photo[@"name"]];
     
-    /* Section header is in 0th index... */
+    // Section header is in 0th index...
     [label setText:string];
     [view addSubview:label];
     [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:1.0]]; //your background color...
@@ -240,13 +248,13 @@
     return YES;
 }
 
+-(void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView {
+        self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor whiteColor];
+}
+
 + (void)didFinishPickingImageURL:(NSURL *)imageURL
                    withAuthorName:(NSString *)authorName
                    withSourceName:(NSString *)sourceName {
-    static NSString *UIPhotoPickerControllerAuthorCredits = @"UIPhotoPickerControllerAuthorCredits";
-    static NSString *UIPhotoPickerControllerSourceName = @"UIPhotoPickerControllerAuthorCredits";
-    static NSString *kParseImagePickerDidFinishPickingNotification = @"kParseImagePickerDidFinishPickingNotification";
-    
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                      @"public.image",UIImagePickerControllerMediaType,
                                      nil];
@@ -258,6 +266,9 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kParseImagePickerDidFinishPickingNotification object:nil userInfo:userInfo];
 }
 
++ (void)didCancelPickingImageURL {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kParseImagePickerDidCancelPickingNotification object:nil userInfo:nil];
+}
 
 
 @end

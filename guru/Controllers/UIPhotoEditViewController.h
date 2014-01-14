@@ -10,6 +10,10 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString * const kUIPhotoPickerDidFinishPickingNotification;
+extern NSString * const UIPhotoPickerControllerAuthorCredits;
+extern NSString * const UIPhotoPickerControllerSourceName;
+
 @class UIPhotoDescription;
 
 typedef NS_ENUM(NSInteger, UIPhotoEditViewControllerCropMode) {

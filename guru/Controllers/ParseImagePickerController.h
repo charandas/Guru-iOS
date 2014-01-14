@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString * const kParseImagePickerDidFinishPickingNotification;
+extern NSString * const kParseImagePickerDidCancelPickingNotification;
+
 @interface ParseImagePickerController : UITableViewController
 
 @end

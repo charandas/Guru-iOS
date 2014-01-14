@@ -9,10 +9,16 @@
 #import "HomeScreenTableViewController.h"
 #import "BardoPhotoPickerViewController.h"
 
+#include <objc/runtime.h>
+
 #define CELL_YOURSELF 0
 #define CELL_GURU 1
 
 @interface HomeScreenTableViewController () <UITableViewDelegate>
+
+- (void)rowSelectActionForIndexPath:(NSIndexPath*)indexPath
+     WithViewController:(BardoPhotoPickerViewController**)viewController
+           ForSplitView:(BOOL)splitView;
 
 @end
 
@@ -23,16 +29,43 @@
     self.navigationItem.title = @"Customize";
 }
 
-+ (NSArray*)viewControllerTitles
++(NSDictionary*)viewControllerTitles {
+    static NSDictionary *inst = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        inst = @{
+                 @"yourselfCell": @{
+                         @"photopicker": [NSNumber numberWithBool:YES],
+                         @"title": @"Yourself"
+                         },
+                 @"guruCell": @{
+                         @"photopicker": [NSNumber numberWithBool:NO],
+                         @"title": @"Guru"
+                         }
+                 };
+    });
+    return inst;
+}
+
+- (void)rowSelectActionForIndexPath:(NSIndexPath*)indexPath
+     WithViewController:(BardoPhotoPickerViewController**)viewController
+           ForSplitView:(BOOL)splitView
 {
-    static NSArray *titles = nil;
+    BardoPhotoPickerViewController *vc = *viewController;
     
-    if (titles == nil)
-    {
-        titles = @[@"Yourself", @"Guru"];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSString *cellKey = cell.reuseIdentifier;
+    NSDictionary *cellDetails = [HomeScreenTableViewController viewControllerTitles][cellKey];
+    if (cellDetails) {
+        NSString *cellTitle = cellDetails[@"title"];
+        if (!splitView || ![vc.title isEqualToString:cellTitle]) {
+            vc.photoPickerPlusMode = [cellDetails[@"photopicker"] boolValue];
+            vc.title = cellTitle;
+        }
+        if (splitView) {
+            if (vc.title) [vc moveToImageWithTitle:vc.title];
+        }
     }
-    
-    return titles;
 }
 
 #pragma mark - UITableViewDataSource
@@ -59,15 +92,13 @@
         if ([nvc.topViewController isKindOfClass:[BardoPhotoPickerViewController class]])
         {
             BardoPhotoPickerViewController* vc = (BardoPhotoPickerViewController*)nvc.topViewController;
-            NSString *title = [HomeScreenTableViewController viewControllerTitles][indexPath.row];
-            if (![vc.title isEqualToString:title])[vc moveToImageWithTitle:title];
+            [self rowSelectActionForIndexPath:indexPath WithViewController:&vc ForSplitView:YES];
+            
         }
     }
 }
 
 #pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     BardoPhotoPickerViewController* vc;
@@ -75,8 +106,7 @@
     {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         vc = (BardoPhotoPickerViewController *)segue.destinationViewController;
-        NSString *title = [HomeScreenTableViewController viewControllerTitles][indexPath.row];
-        vc.title = title;
+        [self rowSelectActionForIndexPath:indexPath WithViewController:&vc ForSplitView:NO];
     }
 }
 

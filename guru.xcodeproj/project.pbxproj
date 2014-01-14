@@ -11,8 +11,6 @@
 		380A1935188592640030972D /* ParseImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A192E188592640030972D /* ParseImagePickerController.m */; };
 		380A1936188592640030972D /* UIPhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A1930188592640030972D /* UIPhotoEditViewController.m */; };
 		380A193D188592C30030972D /* BardoPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A193C188592C30030972D /* BardoPhotoPickerViewController.m */; };
-		380A1940188595E30030972D /* YourselfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A193F188595E30030972D /* YourselfViewController.m */; };
-		380A194618859D780030972D /* GuruDevaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A194518859D780030972D /* GuruDevaViewController.m */; };
 		38289D6F187C337E003AE748 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38289D6E187C337E003AE748 /* Parse.framework */; };
 		38289D73187C488B003AE748 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38289D72187C488B003AE748 /* AudioToolbox.framework */; };
 		38289D75187C4898003AE748 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38289D74187C4898003AE748 /* CFNetwork.framework */; };
@@ -72,10 +70,6 @@
 		380A1930188592640030972D /* UIPhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPhotoEditViewController.m; sourceTree = "<group>"; };
 		380A193B188592C30030972D /* BardoPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BardoPhotoPickerViewController.h; sourceTree = "<group>"; };
 		380A193C188592C30030972D /* BardoPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BardoPhotoPickerViewController.m; sourceTree = "<group>"; };
-		380A193E188595E30030972D /* YourselfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YourselfViewController.h; sourceTree = "<group>"; };
-		380A193F188595E30030972D /* YourselfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YourselfViewController.m; sourceTree = "<group>"; };
-		380A194418859D780030972D /* GuruDevaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuruDevaViewController.h; sourceTree = "<group>"; };
-		380A194518859D780030972D /* GuruDevaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuruDevaViewController.m; sourceTree = "<group>"; };
 		38289D6E187C337E003AE748 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../../../ios/facebook_parse/guru/Parse.framework; sourceTree = "<group>"; };
 		38289D72187C488B003AE748 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		38289D74187C4898003AE748 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -162,8 +156,6 @@
 		380A19281885922A0030972D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				380A194418859D780030972D /* GuruDevaViewController.h */,
-				380A194518859D780030972D /* GuruDevaViewController.m */,
 				380A192B188592640030972D /* HomeScreenTableViewController.h */,
 				380A192C188592640030972D /* HomeScreenTableViewController.m */,
 				380A192D188592640030972D /* ParseImagePickerController.h */,
@@ -172,8 +164,6 @@
 				380A1930188592640030972D /* UIPhotoEditViewController.m */,
 				380A193B188592C30030972D /* BardoPhotoPickerViewController.h */,
 				380A193C188592C30030972D /* BardoPhotoPickerViewController.m */,
-				380A193E188595E30030972D /* YourselfViewController.h */,
-				380A193F188595E30030972D /* YourselfViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -458,13 +448,11 @@
 			files = (
 				380A193D188592C30030972D /* BardoPhotoPickerViewController.m in Sources */,
 				380A1935188592640030972D /* ParseImagePickerController.m in Sources */,
-				380A194618859D780030972D /* GuruDevaViewController.m in Sources */,
 				380A1934188592640030972D /* HomeScreenTableViewController.m in Sources */,
 				389038881881F5850058D29B /* UIPhotoDescription.m in Sources */,
 				380A1936188592640030972D /* UIPhotoEditViewController.m in Sources */,
 				388329A7187995D4004836A2 /* AppDelegate.m in Sources */,
 				38D81D7118819A8F00336655 /* ParseImagePickerTableViewCell.m in Sources */,
-				380A1940188595E30030972D /* YourselfViewController.m in Sources */,
 				388329A3187995D4004836A2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

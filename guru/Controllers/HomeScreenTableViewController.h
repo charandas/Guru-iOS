@@ -10,6 +10,6 @@
 
 @interface HomeScreenTableViewController : UITableViewController
 
-+ (NSArray*)viewControllerTitles;
++(NSDictionary*)viewControllerTitles;
 
 @end

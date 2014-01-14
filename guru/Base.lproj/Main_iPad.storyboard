@@ -22,7 +22,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="czc-wh-Cx3">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Yourself" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="czc-wh-Cx3">
                                                     <rect key="frame" x="73" y="0.0" width="232" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -73,7 +73,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7dS-PN-Z11" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1953" y="-1025"/>
+            <point key="canvasLocation" x="1419" y="-1025"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="U4L-mM-cwq">
@@ -81,8 +81,8 @@
                 <splitViewController id="q4s-0F-fFn" sceneMemberID="viewController">
                     <toolbarItems/>
                     <connections>
-                        <segue destination="8es-l0-gaI" kind="relationship" relationship="detailViewController" id="TmG-xv-400"/>
-                        <segue destination="X79-lU-xow" kind="relationship" relationship="masterViewController" id="394-6O-RKV"/>
+                        <segue destination="X79-lU-xow" kind="relationship" relationship="masterViewController" id="vht-eP-IAG"/>
+                        <segue destination="8es-l0-gaI" kind="relationship" relationship="detailViewController" id="OSu-oC-9cQ"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hHA-Uc-uxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -107,10 +107,10 @@
             </objects>
             <point key="canvasLocation" x="875" y="101"/>
         </scene>
-        <!--View Controller-->
+        <!--Bardo Photo Picker View Controller-->
         <scene sceneID="ydX-ag-Ih3">
             <objects>
-                <viewController id="eon-iz-Eiu" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="eon-iz-Eiu" customClass="BardoPhotoPickerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7SZ-SQ-0Rd"/>
                         <viewControllerLayoutGuide type="bottom" id="wVd-bO-Wf3"/>
@@ -119,26 +119,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RRV-Wl-cmo">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </scrollView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJi-C5-N3O">
+                                <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="hwZ-v0-Vtv">
+                                        <barButtonItem key="leftBarButtonItem" title="Select" id="nho-uC-tVD">
+                                            <connections>
+                                                <action selector="initiatePopover:" destination="eon-iz-Eiu" id="PW9-Wg-gaD"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Crop" id="aOK-dh-mBX">
+                                            <connections>
+                                                <action selector="launchEdit:" destination="eon-iz-Eiu" id="lnu-oR-8oX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hLy-Ml-wJt">
+                                <rect key="frame" x="0.0" y="65" width="768" height="915"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RRV-Wl-cmo" firstAttribute="leading" secondItem="Hwx-PR-8za" secondAttribute="leading" id="0ve-66-xVi"/>
-                            <constraint firstItem="RRV-Wl-cmo" firstAttribute="top" secondItem="Hwx-PR-8za" secondAttribute="top" id="DlG-06-ImP"/>
+                            <constraint firstItem="hLy-Ml-wJt" firstAttribute="leading" secondItem="Hwx-PR-8za" secondAttribute="leading" id="1rI-vC-EWf"/>
+                            <constraint firstAttribute="bottom" secondItem="KJi-C5-N3O" secondAttribute="bottom" id="Kor-Io-bmO"/>
+                            <constraint firstItem="hLy-Ml-wJt" firstAttribute="leading" secondItem="KJi-C5-N3O" secondAttribute="leading" id="Zde-Tq-NHY"/>
+                            <constraint firstItem="hLy-Ml-wJt" firstAttribute="bottom" secondItem="KJi-C5-N3O" secondAttribute="top" id="blz-yK-xgj"/>
+                            <constraint firstItem="hLy-Ml-wJt" firstAttribute="top" secondItem="7SZ-SQ-0Rd" secondAttribute="bottom" constant="1" id="cdB-TF-Eyg"/>
+                            <constraint firstAttribute="trailing" secondItem="KJi-C5-N3O" secondAttribute="trailing" id="n6j-9Q-ZPs"/>
+                            <constraint firstItem="hLy-Ml-wJt" firstAttribute="trailing" secondItem="KJi-C5-N3O" secondAttribute="trailing" id="tj9-nN-5Pv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="D76-L6-bMx">
-                        <barButtonItem key="rightBarButtonItem" title="Select" id="Mxb-Ke-hY2">
-                            <connections>
-                                <action selector="pickPhotoSelected:" destination="eon-iz-Eiu" id="qXA-mu-AS9"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="D76-L6-bMx"/>
                     <connections>
-                        <outlet property="scrollView" destination="RRV-Wl-cmo" id="uVr-nl-9Ws"/>
+                        <outlet property="imageView" destination="hLy-Ml-wJt" id="xo8-mt-mYe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJb-yf-xea" userLabel="First Responder" sceneMemberID="firstResponder"/>

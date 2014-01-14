@@ -88,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="802" y="-50"/>
         </scene>
-        <!--Yourself View Controller-->
+        <!--Bardo Photo Picker View Controller-->
         <scene sceneID="pQE-Sj-5Sq">
             <objects>
-                <viewController id="fEt-1N-aJL" customClass="YourselfViewController" sceneMemberID="viewController">
+                <viewController id="fEt-1N-aJL" customClass="BardoPhotoPickerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yee-0U-Av9"/>
                         <viewControllerLayoutGuide type="bottom" id="aSM-cc-nD3"/>
@@ -198,10 +198,10 @@
             </objects>
             <point key="canvasLocation" x="1215" y="679"/>
         </scene>
-        <!--Guru Deva View Controller-->
+        <!--Bardo Photo Picker View Controller-->
         <scene sceneID="Bml-oG-kLe">
             <objects>
-                <viewController id="wZK-2w-zux" customClass="GuruDevaViewController" sceneMemberID="viewController">
+                <viewController id="wZK-2w-zux" customClass="BardoPhotoPickerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="622-we-RdR"/>
                         <viewControllerLayoutGuide type="bottom" id="saE-iH-9yi"/>
