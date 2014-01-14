@@ -88,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="802" y="-50"/>
         </scene>
-        <!--View Controller-->
+        <!--Yourself View Controller-->
         <scene sceneID="pQE-Sj-5Sq">
             <objects>
-                <viewController id="fEt-1N-aJL" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="fEt-1N-aJL" customClass="YourselfViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yee-0U-Av9"/>
                         <viewControllerLayoutGuide type="bottom" id="aSM-cc-nD3"/>
@@ -111,7 +111,7 @@
                                     <navigationItem id="Y1K-xx-skc">
                                         <barButtonItem key="leftBarButtonItem" title="Select" id="hl5-vJ-aj7">
                                             <connections>
-                                                <action selector="pickPhotoSelected:" destination="fEt-1N-aJL" id="M4N-aR-poD"/>
+                                                <action selector="initiatePopover:" destination="fEt-1N-aJL" id="TrD-mM-jXJ"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Crop" id="TE8-xt-U5X">
@@ -196,12 +196,12 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2063" y="671"/>
+            <point key="canvasLocation" x="1215" y="679"/>
         </scene>
-        <!--Guru View Controller-->
+        <!--Guru Deva View Controller-->
         <scene sceneID="Bml-oG-kLe">
             <objects>
-                <viewController id="wZK-2w-zux" customClass="GuruViewController" sceneMemberID="viewController">
+                <viewController id="wZK-2w-zux" customClass="GuruDevaViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="622-we-RdR"/>
                         <viewControllerLayoutGuide type="bottom" id="saE-iH-9yi"/>
@@ -221,7 +221,7 @@
                                     <navigationItem id="ia3-Dk-KfR">
                                         <barButtonItem key="leftBarButtonItem" title="Select" id="5uE-XR-0tu">
                                             <connections>
-                                                <action selector="selectPhoto:" destination="wZK-2w-zux" id="dx5-sa-QT2"/>
+                                                <action selector="initiatePopover:" destination="wZK-2w-zux" id="ZFp-Ze-iy9"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Crop" id="3mx-In-IAI">
@@ -251,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q59-dR-uFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2507" y="282"/>
+            <point key="canvasLocation" x="1973" y="342"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ehE-bf-Y1L">
@@ -269,7 +269,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahz-ED-6bv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1537" y="671"/>
+            <point key="canvasLocation" x="689" y="679"/>
         </scene>
     </scenes>
     <resources>

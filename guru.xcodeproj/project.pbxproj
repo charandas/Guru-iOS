@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380A1934188592640030972D /* HomeScreenTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A192C188592640030972D /* HomeScreenTableViewController.m */; };
+		380A1935188592640030972D /* ParseImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A192E188592640030972D /* ParseImagePickerController.m */; };
+		380A1936188592640030972D /* UIPhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A1930188592640030972D /* UIPhotoEditViewController.m */; };
+		380A193D188592C30030972D /* BardoPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A193C188592C30030972D /* BardoPhotoPickerViewController.m */; };
+		380A1940188595E30030972D /* YourselfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A193F188595E30030972D /* YourselfViewController.m */; };
+		380A194618859D780030972D /* GuruDevaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A194518859D780030972D /* GuruDevaViewController.m */; };
 		38289D6F187C337E003AE748 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38289D6E187C337E003AE748 /* Parse.framework */; };
 		38289D73187C488B003AE748 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38289D72187C488B003AE748 /* AudioToolbox.framework */; };
 		38289D75187C4898003AE748 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38289D74187C4898003AE748 /* CFNetwork.framework */; };
@@ -23,9 +29,6 @@
 		38639A45187ABD6400AE1A9E /* GuruIcon60x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 38639A3F187ABD6400AE1A9E /* GuruIcon60x60.png */; };
 		38639A46187ABD6400AE1A9E /* GuruIcon76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 38639A40187ABD6400AE1A9E /* GuruIcon76x76.png */; };
 		38639A47187ABD6400AE1A9E /* GuruIcon80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 38639A41187ABD6400AE1A9E /* GuruIcon80x80.png */; };
-		3868EA93187B260E0084B794 /* HomeScreenTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3868EA92187B260E0084B794 /* HomeScreenTableViewController.m */; };
-		3879A97C187F14A500C26371 /* ParseImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3879A97B187F14A500C26371 /* ParseImagePickerController.m */; };
-		3879A97F187F1D5D00C26371 /* GuruViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3879A97E187F1D5D00C26371 /* GuruViewController.m */; };
 		38832997187995D4004836A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38832996187995D4004836A2 /* Foundation.framework */; };
 		38832999187995D4004836A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38832998187995D4004836A2 /* CoreGraphics.framework */; };
 		3883299B187995D4004836A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3883299A187995D4004836A2 /* UIKit.framework */; };
@@ -34,14 +37,12 @@
 		388329A7187995D4004836A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 388329A6187995D4004836A2 /* AppDelegate.m */; };
 		388329AA187995D4004836A2 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 388329A8187995D4004836A2 /* Main_iPhone.storyboard */; };
 		388329AD187995D4004836A2 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 388329AB187995D4004836A2 /* Main_iPad.storyboard */; };
-		388329B0187995D4004836A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 388329AF187995D4004836A2 /* ViewController.m */; };
 		388329B2187995D4004836A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 388329B1187995D4004836A2 /* Images.xcassets */; };
 		388329B9187995D4004836A2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388329B8187995D4004836A2 /* XCTest.framework */; };
 		388329BA187995D4004836A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38832996187995D4004836A2 /* Foundation.framework */; };
 		388329BB187995D4004836A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3883299A187995D4004836A2 /* UIKit.framework */; };
 		388329C3187995D4004836A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 388329C1187995D4004836A2 /* InfoPlist.strings */; };
 		388329C5187995D4004836A2 /* guruTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 388329C4187995D4004836A2 /* guruTests.m */; };
-		389038841881F4B70058D29B /* UIPhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 389038831881F4B70058D29B /* UIPhotoEditViewController.m */; };
 		389038881881F5850058D29B /* UIPhotoDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 389038871881F5850058D29B /* UIPhotoDescription.m */; };
 		38BC862C187C627B000B70B2 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BC862B187C627A000B70B2 /* FacebookSDK.framework */; };
 		38D42B531879B45A00326B89 /* GCConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38D42B521879B45A00326B89 /* GCConfiguration.plist */; };
@@ -63,6 +64,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		380A192B188592640030972D /* HomeScreenTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeScreenTableViewController.h; sourceTree = "<group>"; };
+		380A192C188592640030972D /* HomeScreenTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScreenTableViewController.m; sourceTree = "<group>"; };
+		380A192D188592640030972D /* ParseImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseImagePickerController.h; sourceTree = "<group>"; };
+		380A192E188592640030972D /* ParseImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseImagePickerController.m; sourceTree = "<group>"; };
+		380A192F188592640030972D /* UIPhotoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPhotoEditViewController.h; sourceTree = "<group>"; };
+		380A1930188592640030972D /* UIPhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPhotoEditViewController.m; sourceTree = "<group>"; };
+		380A193B188592C30030972D /* BardoPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BardoPhotoPickerViewController.h; sourceTree = "<group>"; };
+		380A193C188592C30030972D /* BardoPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BardoPhotoPickerViewController.m; sourceTree = "<group>"; };
+		380A193E188595E30030972D /* YourselfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YourselfViewController.h; sourceTree = "<group>"; };
+		380A193F188595E30030972D /* YourselfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YourselfViewController.m; sourceTree = "<group>"; };
+		380A194418859D780030972D /* GuruDevaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuruDevaViewController.h; sourceTree = "<group>"; };
+		380A194518859D780030972D /* GuruDevaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuruDevaViewController.m; sourceTree = "<group>"; };
 		38289D6E187C337E003AE748 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../../../ios/facebook_parse/guru/Parse.framework; sourceTree = "<group>"; };
 		38289D72187C488B003AE748 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		38289D74187C4898003AE748 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -79,12 +92,6 @@
 		38639A3F187ABD6400AE1A9E /* GuruIcon60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GuruIcon60x60.png; sourceTree = "<group>"; };
 		38639A40187ABD6400AE1A9E /* GuruIcon76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GuruIcon76x76.png; sourceTree = "<group>"; };
 		38639A41187ABD6400AE1A9E /* GuruIcon80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GuruIcon80x80.png; sourceTree = "<group>"; };
-		3868EA91187B260E0084B794 /* HomeScreenTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeScreenTableViewController.h; sourceTree = "<group>"; };
-		3868EA92187B260E0084B794 /* HomeScreenTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScreenTableViewController.m; sourceTree = "<group>"; };
-		3879A97A187F14A500C26371 /* ParseImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseImagePickerController.h; sourceTree = "<group>"; };
-		3879A97B187F14A500C26371 /* ParseImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseImagePickerController.m; sourceTree = "<group>"; };
-		3879A97D187F1D5D00C26371 /* GuruViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuruViewController.h; sourceTree = "<group>"; };
-		3879A97E187F1D5D00C26371 /* GuruViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuruViewController.m; sourceTree = "<group>"; };
 		38832993187995D4004836A2 /* guru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = guru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38832996187995D4004836A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		38832998187995D4004836A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -97,16 +104,12 @@
 		388329A6187995D4004836A2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		388329A9187995D4004836A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		388329AC187995D4004836A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		388329AE187995D4004836A2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		388329AF187995D4004836A2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		388329B1187995D4004836A2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		388329B7187995D4004836A2 /* guruTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = guruTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		388329B8187995D4004836A2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		388329C0187995D4004836A2 /* guruTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "guruTests-Info.plist"; sourceTree = "<group>"; };
 		388329C2187995D4004836A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		388329C4187995D4004836A2 /* guruTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = guruTests.m; sourceTree = "<group>"; };
-		389038821881F4B70058D29B /* UIPhotoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPhotoEditViewController.h; sourceTree = "<group>"; };
-		389038831881F4B70058D29B /* UIPhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPhotoEditViewController.m; sourceTree = "<group>"; };
 		389038861881F5850058D29B /* UIPhotoDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPhotoDescription.h; sourceTree = "<group>"; };
 		389038871881F5850058D29B /* UIPhotoDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPhotoDescription.m; sourceTree = "<group>"; };
 		38BC862B187C627A000B70B2 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -156,6 +159,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		380A19281885922A0030972D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				380A194418859D780030972D /* GuruDevaViewController.h */,
+				380A194518859D780030972D /* GuruDevaViewController.m */,
+				380A192B188592640030972D /* HomeScreenTableViewController.h */,
+				380A192C188592640030972D /* HomeScreenTableViewController.m */,
+				380A192D188592640030972D /* ParseImagePickerController.h */,
+				380A192E188592640030972D /* ParseImagePickerController.m */,
+				380A192F188592640030972D /* UIPhotoEditViewController.h */,
+				380A1930188592640030972D /* UIPhotoEditViewController.m */,
+				380A193B188592C30030972D /* BardoPhotoPickerViewController.h */,
+				380A193C188592C30030972D /* BardoPhotoPickerViewController.m */,
+				380A193E188595E30030972D /* YourselfViewController.h */,
+				380A193F188595E30030972D /* YourselfViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		38639A3B187ABD6400AE1A9E /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +239,7 @@
 		3883299C187995D4004836A2 /* guru */ = {
 			isa = PBXGroup;
 			children = (
+				380A19281885922A0030972D /* Controllers */,
 				389038851881F5850058D29B /* Model */,
 				38D81D6E18819A4B00336655 /* Views */,
 				38639A3B187ABD6400AE1A9E /* Images */,
@@ -225,16 +248,6 @@
 				388329A6187995D4004836A2 /* AppDelegate.m */,
 				388329A8187995D4004836A2 /* Main_iPhone.storyboard */,
 				388329AB187995D4004836A2 /* Main_iPad.storyboard */,
-				388329AE187995D4004836A2 /* ViewController.h */,
-				388329AF187995D4004836A2 /* ViewController.m */,
-				3879A97D187F1D5D00C26371 /* GuruViewController.h */,
-				3879A97E187F1D5D00C26371 /* GuruViewController.m */,
-				3879A97A187F14A500C26371 /* ParseImagePickerController.h */,
-				3879A97B187F14A500C26371 /* ParseImagePickerController.m */,
-				3868EA91187B260E0084B794 /* HomeScreenTableViewController.h */,
-				3868EA92187B260E0084B794 /* HomeScreenTableViewController.m */,
-				389038821881F4B70058D29B /* UIPhotoEditViewController.h */,
-				389038831881F4B70058D29B /* UIPhotoEditViewController.m */,
 				388329B1187995D4004836A2 /* Images.xcassets */,
 				3883299D187995D4004836A2 /* Supporting Files */,
 			);
@@ -443,15 +456,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				388329B0187995D4004836A2 /* ViewController.m in Sources */,
-				3879A97C187F14A500C26371 /* ParseImagePickerController.m in Sources */,
+				380A193D188592C30030972D /* BardoPhotoPickerViewController.m in Sources */,
+				380A1935188592640030972D /* ParseImagePickerController.m in Sources */,
+				380A194618859D780030972D /* GuruDevaViewController.m in Sources */,
+				380A1934188592640030972D /* HomeScreenTableViewController.m in Sources */,
 				389038881881F5850058D29B /* UIPhotoDescription.m in Sources */,
+				380A1936188592640030972D /* UIPhotoEditViewController.m in Sources */,
 				388329A7187995D4004836A2 /* AppDelegate.m in Sources */,
-				389038841881F4B70058D29B /* UIPhotoEditViewController.m in Sources */,
 				38D81D7118819A8F00336655 /* ParseImagePickerTableViewCell.m in Sources */,
-				3868EA93187B260E0084B794 /* HomeScreenTableViewController.m in Sources */,
+				380A1940188595E30030972D /* YourselfViewController.m in Sources */,
 				388329A3187995D4004836A2 /* main.m in Sources */,
-				3879A97F187F1D5D00C26371 /* GuruViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

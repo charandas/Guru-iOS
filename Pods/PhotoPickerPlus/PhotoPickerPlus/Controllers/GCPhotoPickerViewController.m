@@ -95,7 +95,7 @@
 {
     if (section == 0 && self.hasLocal)
         return GCLocalizedString(@"picker.local_services");
-    return GCLocalizedString(@"picker.online_services");
+    return GCLocalizedString(@"picker.local_services");
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

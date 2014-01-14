@@ -7,8 +7,7 @@
 //
 
 #import "HomeScreenTableViewController.h"
-#import "ViewController.h"
-#import "GuruViewController.h"
+#import "BardoPhotoPickerViewController.h"
 
 #define CELL_YOURSELF 0
 #define CELL_GURU 1
@@ -57,9 +56,9 @@
     if ([detail isKindOfClass:[UINavigationController class]])
     {
         UINavigationController *nvc = (UINavigationController*)detail;
-        if ([nvc.topViewController isKindOfClass:[ViewController class]])
+        if ([nvc.topViewController isKindOfClass:[BardoPhotoPickerViewController class]])
         {
-            ViewController* vc = (ViewController*)nvc.topViewController;
+            BardoPhotoPickerViewController* vc = (BardoPhotoPickerViewController*)nvc.topViewController;
             NSString *title = [HomeScreenTableViewController viewControllerTitles][indexPath.row];
             if (![vc.title isEqualToString:title])[vc moveToImageWithTitle:title];
         }
@@ -71,12 +70,11 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    ViewController* vc;
-    if ([segue.destinationViewController isKindOfClass:[ViewController class]] ||
-        [segue.destinationViewController isKindOfClass:[GuruViewController class]])
+    BardoPhotoPickerViewController* vc;
+    if ([segue.destinationViewController isKindOfClass:[BardoPhotoPickerViewController class]])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        vc = (ViewController *)segue.destinationViewController;
+        vc = (BardoPhotoPickerViewController *)segue.destinationViewController;
         NSString *title = [HomeScreenTableViewController viewControllerTitles][indexPath.row];
         vc.title = title;
     }
