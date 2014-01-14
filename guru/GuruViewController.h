@@ -10,6 +10,7 @@
 
 @interface GuruViewController : UIViewController
 
+@property (strong, nonatomic) UIPopoverController *popoverController;
 @property (strong, nonatomic) NSURL* imageURL;
 
 @end

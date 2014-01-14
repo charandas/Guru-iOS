@@ -8,6 +8,7 @@
 
 #import "HomeScreenTableViewController.h"
 #import "ViewController.h"
+#import "GuruViewController.h"
 
 #define CELL_YOURSELF 0
 #define CELL_GURU 1
@@ -71,7 +72,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     ViewController* vc;
-    if ([segue.destinationViewController isKindOfClass:[ViewController class]])
+    if ([segue.destinationViewController isKindOfClass:[ViewController class]] ||
+        [segue.destinationViewController isKindOfClass:[GuruViewController class]])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         vc = (ViewController *)segue.destinationViewController;

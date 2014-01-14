@@ -22,6 +22,9 @@
 
 @implementation GuruViewController
 
+// TODO: use for iPad
+@synthesize popoverController;
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -33,6 +36,14 @@
 {
     [super viewDidLoad];
     if (self.title) [self moveToImageWithTitle:self.title];
+}
+
+#pragma IBAction methods
+
+- (IBAction)selectPhoto:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"ParseImagePickerView"];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (IBAction)launchEdit:(id)sender {

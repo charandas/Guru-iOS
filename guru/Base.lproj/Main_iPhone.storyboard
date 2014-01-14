@@ -60,7 +60,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="G2V-1h-ZQy" kind="push" id="7k5-X9-hMe"/>
+                                            <segue destination="wZK-2w-zux" kind="push" id="dlJ-T0-IRX"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -71,100 +71,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnL-SG-MFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1518" y="-402"/>
-        </scene>
-        <!--Parse Image Picker Controller - Guru-->
-        <scene sceneID="u1U-RO-Rr7">
-            <objects>
-                <tableViewController id="G2V-1h-ZQy" customClass="ParseImagePickerController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="G9O-l9-Aww">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for your Guru" id="vkn-uC-Dyd">
-                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="G2V-1h-ZQy" id="GAt-Sv-2od"/>
-                            </connections>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GuruPhotoCell" id="tkq-zc-y8r" customClass="ParseImagePickerTableViewCell">
-                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tkq-zc-y8r" id="n5N-TF-cbe">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ZXA-oA-xht" kind="push" id="ALw-Nj-dDJ"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="G2V-1h-ZQy" id="I1g-EA-fEt"/>
-                            <outlet property="delegate" destination="G2V-1h-ZQy" id="Xum-wi-65S"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Guru" id="vkb-QI-Jmz"/>
-                    <connections>
-                        <outlet property="searchBar" destination="vkn-uC-Dyd" id="Hgg-fz-AYS"/>
-                        <outlet property="searchDisplayController" destination="2zv-OU-fiZ" id="6Fu-KM-tzx"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Qo-dG-M6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="2zv-OU-fiZ">
-                    <connections>
-                        <outlet property="delegate" destination="G2V-1h-ZQy" id="sY0-bm-7Dp"/>
-                        <outlet property="searchBar" destination="vkn-uC-Dyd" id="sSb-vM-JvE"/>
-                        <outlet property="searchContentsController" destination="G2V-1h-ZQy" id="fPG-Kq-xle"/>
-                        <outlet property="searchResultsDataSource" destination="G2V-1h-ZQy" id="lLA-JN-svB"/>
-                        <outlet property="searchResultsDelegate" destination="G2V-1h-ZQy" id="O5X-1B-Q1h"/>
-                    </connections>
-                </searchDisplayController>
-            </objects>
-            <point key="canvasLocation" x="1998" y="289"/>
-        </scene>
-        <!--Guru View Controller-->
-        <scene sceneID="sMd-PS-DGS">
-            <objects>
-                <viewController id="ZXA-oA-xht" customClass="GuruViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="o3F-rE-0cD"/>
-                        <viewControllerLayoutGuide type="bottom" id="9j4-xC-p9V"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="gKL-h7-daM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hsS-Hp-tZ9">
-                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="hsS-Hp-tZ9" firstAttribute="top" secondItem="o3F-rE-0cD" secondAttribute="bottom" constant="1" id="8oV-7Y-plQ"/>
-                            <constraint firstAttribute="trailing" secondItem="hsS-Hp-tZ9" secondAttribute="trailing" id="GpF-1F-9IY"/>
-                            <constraint firstItem="hsS-Hp-tZ9" firstAttribute="leading" secondItem="gKL-h7-daM" secondAttribute="leading" id="WHc-cm-yJJ"/>
-                            <constraint firstAttribute="bottom" secondItem="hsS-Hp-tZ9" secondAttribute="bottom" id="dGR-Rm-ZGN"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="WAE-kZ-Ncy">
-                        <barButtonItem key="rightBarButtonItem" title="Finalize" id="mCB-cA-GZU">
-                            <connections>
-                                <action selector="launchEdit:" destination="ZXA-oA-xht" id="VNi-ke-Umm"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="imageView" destination="hsS-Hp-tZ9" id="EZx-Ta-r28"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bfW-Wc-QuD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2441" y="289"/>
+            <point key="canvasLocation" x="1336" y="-50"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OF6-cw-CQW">
@@ -179,7 +86,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19q-vM-WAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="984" y="-402"/>
+            <point key="canvasLocation" x="802" y="-50"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pQE-Sj-5Sq">
@@ -236,6 +143,118 @@
             </objects>
             <point key="canvasLocation" x="1973" y="-402"/>
         </scene>
+        <!--Parse Image Picker Controller - Guru-->
+        <scene sceneID="EbE-mW-qPm">
+            <objects>
+                <tableViewController id="dv8-BX-65G" customClass="ParseImagePickerController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dyN-Gd-vVZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for your Guru" id="BO4-NP-xdj">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="dv8-BX-65G" id="sqg-j9-f61"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GuruPhotoCell" id="Q9G-st-BCH" customClass="ParseImagePickerTableViewCell">
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q9G-st-BCH" id="E5K-s8-EOV">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="wZK-2w-zux" kind="push" id="hCq-gd-PbS"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dv8-BX-65G" id="2vk-lR-XAs"/>
+                            <outlet property="delegate" destination="dv8-BX-65G" id="C3L-uy-f73"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Guru" id="oGQ-sf-chw"/>
+                    <connections>
+                        <outlet property="searchBar" destination="BO4-NP-xdj" id="JWc-vW-EF3"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r5b-MI-Ivy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2063" y="671"/>
+        </scene>
+        <!--Guru View Controller-->
+        <scene sceneID="Bml-oG-kLe">
+            <objects>
+                <viewController id="wZK-2w-zux" customClass="GuruViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="622-we-RdR"/>
+                        <viewControllerLayoutGuide type="bottom" id="saE-iH-9yi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4bM-RK-6wi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDX-95-NHK">
+                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oNx-bt-aCn">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="ia3-Dk-KfR">
+                                        <barButtonItem key="leftBarButtonItem" title="Select" id="5uE-XR-0tu">
+                                            <connections>
+                                                <action selector="selectPhoto:" destination="wZK-2w-zux" id="dx5-sa-QT2"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Finalize" id="3mx-In-IAI"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oNx-bt-aCn" firstAttribute="trailing" secondItem="fDX-95-NHK" secondAttribute="trailing" id="10V-Zl-f1y"/>
+                            <constraint firstItem="fDX-95-NHK" firstAttribute="top" secondItem="622-we-RdR" secondAttribute="bottom" id="8SN-Zl-5ZO"/>
+                            <constraint firstItem="oNx-bt-aCn" firstAttribute="leading" secondItem="fDX-95-NHK" secondAttribute="leading" id="HFW-oY-reP"/>
+                            <constraint firstAttribute="bottom" secondItem="fDX-95-NHK" secondAttribute="bottom" constant="44" id="KJp-Ym-Mzv"/>
+                            <constraint firstItem="fDX-95-NHK" firstAttribute="leading" secondItem="4bM-RK-6wi" secondAttribute="leading" id="KKQ-es-ByB"/>
+                            <constraint firstAttribute="trailing" secondItem="fDX-95-NHK" secondAttribute="trailing" id="Vj2-6b-CF7"/>
+                            <constraint firstItem="oNx-bt-aCn" firstAttribute="top" secondItem="fDX-95-NHK" secondAttribute="bottom" id="bua-un-EIt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rNe-dY-ddZ"/>
+                    <connections>
+                        <outlet property="imageView" destination="fDX-95-NHK" id="7zn-G8-v8j"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q59-dR-uFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2507" y="282"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ehE-bf-Y1L">
+            <objects>
+                <navigationController storyboardIdentifier="ParseImagePickerView" automaticallyAdjustsScrollViewInsets="NO" id="e8F-ex-E8s" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Irk-1v-H0o">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dv8-BX-65G" kind="relationship" relationship="rootViewController" id="T1a-qL-Eat"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ahz-ED-6bv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1537" y="671"/>
+        </scene>
     </scenes>
     <resources>
         <image name="GuruIcon120x120.png" width="120" height="120"/>
@@ -245,4 +264,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="hCq-gd-PbS"/>
+    </inferredMetricsTieBreakers>
 </document>

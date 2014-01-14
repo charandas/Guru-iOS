@@ -15,9 +15,10 @@
 
 @interface ParseImagePickerController () <UISearchBarDelegate, UISearchDisplayDelegate>
 
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray *photoMetadata;
 @property (strong, nonatomic) NSMutableArray *filteredPhotoMetadata;
+
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
