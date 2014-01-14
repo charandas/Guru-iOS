@@ -18,8 +18,6 @@
 @property (strong, nonatomic) NSArray *photoMetadata;
 @property (strong, nonatomic) NSMutableArray *filteredPhotoMetadata;
 
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-
 /*
  * Proxy class method to be called whenever the user picks a photo.
  *
@@ -38,7 +36,7 @@
 
 @implementation ParseImagePickerController
 
-@synthesize photoMetadata = _photoMetadata, searchBar, filteredPhotoMetadata = _filteredPhotoMetadata;
+@synthesize photoMetadata = _photoMetadata, filteredPhotoMetadata = _filteredPhotoMetadata;
 
 - (IBAction)dismissSelf:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -58,8 +56,8 @@
     [super viewDidLoad];
     
     // Don't show the scope bar or cancel button until editing begins
-    [self.searchBar setShowsScopeBar:NO];
-    [self.searchBar sizeToFit];
+    [self.searchDisplayController.searchBar setShowsScopeBar:NO];
+    [self.searchDisplayController.searchBar sizeToFit];
     
     self.clearsSelectionOnViewWillAppear = NO;
     

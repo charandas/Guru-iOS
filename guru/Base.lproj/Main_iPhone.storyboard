@@ -151,12 +151,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for your Guru" id="BO4-NP-xdj">
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for your Guru" id="gey-Qq-w7K">
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
-                                <outlet property="delegate" destination="dv8-BX-65G" id="sqg-j9-f61"/>
+                                <outlet property="delegate" destination="dv8-BX-65G" id="8vZ-0f-MIg"/>
                             </connections>
                         </searchBar>
                         <prototypes>
@@ -182,10 +182,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="BO4-NP-xdj" id="JWc-vW-EF3"/>
+                        <outlet property="searchDisplayController" destination="08d-fl-0eR" id="Kxz-i5-PVD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r5b-MI-Ivy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="08d-fl-0eR">
+                    <connections>
+                        <outlet property="delegate" destination="dv8-BX-65G" id="Df8-pU-n7F"/>
+                        <outlet property="searchBar" destination="gey-Qq-w7K" id="fhn-yD-9FM"/>
+                        <outlet property="searchContentsController" destination="dv8-BX-65G" id="FmG-UK-oZN"/>
+                        <outlet property="searchResultsDataSource" destination="dv8-BX-65G" id="4oj-Up-Bca"/>
+                        <outlet property="searchResultsDelegate" destination="dv8-BX-65G" id="CP1-VP-Pkj"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2063" y="671"/>
         </scene>
