@@ -19,12 +19,13 @@ static NSString * const kGCSection = @"photopicker";
 static NSString * const kGCConfigurationURL = @"configuration_url";
 static NSString * const kGCServices = @"services";
 static NSString * const kGCLocalFeatures = @"local_features";
+static NSString * const kGCCustomFeatures = @"custom_features";
 static NSString * const kGCAccounts = @"accounts";
 static NSString * const kGCLoadAssetsFromWeb = @"load_assets_from_web";
 
 @implementation GCPhotoPickerConfiguration
 
-@synthesize section, configurationURL, services, localFeatures, loadAssetsFromWeb, accounts;
+@synthesize section, configurationURL, services, localFeatures, customFeatures, loadAssetsFromWeb, accounts;
 
 #pragma mark - Singleton Design
 
@@ -94,6 +95,10 @@ static NSString * const kGCLoadAssetsFromWeb = @"load_assets_from_web";
     {
         [stockToSave setObject:localFeatures forKey:kGCLocalFeatures];
     }
+    if ([self customFeatures])
+    {
+        [stockToSave setObject:customFeatures forKey:kGCCustomFeatures];
+    }
     
     if ([self accounts]) {
         NSMutableArray *accountDictionaries = [NSMutableArray new];
@@ -138,6 +143,18 @@ static NSString * const kGCLoadAssetsFromWeb = @"load_assets_from_web";
             }
         }];
         self.localFeatures = [NSArray arrayWithArray:tmpLocalFeatures];
+    }
+    if ([configuration objectForKey:kGCCustomFeatures]){
+        
+        NSMutableArray *tmpCustomFeatures = [NSMutableArray array];
+        
+        [[configuration objectForKey:kGCCustomFeatures] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            
+            //if ([[GCPhotoPickerConfiguration sGCLocalFeatures] containsObject:obj]) {
+            [tmpCustomFeatures addObject:obj];
+            //}
+        }];
+        self.customFeatures = [NSArray arrayWithArray:tmpCustomFeatures];
     }
     if ([configuration objectForKey:kGCAccounts]) {
         

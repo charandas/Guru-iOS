@@ -26,6 +26,11 @@
 @property (strong, nonatomic) NSArray           *localFeatures;
 
 /**
+ Array used for storing custom services.
+ */
+@property (strong, nonatomic) NSArray           *customFeatures;
+
+/**
  Setting for loading UIImagePickerControllerOriginalImage for assets from web.
  */
 @property (assign, nonatomic) BOOL              loadAssetsFromWeb;

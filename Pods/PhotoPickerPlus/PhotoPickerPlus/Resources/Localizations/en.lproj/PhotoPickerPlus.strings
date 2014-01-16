@@ -11,6 +11,7 @@
 
 "picker.local_services" = "Local Services";
 "picker.online_services" = "Online Services";
+"picker.custom_services" = "Bardo Services";
 "picker.take_photo" = "Take Photo";
 "picker.last_photo_taken" = "Last Photo Taken";
 "picker.choose_photo" = "Choose Photo";

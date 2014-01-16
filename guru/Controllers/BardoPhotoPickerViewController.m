@@ -110,8 +110,15 @@
         picker = castedPicker;
     }
     else {
+        PhotoPickerViewController *castedPicker;
+        castedPicker = [[PhotoPickerViewController alloc ] initWithTitle:[NSString stringWithFormat:@"Photo of %@", self.title]];
+        [castedPicker setDelegate:self];
+        [castedPicker setIsMultipleSelectionEnabled:NO];
+        
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        picker = [storyboard instantiateViewControllerWithIdentifier:@"ParseImagePickerView"];
+        UIViewController *parsePicker = [storyboard instantiateViewControllerWithIdentifier:@"ParseImagePickerView"];
+        
+        
     }
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {

@@ -25,6 +25,8 @@
 
 @property (nonatomic) BOOL isItDevice;
 
+@property (assign, nonatomic) BOOL hasCustom;
+@property (strong, nonatomic) NSArray *customFeatures;
 @property (assign, nonatomic) BOOL hasLocal;
 @property (strong, nonatomic) NSArray *localFeatures;
 @property (assign, nonatomic) BOOL hasOnline;
@@ -66,6 +68,7 @@
 
     [self setLocalFeatures:[[GCPhotoPickerConfiguration configuration] localFeatures]];
     [self setServices:[[GCPhotoPickerConfiguration configuration] services]];
+    [self setCustomFeatures:[[GCPhotoPickerConfiguration configuration] customFeatures]];
     
     if([self.localFeatures count] > 0)
         self.hasLocal = YES;
@@ -76,6 +79,11 @@
         self.hasOnline = YES;
     else
         self.hasOnline = NO;
+    
+    if([self.customFeatures count] > 0)
+        self.hasCustom = YES;
+    else
+        self.hasCustom = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,21 +96,27 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return (self.hasLocal + self.hasOnline);
+    return (self.hasLocal + self.hasOnline + self.hasCustom);
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section == 0 && self.hasLocal)
         return GCLocalizedString(@"picker.local_services");
-    return GCLocalizedString(@"picker.local_services");
+    else if (section == 1 && self.hasOnline)
+        return GCLocalizedString(@"picker.online_services");
+    else
+        return GCLocalizedString(@"picker.custom_services");
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(section == 0 && self.hasLocal)
         return [self.localFeatures count];
-    return [self.services count];
+    else if (section == 1 && self.hasOnline)
+        return [self.services count];
+    else
+        return [self.customFeatures count];
 }
 
 - (GCPhotoPickerCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -134,7 +148,7 @@
 
         [cell.titleLabel setText:cellTitle];
     }
-    else
+    else if (indexPath.section == 1 && self.hasOnline)
     {
         NSString *serviceName = [self.services objectAtIndex:indexPath.row];
         GCLoginType loginType = [[GCPhotoPickerConfiguration configuration] loginTypeForString:serviceName];
@@ -157,6 +171,15 @@
             }
         }
         [cell.titleLabel setText:cellTitle];
+    }
+    else {
+        NSString *serviceName = [self.customFeatures objectAtIndex:indexPath.row];
+        NSString *cellTitle = [[serviceName capitalizedString] stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+        [cell.titleLabel setText:cellTitle];
+        
+        NSString *imageName = [NSString stringWithFormat:@"%@.png", serviceName];
+        UIImage *temp = [UIImage imageNamed:imageName];
+        [cell.imageView setImage:temp];
     }
     
     return cell;
