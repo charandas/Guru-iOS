@@ -10,7 +10,7 @@
 
 @interface BardoPhotoPickerViewController : UIViewController
 
-@property (nonatomic) BOOL photoPickerPlusMode;
+@property (nonatomic) BOOL customFeaturesMasked;
 @property (strong, nonatomic) UIPopoverController *popoverController;
 
 - (IBAction)initiatePopover:(id)sender;

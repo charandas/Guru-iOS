@@ -43,6 +43,13 @@
     [self.photoPickerViewController setNavigationTitle:title];
     return self;
 }
+- (id)initWithTitle:(NSString*)title forCustomFeaturesMasked:(BOOL)customMasked
+{
+    self = [self init];
+    [self.photoPickerViewController setNavigationTitle:title];
+    [self.photoPickerViewController setCustomMasked:customMasked];
+    return self;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

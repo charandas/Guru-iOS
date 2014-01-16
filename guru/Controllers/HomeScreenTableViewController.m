@@ -35,11 +35,11 @@
     dispatch_once(&onceToken, ^{
         inst = @{
                  @"yourselfCell": @{
-                         @"photopicker": [NSNumber numberWithBool:YES],
+                         @"customFeaturesMasked": [NSNumber numberWithBool:NO],
                          @"title": @"Yourself"
                          },
                  @"guruCell": @{
-                         @"photopicker": [NSNumber numberWithBool:NO],
+                         @"customFeaturesMasked": [NSNumber numberWithBool:YES],
                          @"title": @"Guru"
                          }
                  };
@@ -59,7 +59,7 @@
     if (cellDetails) {
         NSString *cellTitle = cellDetails[@"title"];
         if (!splitView || ![vc.title isEqualToString:cellTitle]) {
-            vc.photoPickerPlusMode = [cellDetails[@"photopicker"] boolValue];
+            vc.customFeaturesMasked = [cellDetails[@"customFeaturesMasked"] boolValue];
             vc.title = cellTitle;
         }
         if (splitView) {

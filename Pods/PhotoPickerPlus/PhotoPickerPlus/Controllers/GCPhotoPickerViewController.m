@@ -54,6 +54,8 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = self.navigationTitle? self.navigationTitle: @"Photo Picker";
+    if (self.customMasked)
+        self.customMasked = @NO;
     
     [self setNavBarItems];
 
@@ -80,7 +82,7 @@
     else
         self.hasOnline = NO;
     
-    if([self.customFeatures count] > 0)
+    if(self.customMasked && [self.customFeatures count] > 0)
         self.hasCustom = YES;
     else
         self.hasCustom = NO;
@@ -173,7 +175,8 @@
         [cell.titleLabel setText:cellTitle];
     }
     else {
-        NSString *serviceName = [self.customFeatures objectAtIndex:indexPath.row];
+        NSDictionary *serviceMeta = [self.customFeatures objectAtIndex:indexPath.row];
+        NSString *serviceName = serviceMeta[@"name"];
         NSString *cellTitle = [[serviceName capitalizedString] stringByReplacingOccurrencesOfString:@"_" withString:@" "];
         [cell.titleLabel setText:cellTitle];
         
@@ -232,8 +235,7 @@
 
         }
     }
-    else
-    {
+    else if(indexPath.section == 1 && self.hasOnline){
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         self.isItDevice = NO;
         
@@ -292,6 +294,16 @@
         } failure:^(NSError *error) {
             GCLogError([error localizedDescription]);
         }];
+    }
+    else
+    {
+        NSDictionary *serviceMeta = [self.customFeatures objectAtIndex:indexPath.row];
+        NSString *storyboardName = serviceMeta[@"storyboard"];
+        NSString *controllerName = serviceMeta[@"controller"];
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+        UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:controllerName];
+        [self presentViewController:controller animated:YES completion:nil];
     }
 }
 

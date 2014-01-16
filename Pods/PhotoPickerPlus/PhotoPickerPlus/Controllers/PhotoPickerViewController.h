@@ -38,6 +38,12 @@
 - (id)initWithTitle:(NSString*)title;
 
 /**
+ Initializes a PhotoPickerViewController with the specified navigation title (shown in the center)
+ as well as an option to mask custom features.
+ */
+- (id)initWithTitle:(NSString*)title forCustomFeaturesMasked:(BOOL)customMasked;
+
+/**
  The PhotoPickerViewController and UINavigationController delegate object.
  
  @see PhotoPickerViewControllerDelegate

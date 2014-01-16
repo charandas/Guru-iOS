@@ -19,6 +19,10 @@
 @property (strong, nonatomic) NSString *navigationTitle;
 
 /**
+ */
+@property (nonatomic) BOOL customMasked;
+
+/**
  The PhotoPickerViewController and UINavigationController delegate object.
  
  @see PhotoPickerViewControllerDelegate

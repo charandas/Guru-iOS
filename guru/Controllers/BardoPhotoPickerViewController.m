@@ -27,7 +27,7 @@
 
 @implementation BardoPhotoPickerViewController
 
-@synthesize popoverController, photoPickerPlusMode;
+@synthesize popoverController, customFeaturesMasked;
 
 - (void)viewDidLoad
 {
@@ -101,25 +101,10 @@
 
 - (IBAction)initiatePopover:(id)sender
 {
-    UINavigationController *picker;
-    if (self.photoPickerPlusMode) {
-        PhotoPickerViewController *castedPicker;
-        castedPicker = [[PhotoPickerViewController alloc ] initWithTitle:[NSString stringWithFormat:@"Photo of %@", self.title]];
-        [castedPicker setDelegate:self];
-        [castedPicker setIsMultipleSelectionEnabled:NO];
-        picker = castedPicker;
-    }
-    else {
-        PhotoPickerViewController *castedPicker;
-        castedPicker = [[PhotoPickerViewController alloc ] initWithTitle:[NSString stringWithFormat:@"Photo of %@", self.title]];
-        [castedPicker setDelegate:self];
-        [castedPicker setIsMultipleSelectionEnabled:NO];
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-        UIViewController *parsePicker = [storyboard instantiateViewControllerWithIdentifier:@"ParseImagePickerView"];
-        
-        
-    }
+    PhotoPickerViewController *picker = [[PhotoPickerViewController alloc ] initWithTitle:[NSString stringWithFormat:@"Photo of %@", self.title] forCustomFeaturesMasked:self.customFeaturesMasked];
+    
+    [picker setDelegate:self];
+    [picker setIsMultipleSelectionEnabled:NO];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         if (![[self popoverController] isPopoverVisible]) {
@@ -158,7 +143,6 @@
 - (void)didPickPhotoURL:(NSNotification *)notification
 {
     self.imageURL = [notification.userInfo objectForKey:UIImagePickerControllerReferenceURL];
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
     if (self.popoverController) {
         [self.popoverController dismissPopoverAnimated:YES];
