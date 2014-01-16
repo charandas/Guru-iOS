@@ -9,6 +9,7 @@
 #import "BardoPhotoPickerViewController.h"
 #import "UIPhotoEditViewController.h"
 #import "ParseImagePickerController.h"
+#import "ImageUtils.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <MBProgressHUD/MBProgressHUD.h>
@@ -17,11 +18,10 @@
 
 @interface BardoPhotoPickerViewController () <UISplitViewControllerDelegate, PhotoPickerViewControllerDelegate, UINavigationControllerDelegate>
 
-- (UIImage *)savedImageWithTitle:(NSString *)title;
-- (void)setSavedImage:(UIImage *)image withTitle:(NSString *)title;
-
+@property (strong, nonatomic) UIPopoverController *popoverController;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) NSURL* imageURL;
+- (void)setImage:(UIImage *)image;
 
 @end
 
@@ -60,24 +60,8 @@
 
 - (void)moveToImageWithTitle:(NSString *)title
 {
-    self.image = [self savedImageWithTitle:title];
+    self.image = [ImageUtils savedImageWithTitle:title];
     self.title = title;
-}
-
-- (UIImage *)savedImageWithTitle:(NSString *)title {
-    NSString *key = [NSString stringWithFormat:@"savedImageData.%@", title];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData* myEncodedImageData = [defaults objectForKey:key];
-    UIImage* image = [UIImage imageWithData:myEncodedImageData];
-    return image;
-}
-
-- (void)setSavedImage:(UIImage *)image withTitle:(NSString *)title {
-    NSString *key = [NSString stringWithFormat:@"savedImageData.%@", title];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData* imageData = UIImagePNGRepresentation(image);
-    [defaults setObject:imageData forKey:key];
-    [defaults synchronize];
 }
 
 - (UIImage *)image
@@ -89,7 +73,7 @@
 {
     self.imageView.image = image;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self setSavedImage:image withTitle:self.title];
+    [ImageUtils setSavedImage:image withTitle:self.title];
 }
 
 #pragma mark - IBActions
@@ -110,7 +94,7 @@
         if (![[self popoverController] isPopoverVisible]) {
             UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:picker];
             // [popover setPopoverBackgroundViewClass:[GCPopoverBackgroundView class]];
-            [popover presentPopoverFromBarButtonItem:sender permittedArrowDirections:NO animated:YES];
+            [popover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
             self.popoverController = popover;
         }
         else {
@@ -196,7 +180,7 @@
 {
     self.image = [info objectForKey:UIImagePickerControllerOriginalImage];
     //[info objectForKey:UIImagePickerControllerReferenceURL]
-    [self setSavedImage:self.image withTitle:self.title];
+    [ImageUtils setSavedImage:self.image withTitle:self.title];
     
     if (self.popoverController) {
         [self.popoverController dismissPopoverAnimated:YES];

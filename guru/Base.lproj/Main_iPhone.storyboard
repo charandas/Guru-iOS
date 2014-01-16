@@ -63,6 +63,30 @@
                                             <segue destination="fEt-1N-aJL" kind="push" id="9uo-En-uOf"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="meditateCell" textLabel="Yz6-aN-2vF" imageView="KUQ-cA-KGV" style="IBUITableViewCellStyleDefault" id="DmK-Yz-HGI">
+                                        <rect key="frame" x="0.0" y="152" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DmK-Yz-HGI" id="hhX-TE-ga7">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Meditate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yz6-aN-2vF">
+                                                    <rect key="frame" x="73" y="0.0" width="212" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="GuruIcon120x120.png" id="KUQ-cA-KGV">
+                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="fMF-MJ-b2W" kind="push" id="yoY-vy-XzF"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -101,40 +125,25 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bnc-Gv-T0d">
-                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abg-45-bH6">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem id="Y1K-xx-skc">
-                                        <barButtonItem key="leftBarButtonItem" title="Select" id="hl5-vJ-aj7">
-                                            <connections>
-                                                <action selector="initiatePopover:" destination="fEt-1N-aJL" id="TrD-mM-jXJ"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Crop" id="TE8-xt-U5X">
-                                            <connections>
-                                                <action selector="launchEdit:" destination="fEt-1N-aJL" id="0Y4-gv-hdf"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="abg-45-bH6" firstAttribute="leading" secondItem="Bnc-Gv-T0d" secondAttribute="leading" id="MgV-I5-9FD"/>
-                            <constraint firstItem="abg-45-bH6" firstAttribute="trailing" secondItem="Bnc-Gv-T0d" secondAttribute="trailing" id="OIn-rj-dr3"/>
                             <constraint firstItem="Bnc-Gv-T0d" firstAttribute="top" secondItem="Yee-0U-Av9" secondAttribute="bottom" id="YHv-Va-euf"/>
-                            <constraint firstItem="abg-45-bH6" firstAttribute="top" secondItem="Bnc-Gv-T0d" secondAttribute="bottom" id="Z2m-Eb-g53"/>
                             <constraint firstItem="Bnc-Gv-T0d" firstAttribute="leading" secondItem="iii-Cp-diT" secondAttribute="leading" id="hUv-FF-4Co"/>
-                            <constraint firstAttribute="bottom" secondItem="Bnc-Gv-T0d" secondAttribute="bottom" constant="44" id="qJN-7T-RtR"/>
+                            <constraint firstAttribute="bottom" secondItem="Bnc-Gv-T0d" secondAttribute="bottom" id="qJN-7T-RtR"/>
                             <constraint firstAttribute="trailing" secondItem="Bnc-Gv-T0d" secondAttribute="trailing" id="vH0-Iu-eKg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="e3E-Y6-rdi"/>
+                    <navigationItem key="navigationItem" id="e3E-Y6-rdi">
+                        <barButtonItem key="rightBarButtonItem" title="Select" id="lUs-5y-N9N">
+                            <connections>
+                                <action selector="initiatePopover:" destination="fEt-1N-aJL" id="49b-pI-AIW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="Bnc-Gv-T0d" id="B3K-gE-ahs"/>
                     </connections>
@@ -197,6 +206,40 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1215" y="679"/>
+        </scene>
+        <!--Meditate View Controller-->
+        <scene sceneID="lzV-Rd-ICb">
+            <objects>
+                <viewController id="fMF-MJ-b2W" customClass="MeditateViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hcq-VY-86S"/>
+                        <viewControllerLayoutGuide type="bottom" id="i7a-U8-Fce"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M30-ar-DfS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sgz-Gq-UZL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Sgz-Gq-UZL" firstAttribute="top" secondItem="M30-ar-DfS" secondAttribute="top" id="Ah7-Bc-sAs"/>
+                            <constraint firstAttribute="bottom" secondItem="Sgz-Gq-UZL" secondAttribute="bottom" id="WDy-sc-qnU"/>
+                            <constraint firstAttribute="trailing" secondItem="Sgz-Gq-UZL" secondAttribute="trailing" id="chu-xb-j5G"/>
+                            <constraint firstItem="Sgz-Gq-UZL" firstAttribute="leading" secondItem="M30-ar-DfS" secondAttribute="leading" id="jIQ-OH-RUH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="FCx-0m-ai8"/>
+                    <connections>
+                        <outlet property="imageView" destination="Sgz-Gq-UZL" id="2bd-A2-O8Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VNk-Ju-LgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1715" y="674"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ehE-bf-Y1L">

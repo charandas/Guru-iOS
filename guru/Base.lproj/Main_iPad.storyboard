@@ -119,41 +119,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJi-C5-N3O">
-                                <rect key="frame" x="0.0" y="980" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem id="hwZ-v0-Vtv">
-                                        <barButtonItem key="leftBarButtonItem" title="Select" id="nho-uC-tVD">
-                                            <connections>
-                                                <action selector="initiatePopover:" destination="eon-iz-Eiu" id="PW9-Wg-gaD"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Crop" id="aOK-dh-mBX">
-                                            <connections>
-                                                <action selector="launchEdit:" destination="eon-iz-Eiu" id="lnu-oR-8oX"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hLy-Ml-wJt">
-                                <rect key="frame" x="0.0" y="65" width="768" height="915"/>
+                                <rect key="frame" x="0.0" y="65" width="768" height="959"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hLy-Ml-wJt" firstAttribute="leading" secondItem="Hwx-PR-8za" secondAttribute="leading" id="1rI-vC-EWf"/>
-                            <constraint firstAttribute="bottom" secondItem="KJi-C5-N3O" secondAttribute="bottom" id="Kor-Io-bmO"/>
-                            <constraint firstItem="hLy-Ml-wJt" firstAttribute="leading" secondItem="KJi-C5-N3O" secondAttribute="leading" id="Zde-Tq-NHY"/>
-                            <constraint firstItem="hLy-Ml-wJt" firstAttribute="bottom" secondItem="KJi-C5-N3O" secondAttribute="top" id="blz-yK-xgj"/>
                             <constraint firstItem="hLy-Ml-wJt" firstAttribute="top" secondItem="7SZ-SQ-0Rd" secondAttribute="bottom" constant="1" id="cdB-TF-Eyg"/>
-                            <constraint firstAttribute="trailing" secondItem="KJi-C5-N3O" secondAttribute="trailing" id="n6j-9Q-ZPs"/>
-                            <constraint firstItem="hLy-Ml-wJt" firstAttribute="trailing" secondItem="KJi-C5-N3O" secondAttribute="trailing" id="tj9-nN-5Pv"/>
+                            <constraint firstAttribute="trailing" secondItem="hLy-Ml-wJt" secondAttribute="trailing" id="dXr-nJ-34d"/>
+                            <constraint firstAttribute="bottom" secondItem="hLy-Ml-wJt" secondAttribute="bottom" id="xVs-n8-Ofc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="D76-L6-bMx"/>
+                    <navigationItem key="navigationItem" id="D76-L6-bMx">
+                        <barButtonItem key="rightBarButtonItem" title="Select" id="4c1-D9-8AW">
+                            <connections>
+                                <action selector="initiatePopover:" destination="eon-iz-Eiu" id="t9F-Sz-19N"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="hLy-Ml-wJt" id="xo8-mt-mYe"/>
                     </connections>

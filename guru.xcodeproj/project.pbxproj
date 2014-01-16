@@ -44,6 +44,8 @@
 		388329C3187995D4004836A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 388329C1187995D4004836A2 /* InfoPlist.strings */; };
 		388329C5187995D4004836A2 /* guruTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 388329C4187995D4004836A2 /* guruTests.m */; };
 		389038881881F5850058D29B /* UIPhotoDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 389038871881F5850058D29B /* UIPhotoDescription.m */; };
+		389B739218888E840070BEAC /* MeditateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B739118888E840070BEAC /* MeditateViewController.m */; };
+		389B73971888932B0070BEAC /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 389B73961888932B0070BEAC /* ImageUtils.m */; };
 		38BC862C187C627B000B70B2 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BC862B187C627A000B70B2 /* FacebookSDK.framework */; };
 		38D42B531879B45A00326B89 /* GCConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38D42B521879B45A00326B89 /* GCConfiguration.plist */; };
 		38D81D6C188195F800336655 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D81D6A188195F800336655 /* placeholder.png */; };
@@ -110,6 +112,10 @@
 		388329C4187995D4004836A2 /* guruTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = guruTests.m; sourceTree = "<group>"; };
 		389038861881F5850058D29B /* UIPhotoDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPhotoDescription.h; sourceTree = "<group>"; };
 		389038871881F5850058D29B /* UIPhotoDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPhotoDescription.m; sourceTree = "<group>"; };
+		389B739018888E840070BEAC /* MeditateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeditateViewController.h; sourceTree = "<group>"; };
+		389B739118888E840070BEAC /* MeditateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeditateViewController.m; sourceTree = "<group>"; };
+		389B73951888932B0070BEAC /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
+		389B73961888932B0070BEAC /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		38BC862B187C627A000B70B2 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		38D42B521879B45A00326B89 /* GCConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GCConfiguration.plist; sourceTree = "<group>"; };
 		38D81D6A188195F800336655 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
@@ -168,6 +174,8 @@
 				380A1930188592640030972D /* UIPhotoEditViewController.m */,
 				380A193B188592C30030972D /* BardoPhotoPickerViewController.h */,
 				380A193C188592C30030972D /* BardoPhotoPickerViewController.m */,
+				389B739018888E840070BEAC /* MeditateViewController.h */,
+				389B739118888E840070BEAC /* MeditateViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -235,6 +243,7 @@
 		3883299C187995D4004836A2 /* guru */ = {
 			isa = PBXGroup;
 			children = (
+				389B7394188892D90070BEAC /* Utils */,
 				380A19281885922A0030972D /* Controllers */,
 				389038851881F5850058D29B /* Model */,
 				38D81D6E18819A4B00336655 /* Views */,
@@ -286,6 +295,15 @@
 				389038871881F5850058D29B /* UIPhotoDescription.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		389B7394188892D90070BEAC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				389B73951888932B0070BEAC /* ImageUtils.h */,
+				389B73961888932B0070BEAC /* ImageUtils.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		38D42B511879B45A00326B89 /* Configuration */ = {
@@ -457,10 +475,12 @@
 				380A193D188592C30030972D /* BardoPhotoPickerViewController.m in Sources */,
 				380A1935188592640030972D /* ParseImagePickerController.m in Sources */,
 				380A1934188592640030972D /* HomeScreenTableViewController.m in Sources */,
+				389B73971888932B0070BEAC /* ImageUtils.m in Sources */,
 				389038881881F5850058D29B /* UIPhotoDescription.m in Sources */,
 				380A1936188592640030972D /* UIPhotoEditViewController.m in Sources */,
 				388329A7187995D4004836A2 /* AppDelegate.m in Sources */,
 				38D81D7118819A8F00336655 /* ParseImagePickerTableViewCell.m in Sources */,
+				389B739218888E840070BEAC /* MeditateViewController.m in Sources */,
 				388329A3187995D4004836A2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

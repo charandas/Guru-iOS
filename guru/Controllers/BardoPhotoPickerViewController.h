@@ -11,12 +11,9 @@
 @interface BardoPhotoPickerViewController : UIViewController
 
 @property (nonatomic) BOOL customFeaturesMasked;
-@property (strong, nonatomic) UIPopoverController *popoverController;
 
 - (IBAction)initiatePopover:(id)sender;
 - (UIImage *)image;
-- (void)setImage:(UIImage *)image;
-- (void)setSavedImage:(UIImage *)image withTitle:(NSString *)title;
 - (void)moveToImageWithTitle:(NSString *)title;
 - (void)setImageURL:(NSURL *)imageURL;
 
