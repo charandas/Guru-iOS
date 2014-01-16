@@ -32,7 +32,7 @@
 @property (assign, nonatomic) BOOL hasOnline;
 @property (strong, nonatomic) NSArray *services;
 @property (nonatomic, strong) UIBarButtonItem *logoutButton;
-
+@property (strong, nonatomic) UIPopoverController *popoverController;
 @property (nonatomic) NSNumber *sectionOffset;
 
 @end
@@ -41,7 +41,7 @@
 
 @synthesize delegate, isMultipleSelectionEnabled = _isMultipleSelectionEnabled;
 @synthesize isItDevice;
-@synthesize navigationTitle = _navigationTitle, sectionOffset;
+@synthesize navigationTitle = _navigationTitle, sectionOffset, popoverController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -203,13 +203,36 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0 && self.hasCustom){
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         NSDictionary *serviceMeta = [self.customFeatures objectAtIndex:indexPath.row];
+        NSString *pFinishNotification = serviceMeta[@"popoverDidFinishPickingNotification"];
+        NSString *pCancelNotification = serviceMeta[@"popoverDidCancelPickingNotification"];
         NSString *storyboardName = serviceMeta[@"storyboard"];
         NSString *controllerName = serviceMeta[@"controller"];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishUsingCustomPopover:) name:pFinishNotification object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishUsingCustomPopover:) name:pCancelNotification object:nil];
+        
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-        UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:controllerName];
-        [self presentViewController:controller animated:YES completion:nil];
+        UIViewController *picker = [storyboard instantiateViewControllerWithIdentifier:controllerName];
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            if (![[self popoverController] isPopoverVisible]) {
+                UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:picker];
+                // [popover setPopoverBackgroundViewClass:[GCPopoverBackgroundView class]];
+                [popover presentPopoverFromRect:cell.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                self.popoverController = popover;
+            }
+            else {
+                [[self popoverController] dismissPopoverAnimated:YES];
+            }
+        }
+        else {
+            [self presentViewController:picker animated:YES completion:nil];
+        }
+        
+        
     }
     else if(indexPath.section == [self.sectionOffset intValue] && self.hasLocal){
         
@@ -313,6 +336,17 @@
 }
 
 #pragma mark - Custom Methods
+
+- (void)didFinishUsingCustomPopover:(NSNotification*)notification {
+    if (self.popoverController) {
+        [self.popoverController dismissPopoverAnimated:YES];
+    }
+    else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)getLatestPhoto
 {

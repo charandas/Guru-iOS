@@ -143,7 +143,7 @@
             </objects>
             <point key="canvasLocation" x="1805" y="-50"/>
         </scene>
-        <!--Parse Image Picker Controller - Guru-->
+        <!--Parse Image Picker Controller - Guru Gallery-->
         <scene sceneID="EbE-mW-qPm">
             <objects>
                 <tableViewController id="dv8-BX-65G" customClass="ParseImagePickerController" sceneMemberID="viewController">
@@ -174,8 +174,8 @@
                             <outlet property="delegate" destination="dv8-BX-65G" id="C3L-uy-f73"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Guru" id="oGQ-sf-chw">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Myg-7G-zXE">
+                    <navigationItem key="navigationItem" title="Guru Gallery" id="oGQ-sf-chw">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Myg-7G-zXE">
                             <connections>
                                 <action selector="dismissSelf:" destination="dv8-BX-65G" id="yv6-UZ-LHd"/>
                             </connections>

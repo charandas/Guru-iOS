@@ -143,7 +143,7 @@
 - (void)didPickPhotoURL:(NSNotification *)notification
 {
     self.imageURL = [notification.userInfo objectForKey:UIImagePickerControllerReferenceURL];
-    
+    // cleanup not performed by chute picker custom popover code
     if (self.popoverController) {
         [self.popoverController dismissPopoverAnimated:YES];
     }
@@ -153,6 +153,7 @@
 }
 
 - (void)didCancelOnPickPhotoURL:(NSNotification *)notification{
+    // cleanup not performed by chute picker custom popover code
     if (self.popoverController) {
         [self.popoverController dismissPopoverAnimated:YES];
     }
@@ -170,7 +171,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPickPhoto:) name:kUIPhotoPickerDidFinishPickingNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPickPhotoURL:) name:kParseImagePickerDidFinishPickingNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCancelOnPickPhotoURL:) name:kParseImagePickerDidCancelPickingNotification object:nil];
 }
 
 
