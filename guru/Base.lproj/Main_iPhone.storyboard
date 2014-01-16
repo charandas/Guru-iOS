@@ -143,16 +143,81 @@
             </objects>
             <point key="canvasLocation" x="1805" y="-50"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Y18-qZ-10b">
+            <objects>
+                <viewController storyboardIdentifier="ParseImagePickerView" id="hme-kN-9Ti" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VLN-ca-bgl"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fp1-vI-XIt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mHA-Hf-fU9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVV-vh-YJB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Guru" id="HX1-sX-nyR"/>
+                                </items>
+                            </navigationBar>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ijq-ax-u5N">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="dv8-BX-65G" kind="embed" id="Tul-Gl-e8v"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ijq-ax-u5N" firstAttribute="top" secondItem="oVV-vh-YJB" secondAttribute="bottom" id="Abg-zB-ljj"/>
+                            <constraint firstItem="ijq-ax-u5N" firstAttribute="leading" secondItem="oVV-vh-YJB" secondAttribute="leading" id="Eiu-9I-FkY"/>
+                            <constraint firstItem="ijq-ax-u5N" firstAttribute="leading" secondItem="mHA-Hf-fU9" secondAttribute="leading" id="WTb-QG-DR3"/>
+                            <constraint firstAttribute="bottom" secondItem="ijq-ax-u5N" secondAttribute="bottom" id="Wec-gF-Dkm"/>
+                            <constraint firstItem="ijq-ax-u5N" firstAttribute="trailing" secondItem="oVV-vh-YJB" secondAttribute="trailing" id="gnY-TQ-Dtl"/>
+                            <constraint firstAttribute="trailing" secondItem="oVV-vh-YJB" secondAttribute="trailing" id="jUt-xr-akS"/>
+                            <constraint firstItem="ijq-ax-u5N" firstAttribute="top" secondItem="mHA-Hf-fU9" secondAttribute="top" constant="44" id="tGw-2Q-Rcm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="N0x-Jv-txp" id="O8T-dL-3jg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="soC-TV-u89" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="N0x-Jv-txp">
+                    <connections>
+                        <outlet property="delegate" destination="hme-kN-9Ti" id="aHJ-jK-B19"/>
+                        <outlet property="searchContentsController" destination="hme-kN-9Ti" id="IV8-0s-akH"/>
+                        <outlet property="searchResultsDataSource" destination="hme-kN-9Ti" id="7rQ-Ok-yBR"/>
+                        <outlet property="searchResultsDelegate" destination="hme-kN-9Ti" id="5Se-KQ-MW8"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="818" y="678"/>
+        </scene>
         <!--Parse Image Picker Controller - Guru-->
         <scene sceneID="EbE-mW-qPm">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r5b-MI-Ivy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="08d-fl-0eR">
+                    <connections>
+                        <outlet property="delegate" destination="dv8-BX-65G" id="Df8-pU-n7F"/>
+                        <outlet property="searchBar" destination="gey-Qq-w7K" id="fhn-yD-9FM"/>
+                        <outlet property="searchContentsController" destination="dv8-BX-65G" id="FmG-UK-oZN"/>
+                        <outlet property="searchResultsDataSource" destination="dv8-BX-65G" id="4oj-Up-Bca"/>
+                        <outlet property="searchResultsDelegate" destination="dv8-BX-65G" id="CP1-VP-Pkj"/>
+                    </connections>
+                </searchDisplayController>
                 <tableViewController id="dv8-BX-65G" customClass="ParseImagePickerController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dyN-Gd-vVZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for your Guru" id="gey-Qq-w7K">
-                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -161,7 +226,7 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GuruPhotoCell" id="Q9G-st-BCH" customClass="ParseImagePickerTableViewCell">
-                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q9G-st-BCH" id="E5K-s8-EOV">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -175,46 +240,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Guru" id="oGQ-sf-chw">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Myg-7G-zXE">
-                            <connections>
-                                <action selector="dismissSelf:" destination="dv8-BX-65G" id="yv6-UZ-LHd"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Myg-7G-zXE"/>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="08d-fl-0eR" id="Kxz-i5-PVD"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r5b-MI-Ivy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="08d-fl-0eR">
-                    <connections>
-                        <outlet property="delegate" destination="dv8-BX-65G" id="Df8-pU-n7F"/>
-                        <outlet property="searchBar" destination="gey-Qq-w7K" id="fhn-yD-9FM"/>
-                        <outlet property="searchContentsController" destination="dv8-BX-65G" id="FmG-UK-oZN"/>
-                        <outlet property="searchResultsDataSource" destination="dv8-BX-65G" id="4oj-Up-Bca"/>
-                        <outlet property="searchResultsDelegate" destination="dv8-BX-65G" id="CP1-VP-Pkj"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1215" y="679"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ehE-bf-Y1L">
-            <objects>
-                <navigationController storyboardIdentifier="ParseImagePickerView" automaticallyAdjustsScrollViewInsets="NO" id="e8F-ex-E8s" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Irk-1v-H0o">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="dv8-BX-65G" kind="relationship" relationship="rootViewController" id="T1a-qL-Eat"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ahz-ED-6bv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="689" y="679"/>
+            <point key="canvasLocation" x="1209" y="700"/>
         </scene>
     </scenes>
     <resources>

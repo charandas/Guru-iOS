@@ -152,6 +152,13 @@
 {
     self.imageURL = [notification.userInfo objectForKey:UIImagePickerControllerReferenceURL];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    if (self.popoverController) {
+        [self.popoverController dismissPopoverAnimated:YES];
+    }
+    else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)didCancelOnPickPhotoURL:(NSNotification *)notification{
