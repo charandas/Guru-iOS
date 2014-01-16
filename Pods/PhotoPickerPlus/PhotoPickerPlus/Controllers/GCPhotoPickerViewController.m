@@ -33,13 +33,15 @@
 @property (strong, nonatomic) NSArray *services;
 @property (nonatomic, strong) UIBarButtonItem *logoutButton;
 
+@property (nonatomic) NSNumber *sectionOffset;
+
 @end
 
 @implementation GCPhotoPickerViewController
 
 @synthesize delegate, isMultipleSelectionEnabled = _isMultipleSelectionEnabled;
 @synthesize isItDevice;
-@synthesize navigationTitle = _navigationTitle;
+@synthesize navigationTitle = _navigationTitle, sectionOffset;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -82,10 +84,14 @@
     else
         self.hasOnline = NO;
     
-    if(self.customMasked && [self.customFeatures count] > 0)
+    if(self.customMasked && [self.customFeatures count] > 0) {
         self.hasCustom = YES;
-    else
+        self.sectionOffset = @1;
+    }
+    else {
         self.hasCustom = NO;
+        self.sectionOffset = @0;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,22 +109,22 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 0 && self.hasLocal)
-        return GCLocalizedString(@"picker.local_services");
-    else if (section == 1 && self.hasOnline)
-        return GCLocalizedString(@"picker.online_services");
-    else
+    if (section == 0 && self.hasCustom)
         return GCLocalizedString(@"picker.custom_services");
+    if (section == [self.sectionOffset intValue] && self.hasLocal)
+        return GCLocalizedString(@"picker.local_services");
+    else
+        return GCLocalizedString(@"picker.online_services");
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(section == 0 && self.hasLocal)
-        return [self.localFeatures count];
-    else if (section == 1 && self.hasOnline)
-        return [self.services count];
-    else
+    if(section == 0 && self.hasCustom)
         return [self.customFeatures count];
+    else if(section == [self.sectionOffset intValue] && self.hasLocal)
+        return [self.localFeatures count];
+    else
+        return [self.services count];
 }
 
 - (GCPhotoPickerCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -129,7 +135,17 @@
    
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
-    if(indexPath.section == 0 && self.hasLocal){
+    if(indexPath.section == 0 && self.hasCustom){
+        NSDictionary *serviceMeta = [self.customFeatures objectAtIndex:indexPath.row];
+        NSString *serviceName = serviceMeta[@"name"];
+        NSString *cellTitle = [[serviceName capitalizedString] stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+        [cell.titleLabel setText:cellTitle];
+        
+        NSString *imageName = [NSString stringWithFormat:@"%@.png", serviceName];
+        UIImage *temp = [UIImage imageNamed:imageName];
+        [cell.imageView setImage:temp];
+    }
+    else if(indexPath.section == [self.sectionOffset intValue] && self.hasLocal){
         
         NSString *serviceName = [self.localFeatures objectAtIndex:indexPath.row];
         NSString *cellTitle = [[serviceName capitalizedString] stringByReplacingOccurrencesOfString:@"_" withString:@" "];
@@ -150,7 +166,7 @@
 
         [cell.titleLabel setText:cellTitle];
     }
-    else if (indexPath.section == 1 && self.hasOnline)
+    else
     {
         NSString *serviceName = [self.services objectAtIndex:indexPath.row];
         GCLoginType loginType = [[GCPhotoPickerConfiguration configuration] loginTypeForString:serviceName];
@@ -174,16 +190,6 @@
         }
         [cell.titleLabel setText:cellTitle];
     }
-    else {
-        NSDictionary *serviceMeta = [self.customFeatures objectAtIndex:indexPath.row];
-        NSString *serviceName = serviceMeta[@"name"];
-        NSString *cellTitle = [[serviceName capitalizedString] stringByReplacingOccurrencesOfString:@"_" withString:@" "];
-        [cell.titleLabel setText:cellTitle];
-        
-        NSString *imageName = [NSString stringWithFormat:@"%@.png", serviceName];
-        UIImage *temp = [UIImage imageNamed:imageName];
-        [cell.imageView setImage:temp];
-    }
     
     return cell;
 }
@@ -196,7 +202,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section == 0 && self.hasLocal){
+    if(indexPath.section == 0 && self.hasCustom){
+        NSDictionary *serviceMeta = [self.customFeatures objectAtIndex:indexPath.row];
+        NSString *storyboardName = serviceMeta[@"storyboard"];
+        NSString *controllerName = serviceMeta[@"controller"];
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+        UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:controllerName];
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+    else if(indexPath.section == [self.sectionOffset intValue] && self.hasLocal){
         
         
         NSString *serviceName = [self.localFeatures objectAtIndex:indexPath.row];
@@ -235,7 +250,7 @@
 
         }
     }
-    else if(indexPath.section == 1 && self.hasOnline){
+    else {
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         self.isItDevice = NO;
         
@@ -294,16 +309,6 @@
         } failure:^(NSError *error) {
             GCLogError([error localizedDescription]);
         }];
-    }
-    else
-    {
-        NSDictionary *serviceMeta = [self.customFeatures objectAtIndex:indexPath.row];
-        NSString *storyboardName = serviceMeta[@"storyboard"];
-        NSString *controllerName = serviceMeta[@"controller"];
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-        UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:controllerName];
-        [self presentViewController:controller animated:YES completion:nil];
     }
 }
 
