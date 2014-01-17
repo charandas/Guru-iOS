@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking 3
 
+// Archimedes
+#define COCOAPODS_POD_AVAILABLE_Archimedes
+#define COCOAPODS_VERSION_MAJOR_Archimedes 1
+#define COCOAPODS_VERSION_MINOR_Archimedes 0
+#define COCOAPODS_VERSION_PATCH_Archimedes 0
+
 // Chute-SDK
 #define COCOAPODS_POD_AVAILABLE_Chute_SDK
 #define COCOAPODS_VERSION_MAJOR_Chute_SDK 2

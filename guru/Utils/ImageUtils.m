@@ -8,15 +8,27 @@
 
 #import "ImageUtils.h"
 
+#import "Archimedes.h"
+
 @interface ImageUtils ()
 @end
 
 @implementation ImageUtils
 + (UIImage *)imageWithTopImage:(UIImage *)topImage bottomImage:(UIImage *)bottomImage
 {
-    UIGraphicsBeginImageContext(CGSizeMake(topImage.size.width, topImage.size.height + bottomImage.size.height));
-    [topImage drawInRect:CGRectMake(0, 0, topImage.size.width, topImage.size.height)];
-    [bottomImage drawInRect:CGRectMake(0, topImage.size.width, bottomImage.size.width, bottomImage.size.height)];
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    
+    screenBound.size.height =     screenBound.size.height / 2;
+    
+    CGSize topImageRect = MEDSizeScaleAspectFit(topImage.size, screenBound.size);
+    CGSize bottomImageRect = MEDSizeScaleAspectFit(bottomImage.size, screenBound.size);
+    
+    CGPoint topImagePosition = CGPointMake((screenBound.size.width - topImageRect.width)/2, 0);
+    CGPoint bottomImagePosition = CGPointMake((screenBound.size.width - bottomImageRect.width)/2, topImageRect.width);
+    
+    UIGraphicsBeginImageContext([[UIScreen mainScreen] bounds].size);
+    [topImage drawInRect:CGRectMake(topImagePosition.x, topImagePosition.y, topImageRect.width, topImageRect.height)];
+    [bottomImage drawInRect:CGRectMake(bottomImagePosition.x, bottomImagePosition.y, bottomImageRect.width, bottomImageRect.height)];
     UIImage *combinedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return combinedImage;
