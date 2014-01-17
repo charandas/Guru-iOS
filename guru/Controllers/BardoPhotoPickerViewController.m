@@ -11,7 +11,7 @@
 #import "ParseImagePickerController.h"
 #import "ImageUtils.h"
 
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "GetChute.h"
 #import <PhotoPickerPlus/PhotoPickerViewController.h>
@@ -33,6 +33,7 @@
 {
     [super viewDidLoad];
     if (self.title) [self moveToImageWithTitle:self.title];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -42,20 +43,15 @@
 
 - (void)setImageURL:(NSURL *)imageURL
 {
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    [manager downloadWithURL:imageURL
-                     options:0
-                    progress:nil
-                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
+    [self.imageView setImageWithURL:imageURL
+                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType)
      {
-         if (image && finished)
+         if (image)
          {
-             dispatch_async(dispatch_get_main_queue(), ^(){
-                 self.image = image;
-             });
+             [ImageUtils setSavedImage:image withTitle:self.title];
          }
-     }];
-    
+     }
+    usingActivityIndicatorStyle:(UIActivityIndicatorViewStyle)UIActivityIndicatorViewStyleGray];
 }
 
 - (void)moveToImageWithTitle:(NSString *)title
@@ -72,7 +68,6 @@
 - (void)setImage:(UIImage *)image
 {
     self.imageView.image = image;
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [ImageUtils setSavedImage:image withTitle:self.title];
 }
 

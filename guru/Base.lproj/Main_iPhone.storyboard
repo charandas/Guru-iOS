@@ -223,18 +223,28 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUt-rr-5Ls">
+                                <rect key="frame" x="137" y="478" width="47" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Sgz-Gq-UZL" firstAttribute="top" secondItem="M30-ar-DfS" secondAttribute="top" id="Ah7-Bc-sAs"/>
+                            <constraint firstItem="qUt-rr-5Ls" firstAttribute="centerX" secondItem="Sgz-Gq-UZL" secondAttribute="centerX" id="LdE-dz-vOm"/>
                             <constraint firstAttribute="bottom" secondItem="Sgz-Gq-UZL" secondAttribute="bottom" id="WDy-sc-qnU"/>
                             <constraint firstAttribute="trailing" secondItem="Sgz-Gq-UZL" secondAttribute="trailing" id="chu-xb-j5G"/>
                             <constraint firstItem="Sgz-Gq-UZL" firstAttribute="leading" secondItem="M30-ar-DfS" secondAttribute="leading" id="jIQ-OH-RUH"/>
+                            <constraint firstItem="i7a-U8-Fce" firstAttribute="top" secondItem="qUt-rr-5Ls" secondAttribute="bottom" constant="69" id="xb0-c0-I2i"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FCx-0m-ai8"/>
                     <connections>
                         <outlet property="imageView" destination="Sgz-Gq-UZL" id="2bd-A2-O8Z"/>
+                        <outlet property="quote" destination="qUt-rr-5Ls" id="zE0-NT-irm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VNk-Ju-LgP" userLabel="First Responder" sceneMemberID="firstResponder"/>

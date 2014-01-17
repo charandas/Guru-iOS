@@ -10,7 +10,7 @@
 #import "ParseImagePickerTableViewCell.h"
 #import "UIPhotoEditViewController.h"
 
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 #import <Parse/Parse.h>
 
 NSString * const kParseImagePickerDidFinishPickingNotification = @"kParseImagePickerDidFinishPickingNotification";
@@ -172,7 +172,8 @@ NSString * const kParseImagePickerDidCancelPickingNotification = @"kParseImagePi
     //cell.detailTextLabel.text = photo[@"description"];
 
     [cell.imageView setImageWithURL:[NSURL URLWithString:urlString]
-                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]
+                usingActivityIndicatorStyle:(UIActivityIndicatorViewStyle)UIActivityIndicatorViewStyleGray];
 
     return cell;
 }

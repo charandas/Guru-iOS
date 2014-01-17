@@ -57,12 +57,25 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Ias-Ei-ce6">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="mfd-Pg-YIO" imageView="6xc-U8-yBX" style="IBUITableViewCellStyleDefault" id="Ias-Ei-ce6">
                                         <rect key="frame" x="0.0" y="152" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ias-Ei-ce6" id="t2X-81-UHF">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Meditate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mfd-Pg-YIO">
+                                                    <rect key="frame" x="73" y="0.0" width="232" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="GuruIcon152x152.png" id="6xc-U8-yBX">
+                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -82,12 +95,12 @@
                     <toolbarItems/>
                     <connections>
                         <segue destination="X79-lU-xow" kind="relationship" relationship="masterViewController" id="vht-eP-IAG"/>
-                        <segue destination="8es-l0-gaI" kind="relationship" relationship="detailViewController" id="OSu-oC-9cQ"/>
+                        <segue destination="TJx-od-9Xw" kind="relationship" relationship="detailViewController" id="wdZ-sD-JQl"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hHA-Uc-uxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-724" y="-438"/>
+            <point key="canvasLocation" x="-366" y="-416"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WCV-f6-LP9">
@@ -105,7 +118,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lg-ij-W1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="875" y="101"/>
+            <point key="canvasLocation" x="681" y="101"/>
         </scene>
         <!--Bardo Photo Picker View Controller-->
         <scene sceneID="ydX-ag-Ih3">
@@ -164,6 +177,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GS1-Ch-4Ia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="979" y="-1025"/>
+        </scene>
+        <!--Meditate View Controller-->
+        <scene sceneID="lK9-q5-uB9">
+            <objects>
+                <viewController id="hVp-XA-5Sd" customClass="MeditateViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xl2-eP-xFb"/>
+                        <viewControllerLayoutGuide type="bottom" id="vN2-zg-ARM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qzx-Qd-iFf">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3XH-e8-9uC">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3XH-e8-9uC" firstAttribute="top" secondItem="Qzx-Qd-iFf" secondAttribute="top" id="92N-eQ-AOc"/>
+                            <constraint firstAttribute="trailing" secondItem="3XH-e8-9uC" secondAttribute="trailing" id="Io9-re-ueX"/>
+                            <constraint firstItem="3XH-e8-9uC" firstAttribute="leading" secondItem="Qzx-Qd-iFf" secondAttribute="leading" id="P78-oL-Gmk"/>
+                            <constraint firstAttribute="bottom" secondItem="3XH-e8-9uC" secondAttribute="bottom" id="pQU-L6-sU6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="NmC-jc-GAY"/>
+                    <connections>
+                        <outlet property="imageView" destination="3XH-e8-9uC" id="G1h-5x-WQh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uvu-JU-JxL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1849" y="1272"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Kdw-OQ-Qe6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TJx-od-9Xw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yct-zF-tUu">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hVp-XA-5Sd" kind="relationship" relationship="rootViewController" id="BKH-Jn-0Oe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C15-qn-du6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="875" y="1272"/>
         </scene>
     </scenes>
     <resources>
