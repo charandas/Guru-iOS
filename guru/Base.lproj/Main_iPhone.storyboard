@@ -224,10 +224,10 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUt-rr-5Ls">
-                                <rect key="frame" x="137" y="478" width="47" height="21"/>
+                                <rect key="frame" x="137" y="527" width="47" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -238,7 +238,7 @@
                             <constraint firstAttribute="bottom" secondItem="Sgz-Gq-UZL" secondAttribute="bottom" id="WDy-sc-qnU"/>
                             <constraint firstAttribute="trailing" secondItem="Sgz-Gq-UZL" secondAttribute="trailing" id="chu-xb-j5G"/>
                             <constraint firstItem="Sgz-Gq-UZL" firstAttribute="leading" secondItem="M30-ar-DfS" secondAttribute="leading" id="jIQ-OH-RUH"/>
-                            <constraint firstItem="i7a-U8-Fce" firstAttribute="top" secondItem="qUt-rr-5Ls" secondAttribute="bottom" constant="69" id="xb0-c0-I2i"/>
+                            <constraint firstItem="i7a-U8-Fce" firstAttribute="top" secondItem="qUt-rr-5Ls" secondAttribute="bottom" constant="20" id="xb0-c0-I2i"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FCx-0m-ai8"/>

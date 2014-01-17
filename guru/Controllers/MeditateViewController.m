@@ -14,6 +14,8 @@
 @interface MeditateViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) UIColor *backgroundColor;
+
 - (void)setImageForOrientation:(UIInterfaceOrientation)orientation;
 + (NSArray *)imageKeys;
 + (NSArray *)quotes;
@@ -35,6 +37,8 @@
         self.edgesForExtendedLayout = UIRectEdgeNone; //layout adjustements
     }
     
+    self.backgroundColor = [UIColor blackColor];
+    
     NSArray *quotes = [MeditateViewController quotes];
     int numberOfQuotes = [quotes count];
     
@@ -42,6 +46,10 @@
         int quoteCounter = [MeditateViewController quoteCounterForCount:numberOfQuotes];
         self.quote.text = quotes[quoteCounter][@"text"];
     }
+}
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    [self.imageView setBackgroundColor:backgroundColor];
 }
 
 + (int)quoteCounterForCount:(int)count {
@@ -94,10 +102,10 @@
     
     if (orientation == UIInterfaceOrientationLandscapeLeft ||
         orientation == UIInterfaceOrientationLandscapeRight) {
-        _imageView.image = [ImageUtils imageWithLeftImage:firstImage rightImage:secondImage];
+        _imageView.image = [ImageUtils imageWithLeftImage:firstImage rightImage:secondImage inContainer:[[UIScreen mainScreen] bounds]];
     } else if (orientation == UIInterfaceOrientationPortrait ||
                orientation == UIInterfaceOrientationPortraitUpsideDown) {
-        _imageView.image = [ImageUtils imageWithTopImage:firstImage bottomImage:secondImage];
+        _imageView.image = [ImageUtils imageWithTopImage:firstImage bottomImage:secondImage inContainer:[[UIScreen mainScreen] bounds]];
     }
 }
 

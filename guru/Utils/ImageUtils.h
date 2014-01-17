@@ -10,8 +10,8 @@
 
 @interface ImageUtils : NSObject
 
-+ (UIImage *)imageWithTopImage:(UIImage *)topImage bottomImage:(UIImage *)bottomImage;
-+ (UIImage *)imageWithLeftImage:(UIImage *)leftImage rightImage:(UIImage *)rightImage;
++ (UIImage *)imageWithTopImage:(UIImage *)topImage bottomImage:(UIImage *)bottomImage inContainer:(CGRect)container;
++ (UIImage *)imageWithLeftImage:(UIImage *)leftImage rightImage:(UIImage *)rightImage inContainer:(CGRect)container;
 + (UIImage *)savedImageWithTitle:(NSString *)title;
 + (void)setSavedImage:(UIImage *)image withTitle:(NSString *)title;
 
