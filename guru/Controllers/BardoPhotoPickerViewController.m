@@ -29,6 +29,11 @@
 
 @synthesize popoverController, customFeaturesMasked;
 
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
