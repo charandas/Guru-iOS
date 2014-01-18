@@ -24,7 +24,7 @@
     int topOffset = (container.size.height - (topImageRect.height + bottomImageRect.height)) / 2;
     
     CGPoint topImagePosition = CGPointMake((container.size.width - topImageRect.width)/2, topOffset);
-    CGPoint bottomImagePosition = CGPointMake((container.size.width - bottomImageRect.width)/2, topOffset + topImageRect.width);
+    CGPoint bottomImagePosition = CGPointMake((container.size.width - bottomImageRect.width)/2, topOffset + topImageRect.height);
     
     UIGraphicsBeginImageContext(container.size);
     [topImage drawInRect:CGRectMake(topImagePosition.x, topImagePosition.y, topImageRect.width, topImageRect.height)];
