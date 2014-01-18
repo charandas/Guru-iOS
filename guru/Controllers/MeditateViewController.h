@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MeditateViewController : UIViewController
+#import "DetailViewController.h"
+
+@interface MeditateViewController : DetailViewController
 
 @end

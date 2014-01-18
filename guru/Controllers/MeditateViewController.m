@@ -8,8 +8,7 @@
 
 #import "MeditateViewController.h"
 #import "ImageUtils.h"
-
-#import <Parse/Parse.h>
+#import "QuoteUtils.h"
 
 @interface MeditateViewController ()
 
@@ -18,8 +17,8 @@
 
 - (void)setImageForOrientation:(UIInterfaceOrientation)orientation;
 + (NSArray *)imageKeys;
-+ (NSArray *)quotes;
-+ (int)quoteCounterForCount:(int)count;
+
++ (int)quoteCounterForCount:(NSUInteger)count;
 
 @property (weak, nonatomic) IBOutlet UILabel *quote;
 
@@ -39,8 +38,8 @@
     
     self.backgroundColor = [UIColor blackColor];
     
-    NSArray *quotes = [MeditateViewController quotes];
-    int numberOfQuotes = [quotes count];
+    NSArray *quotes = [QuoteUtils quotes];
+    NSUInteger numberOfQuotes = [quotes count];
     
     if (numberOfQuotes) {
         int quoteCounter = [MeditateViewController quoteCounterForCount:numberOfQuotes];
@@ -52,7 +51,7 @@
     [self.imageView setBackgroundColor:backgroundColor];
 }
 
-+ (int)quoteCounterForCount:(int)count {
++ (int)quoteCounterForCount:(NSUInteger)count {
     static int counter = 0;
     int result = counter;
     
@@ -62,27 +61,6 @@
     }
     
     return result;
-}
-
-+ (NSArray *)quotes {
-    static NSArray* inst = nil;
-    static dispatch_once_t onceToken;
-
-    dispatch_once(&onceToken, ^{
-        PFQuery *query = [PFQuery queryWithClassName:@"Quote"];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    inst = objects;
-                });
-            }
-            else {
-                NSLog(@"WARN: error loading photo metadata from parse");
-            }
-        }];
-    });
-    
-    return inst;
 }
 
 + (NSArray *)imageKeys {

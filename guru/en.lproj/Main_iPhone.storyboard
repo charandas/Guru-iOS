@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="oH6-0Q-fHK">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Home Screen Table View Controller - Home-->
+        <scene sceneID="q5b-t2-fDg">
+            <objects>
+                <tableViewController id="e8q-Dq-gN4" customClass="HomeScreenTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mds-4g-UXJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="kP2-7L-gAy">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="yourselfCell" textLabel="LLN-2e-pZD" imageView="o50-JQ-VGM" style="IBUITableViewCellStyleDefault" id="7TV-J7-Nho">
+                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7TV-J7-Nho" id="2Iz-ny-9s2">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Yourself" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LLN-2e-pZD">
+                                                    <rect key="frame" x="73" y="0.0" width="212" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="GuruIcon120x120.png" id="o50-JQ-VGM">
+                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="fEt-1N-aJL" kind="push" id="SbV-1G-MX6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="guruCell" textLabel="8OL-9E-cdM" imageView="zwS-pR-RIU" style="IBUITableViewCellStyleDefault" id="x7p-10-3aN">
+                                        <rect key="frame" x="0.0" y="108" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x7p-10-3aN" id="iLw-cu-H9D">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Guru" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8OL-9E-cdM">
+                                                    <rect key="frame" x="73" y="0.0" width="212" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="GuruIcon120x120.png" id="zwS-pR-RIU">
+                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="fEt-1N-aJL" kind="push" id="9uo-En-uOf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="meditateCell" textLabel="Yz6-aN-2vF" imageView="KUQ-cA-KGV" style="IBUITableViewCellStyleDefault" id="DmK-Yz-HGI">
+                                        <rect key="frame" x="0.0" y="152" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DmK-Yz-HGI" id="hhX-TE-ga7">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Meditate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yz6-aN-2vF">
+                                                    <rect key="frame" x="73" y="0.0" width="212" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="GuruIcon120x120.png" id="KUQ-cA-KGV">
+                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="fMF-MJ-b2W" kind="push" id="yoY-vy-XzF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Home" id="aJ6-ca-p7C"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fnL-SG-MFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1336" y="-50"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OF6-cw-CQW">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="oH6-0Q-fHK" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="grN-k7-UBH">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="e8q-Dq-gN4" kind="relationship" relationship="rootViewController" id="eej-Qg-5r1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="19q-vM-WAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="802" y="-50"/>
+        </scene>
+        <!--Bardo Photo Picker View Controller-->
+        <scene sceneID="pQE-Sj-5Sq">
+            <objects>
+                <viewController id="fEt-1N-aJL" customClass="BardoPhotoPickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yee-0U-Av9"/>
+                        <viewControllerLayoutGuide type="bottom" id="aSM-cc-nD3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iii-Cp-diT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bnc-Gv-T0d">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bnc-Gv-T0d" firstAttribute="top" secondItem="Yee-0U-Av9" secondAttribute="bottom" id="YHv-Va-euf"/>
+                            <constraint firstItem="Bnc-Gv-T0d" firstAttribute="leading" secondItem="iii-Cp-diT" secondAttribute="leading" id="hUv-FF-4Co"/>
+                            <constraint firstAttribute="bottom" secondItem="Bnc-Gv-T0d" secondAttribute="bottom" id="qJN-7T-RtR"/>
+                            <constraint firstAttribute="trailing" secondItem="Bnc-Gv-T0d" secondAttribute="trailing" id="vH0-Iu-eKg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="e3E-Y6-rdi">
+                        <barButtonItem key="rightBarButtonItem" title="Select" id="lUs-5y-N9N">
+                            <connections>
+                                <action selector="initiatePopover:" destination="fEt-1N-aJL" id="49b-pI-AIW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="Bnc-Gv-T0d" id="B3K-gE-ahs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xo0-OS-bgp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1805" y="-50"/>
+        </scene>
+        <!--Parse Image Picker Controller - Guru Gallery-->
+        <scene sceneID="EbE-mW-qPm">
+            <objects>
+                <tableViewController id="dv8-BX-65G" customClass="ParseImagePickerController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dyN-Gd-vVZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for your Guru" id="gey-Qq-w7K">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="dv8-BX-65G" id="8vZ-0f-MIg"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GuruPhotoCell" id="Q9G-st-BCH" customClass="ParseImagePickerTableViewCell">
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q9G-st-BCH" id="E5K-s8-EOV">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dv8-BX-65G" id="2vk-lR-XAs"/>
+                            <outlet property="delegate" destination="dv8-BX-65G" id="C3L-uy-f73"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Guru Gallery" id="oGQ-sf-chw">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Myg-7G-zXE">
+                            <connections>
+                                <action selector="dismissSelf:" destination="dv8-BX-65G" id="yv6-UZ-LHd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="08d-fl-0eR" id="Kxz-i5-PVD"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r5b-MI-Ivy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="08d-fl-0eR">
+                    <connections>
+                        <outlet property="delegate" destination="dv8-BX-65G" id="Df8-pU-n7F"/>
+                        <outlet property="searchBar" destination="gey-Qq-w7K" id="fhn-yD-9FM"/>
+                        <outlet property="searchContentsController" destination="dv8-BX-65G" id="FmG-UK-oZN"/>
+                        <outlet property="searchResultsDataSource" destination="dv8-BX-65G" id="4oj-Up-Bca"/>
+                        <outlet property="searchResultsDelegate" destination="dv8-BX-65G" id="CP1-VP-Pkj"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1215" y="679"/>
+        </scene>
+        <!--Meditate View Controller-->
+        <scene sceneID="lzV-Rd-ICb">
+            <objects>
+                <viewController id="fMF-MJ-b2W" customClass="MeditateViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hcq-VY-86S"/>
+                        <viewControllerLayoutGuide type="bottom" id="i7a-U8-Fce"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M30-ar-DfS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sgz-Gq-UZL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUt-rr-5Ls">
+                                <rect key="frame" x="137" y="527" width="47" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Sgz-Gq-UZL" firstAttribute="top" secondItem="M30-ar-DfS" secondAttribute="top" id="Ah7-Bc-sAs"/>
+                            <constraint firstItem="qUt-rr-5Ls" firstAttribute="centerX" secondItem="Sgz-Gq-UZL" secondAttribute="centerX" id="LdE-dz-vOm"/>
+                            <constraint firstAttribute="bottom" secondItem="Sgz-Gq-UZL" secondAttribute="bottom" id="WDy-sc-qnU"/>
+                            <constraint firstAttribute="trailing" secondItem="Sgz-Gq-UZL" secondAttribute="trailing" id="chu-xb-j5G"/>
+                            <constraint firstItem="Sgz-Gq-UZL" firstAttribute="leading" secondItem="M30-ar-DfS" secondAttribute="leading" id="jIQ-OH-RUH"/>
+                            <constraint firstItem="i7a-U8-Fce" firstAttribute="top" secondItem="qUt-rr-5Ls" secondAttribute="bottom" constant="20" id="xb0-c0-I2i"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="FCx-0m-ai8"/>
+                    <connections>
+                        <outlet property="imageView" destination="Sgz-Gq-UZL" id="2bd-A2-O8Z"/>
+                        <outlet property="quote" destination="qUt-rr-5Ls" id="zE0-NT-irm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VNk-Ju-LgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1715" y="674"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ehE-bf-Y1L">
+            <objects>
+                <navigationController storyboardIdentifier="ParseImagePickerView" automaticallyAdjustsScrollViewInsets="NO" id="e8F-ex-E8s" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Irk-1v-H0o">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dv8-BX-65G" kind="relationship" relationship="rootViewController" id="T1a-qL-Eat"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ahz-ED-6bv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="689" y="679"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="GuruIcon120x120.png" width="120" height="120"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="SbV-1G-MX6"/>
+    </inferredMetricsTieBreakers>
+</document>

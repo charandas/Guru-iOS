@@ -1,0 +1,18 @@
+
+/* Class = "IBUIBarButtonItem"; title = "Select"; ObjectID = "4c1-D9-8AW"; */
+"4c1-D9-8AW.title" = "Select";
+
+/* Class = "IBUILabel"; text = "Guru"; ObjectID = "BVH-NV-VjW"; */
+"BVH-NV-VjW.text" = "Guru";
+
+/* Class = "IBUINavigationController"; title = "Customize"; ObjectID = "X79-lU-xow"; */
+"X79-lU-xow.title" = "Customize";
+
+/* Class = "IBUILabel"; text = "Yourself"; ObjectID = "czc-wh-Cx3"; */
+"czc-wh-Cx3.text" = "Yourself";
+
+/* Class = "IBUINavigationItem"; title = "Root View Controller"; ObjectID = "kzL-Kg-ngo"; */
+"kzL-Kg-ngo.title" = "Root View Controller";
+
+/* Class = "IBUILabel"; text = "Meditate"; ObjectID = "mfd-Pg-YIO"; */
+"mfd-Pg-YIO.text" = "Meditate";

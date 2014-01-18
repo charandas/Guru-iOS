@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BardoPhotoPickerViewController : UIViewController
+#import "DetailViewController.h"
+
+@interface BardoPhotoPickerViewController : DetailViewController
 
 @property (nonatomic) BOOL customFeaturesMasked;
 

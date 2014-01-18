@@ -16,7 +16,7 @@
 #import "GetChute.h"
 #import <PhotoPickerPlus/PhotoPickerViewController.h>
 
-@interface BardoPhotoPickerViewController () <UISplitViewControllerDelegate, PhotoPickerViewControllerDelegate, UINavigationControllerDelegate>
+@interface BardoPhotoPickerViewController () <PhotoPickerViewControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UIPopoverController *popoverController;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -146,33 +146,14 @@
     }
 }
 
-#pragma mark - UISplitViewController and UIPhotoPickerController setup
+#pragma mark - UIPhotoPickerController setup
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.splitViewController.delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPickPhoto:) name:kUIPhotoPickerDidFinishPickingNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPickPhotoURL:) name:kParseImagePickerDidFinishPickingNotification object:nil];
-}
-
-
-#pragma mark - UISplitViewController Delegate methods only
-- (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
-{
-    return UIInterfaceOrientationIsPortrait(orientation);
-}
-
-- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc
-{
-    barButtonItem.title = aViewController.title;
-    self.navigationItem.leftBarButtonItem = barButtonItem;
-}
-
-- (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    self.navigationItem.leftBarButtonItem = nil;
 }
 
 #pragma PhotoPickerPlus Delegate methods

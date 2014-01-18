@@ -8,13 +8,14 @@
 
 #import "HomeScreenTableViewController.h"
 #import "BardoPhotoPickerViewController.h"
+#import "QuoteUtils.h"
 
 #include <objc/runtime.h>
 
 #define CELL_YOURSELF 0
 #define CELL_GURU 1
 
-@interface HomeScreenTableViewController () <UITableViewDelegate>
+@interface HomeScreenTableViewController () <UITableViewDelegate, UISplitViewControllerDelegate>
 
 - (void)rowSelectActionForIndexPath:(NSIndexPath*)indexPath
      WithViewController:(BardoPhotoPickerViewController**)viewController
@@ -24,9 +25,20 @@
 
 @implementation HomeScreenTableViewController
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    [self.splitViewController setDelegate:self];
+    
+    self.clearsSelectionOnViewWillAppear = NO;
+    //self.preferredContentSize = CGSizeMake(320.0, 600.0);
+}
+
 - (void)viewDidLoad
 {
-    self.navigationItem.title = @"Customize";
+    self.navigationItem.title = NSLocalizedString(@"bardo.home_screen_title", "Title");
+    [QuoteUtils quotes];
 }
 
 +(NSDictionary*)viewControllerTitles {
@@ -36,11 +48,17 @@
         inst = @{
                  @"yourselfCell": @{
                          @"customFeaturesMasked": [NSNumber numberWithBool:NO],
-                         @"title": @"Yourself"
+                         @"title": @"Yourself",
+                         @"storyboardID": @"BardoPhotoPickerVC"
                          },
                  @"guruCell": @{
                          @"customFeaturesMasked": [NSNumber numberWithBool:YES],
-                         @"title": @"Guru"
+                         @"title": @"Guru",
+                         @"storyboardID": @"BardoPhotoPickerVC"
+                         },
+                 @"meditateCell": @{
+                         @"title": @"Meditate",
+                         @"storyboardID": @"MeditateVC"
                          }
                  };
     });
@@ -84,18 +102,58 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Only ipad can get the detail
-    id detail = self.splitViewController.viewControllers[1];
-    if ([detail isKindOfClass:[UINavigationController class]])
+    if (self.splitViewController)
     {
-        UINavigationController *nvc = (UINavigationController*)detail;
-        if ([nvc.topViewController isKindOfClass:[BardoPhotoPickerViewController class]])
+        UIStoryboard *storyboard = [self storyboard];
+        DetailViewController *newController;
+        
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        NSString *cellKey = cell.reuseIdentifier;
+        NSDictionary *cellDetails = [HomeScreenTableViewController viewControllerTitles][cellKey];
+        newController = [storyboard instantiateViewControllerWithIdentifier:cellDetails[@"storyboardID"]];
+        
+        // now set this to the navigation controller
+        UINavigationController *navController = [[[self splitViewController ] viewControllers ] lastObject ];
+        DetailViewController *oldController = [[navController viewControllers] firstObject];
+        
+        NSArray *newStack = [NSArray arrayWithObjects:newController, nil ];
+        [navController setViewControllers:newStack];
+        
+        UIBarButtonItem *splitViewButton = [[oldController navigationItem] leftBarButtonItem];
+        UIPopoverController *popoverController = [oldController masterPopoverController];
+        [newController setSplitViewButton:splitViewButton forPopoverController:popoverController];
+        
+        if ([newController isKindOfClass:[BardoPhotoPickerViewController class]])
         {
-            BardoPhotoPickerViewController* vc = (BardoPhotoPickerViewController*)nvc.topViewController;
+            BardoPhotoPickerViewController* vc = (BardoPhotoPickerViewController*)newController;
             [self rowSelectActionForIndexPath:indexPath WithViewController:&vc ForSplitView:YES];
             
         }
+        
+        // see if we should be hidden
+        if (!UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+            // we are in portrait mode so go away
+            [popoverController dismissPopoverAnimated:YES];
+            
+        }
     }
+}
+
+#pragma mark - Split View Delegate
+- (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
+{
+    UINavigationController *navController = [[[self splitViewController ] viewControllers ] lastObject ];
+    DetailViewController *vc = [[navController viewControllers] firstObject];
+    
+    [vc setSplitViewButton:barButtonItem forPopoverController:popoverController];
+}
+
+- (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    UINavigationController *navController = [[[self splitViewController ] viewControllers ] lastObject ];
+    DetailViewController *vc = [[navController viewControllers] firstObject];
+    
+    [vc setSplitViewButton:nil forPopoverController:nil];
 }
 
 #pragma mark - Navigation

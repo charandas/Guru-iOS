@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DetailViewController.h"
+
 extern NSString * const kParseImagePickerDidFinishPickingNotification;
 extern NSString * const kParseImagePickerDidCancelPickingNotification;
 
