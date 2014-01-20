@@ -56,8 +56,6 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = self.navigationTitle? self.navigationTitle: @"Photo Picker";
-    if (self.customMasked)
-        self.customMasked = @NO;
     
     [self setNavBarItems];
 
