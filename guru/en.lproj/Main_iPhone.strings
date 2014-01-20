@@ -1,0 +1,27 @@
+
+/* Class = "IBUILabel"; text = "Guru"; ObjectID = "8OL-9E-cdM"; */
+"8OL-9E-cdM.text" = "Guru";
+
+/* Class = "IBUILabel"; text = "Yourself"; ObjectID = "LLN-2e-pZD"; */
+"LLN-2e-pZD.text" = "Yourself";
+
+/* Class = "IBUIBarButtonItem"; title = "Back"; ObjectID = "Myg-7G-zXE"; */
+"Myg-7G-zXE.title" = "Back";
+
+/* Class = "IBUILabel"; text = "Meditate"; ObjectID = "Yz6-aN-2vF"; */
+"Yz6-aN-2vF.text" = "Meditate";
+
+/* Class = "IBUINavigationItem"; title = "Home"; ObjectID = "aJ6-ca-p7C"; */
+"aJ6-ca-p7C.title" = "Home";
+
+/* Class = "IBUISearchBar"; placeholder = "Search for your Guru"; ObjectID = "gey-Qq-w7K"; */
+"gey-Qq-w7K.placeholder" = "Search for your Guru";
+
+/* Class = "IBUIBarButtonItem"; title = "Select"; ObjectID = "lUs-5y-N9N"; */
+"lUs-5y-N9N.title" = "Select";
+
+/* Class = "IBUINavigationItem"; title = "Guru Gallery"; ObjectID = "oGQ-sf-chw"; */
+"oGQ-sf-chw.title" = "Guru Gallery";
+
+/* Class = "IBUILabel"; text = "Quote"; ObjectID = "qUt-rr-5Ls"; */
+"qUt-rr-5Ls.text" = "Quote";

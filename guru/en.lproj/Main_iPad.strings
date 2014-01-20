@@ -5,6 +5,9 @@
 /* Class = "IBUILabel"; text = "Guru"; ObjectID = "BVH-NV-VjW"; */
 "BVH-NV-VjW.text" = "Guru";
 
+/* Class = "IBUILabel"; text = "Quote"; ObjectID = "WCh-F7-eYK"; */
+"WCh-F7-eYK.text" = "Quote";
+
 /* Class = "IBUINavigationController"; title = "Customize"; ObjectID = "X79-lU-xow"; */
 "X79-lU-xow.title" = "Customize";
 
