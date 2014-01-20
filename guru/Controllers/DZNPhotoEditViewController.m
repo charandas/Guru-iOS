@@ -1,38 +1,37 @@
 //
-//  UIPhotoEditViewController.m
-//  UIPhotoPickerController
-//  https://github.com/dzenbot/UIPhotoPickerController
+//  DZNPhotoEditViewController.m
+//  DZNPhotoPickerController
+//  https://github.com/dzenbot/DZNPhotoPickerController
 //
 //  Created by Ignacio Romero Zurbuchen on 10/5/13.
-//  Copyright (c) 2013 DZN Labs. All rights reserved.
+//  Copyright (c) 2014 DZN Labs. All rights reserved.
 //  Licence: MIT-Licence
 //
 
-#import "UIPhotoEditViewController.h"
-#import "UIPhotoDescription.h"
-
+#import "DZNPhotoEditViewController.h"
+#import "DZNPhotoDescription.h"
 #import "UIImageView+WebCache.h"
 
 #define kInnerEdgeInset 15.0
 
-NSString * const kUIPhotoPickerDidFinishPickingNotification = @"kUIPhotoPickerDidFinishPickingNotification";
-NSString * const UIPhotoPickerControllerAuthorCredits = @"UIPhotoPickerControllerAuthorCredits";
-NSString * const UIPhotoPickerControllerSourceName = @"UIPhotoPickerControllerAuthorCredits";
-
 static CGFloat _lastZoomScale;
 
-typedef NS_ENUM(NSInteger, UIPhotoAspect) {
-    UIPhotoAspectUnknown,
-    UIPhotoAspectSquare,
-    UIPhotoAspectVerticalRectangle,
-    UIPhotoAspectHorizontalRectangle
+NSString * const kDZNPhotoPickerDidFinishPickingNotification = @"kDZNPhotoPickerDidFinishPickingNotification";
+NSString * const DZNPhotoPickerControllerAuthorCredits = @"DZNPhotoPickerControllerAuthorCredits";
+NSString * const DZNPhotoPickerControllerSourceName = @"DZNPhotoPickerControllerAuthorCredits";
+
+typedef NS_ENUM(NSInteger, DZNPhotoAspect) {
+    DZNPhotoAspectUnknown,
+    DZNPhotoAspectSquare,
+    DZNPhotoAspectVerticalRectangle,
+    DZNPhotoAspectHorizontalRectangle
 };
 
 
-@interface UIPhotoEditViewController () <UIScrollViewDelegate>
+@interface DZNPhotoEditViewController () <UIScrollViewDelegate>
 
 /* The photo description data object. */
-@property (nonatomic, weak) UIPhotoDescription *photoDescription;
+@property (nonatomic, weak) DZNPhotoDescription *photoDescription;
 @property (nonatomic, strong) UIImage *editingImage;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -40,15 +39,14 @@ typedef NS_ENUM(NSInteger, UIPhotoAspect) {
 @property (nonatomic, strong) UIButton *cancelButton;
 @property (nonatomic, strong) UIButton *acceptButton;
 @property (nonatomic, strong) UIView *bottomView;
-
 @end
 
-@implementation UIPhotoEditViewController
+@implementation DZNPhotoEditViewController
 @synthesize photoDescription = _photoDescription;
 @synthesize cropMode = _cropMode;
 @synthesize cropSize = _cropSize;
 
-- (instancetype)initWithPhotoDescription:(UIPhotoDescription *)description cropMode:(UIPhotoEditViewControllerCropMode)mode;
+- (instancetype)initWithPhotoDescription:(DZNPhotoDescription *)description cropMode:(DZNPhotoEditViewControllerCropMode)mode;
 {
     self = [super init];
     if (self) {
@@ -58,7 +56,7 @@ typedef NS_ENUM(NSInteger, UIPhotoAspect) {
     return self;
 }
 
-- (instancetype)initWithImage:(UIImage *)image cropMode:(UIPhotoEditViewControllerCropMode)mode
+- (instancetype)initWithImage:(UIImage *)image cropMode:(DZNPhotoEditViewControllerCropMode)mode
 {
     self = [super init];
     if (self) {
@@ -104,7 +102,7 @@ typedef NS_ENUM(NSInteger, UIPhotoAspect) {
         __weak UIButton *_button = _acceptButton;
         _button.enabled = NO;
         
-        __weak UIPhotoEditViewController *_self = self;
+        __weak DZNPhotoEditViewController *_self = self;
         
         UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         activityIndicatorView.center = CGPointMake(roundf(_bottomView.frame.size.width/2), roundf(_bottomView.frame.size.height/2));
@@ -192,8 +190,7 @@ typedef NS_ENUM(NSInteger, UIPhotoAspect) {
         rect.origin = CGPointMake(roundf(_bottomView.frame.size.width-_acceptButton.frame.size.width-13.0), roundf(_bottomView.frame.size.height/2-_acceptButton.frame.size.height/2));
         [_acceptButton setFrame:rect];
         
-        
-        if (_cropMode == UIPhotoEditViewControllerCropModeCircular) {
+        if (_cropMode == DZNPhotoEditViewControllerCropModeCircular) {
             
             UILabel *topLabel = [[UILabel alloc] initWithFrame:CGRectZero];
             topLabel.text = NSLocalizedString(@"Move and Scale", nil);
@@ -227,19 +224,8 @@ typedef NS_ENUM(NSInteger, UIPhotoAspect) {
     CGSize viewSize = self.view.bounds.size;
     
     switch (_cropMode) {
-        case UIPhotoEditViewControllerCropModeCustom:
-            if (CGSizeEqualToSize(_cropSize, CGSizeZero) ) {
-                return CGSizeMake(viewSize.width, viewSize.width);
-            }
-            else {
-                if (viewSize.height > 0 && _cropSize.height > viewSize.height) {
-                    _cropSize.height = viewSize.height;
-                }
-                return _cropSize;
-            }
-            
-        case UIPhotoEditViewControllerCropModeSquare:
-        case UIPhotoEditViewControllerCropModeCircular:
+        case DZNPhotoEditViewControllerCropModeSquare:
+        case DZNPhotoEditViewControllerCropModeCircular:
         default:
             return CGSizeMake(viewSize.width, viewSize.width);
     }
@@ -253,12 +239,6 @@ typedef NS_ENUM(NSInteger, UIPhotoAspect) {
     return CGRectMake(0.0, verticalMargin, cropSize.width, cropSize.height);
 }
 
-- (CGFloat)circularDiameter
-{
-    CGSize viewSize = self.navigationController.view.bounds.size;
-    return viewSize.width-(kInnerEdgeInset*2);
-}
-
 - (CGSize)imageSize
 {
     return CGSizeAspectFit(_imageView.image.size,_imageView.frame.size);
@@ -266,9 +246,6 @@ typedef NS_ENUM(NSInteger, UIPhotoAspect) {
 
 CGSize CGSizeAspectFit(CGSize aspectRatio, CGSize boundingSize)
 {
-    NSLog(@"aspectRatio : %@", NSStringFromCGSize(aspectRatio));
-    NSLog(@"boundingSize : %@", NSStringFromCGSize(boundingSize));
-    
     float hRatio = boundingSize.width / aspectRatio.width;
     float vRation = boundingSize.height / aspectRatio.height;
     if (hRatio < vRation) {
@@ -280,42 +257,37 @@ CGSize CGSizeAspectFit(CGSize aspectRatio, CGSize boundingSize)
     return boundingSize;
 }
 
-UIPhotoAspect photoAspectFromSize(CGSize aspectRatio)
+DZNPhotoAspect photoAspectFromSize(CGSize aspectRatio)
 {
     if (aspectRatio.width > aspectRatio.height) {
-        return UIPhotoAspectHorizontalRectangle;
+        return DZNPhotoAspectHorizontalRectangle;
     }
     else if (aspectRatio.width < aspectRatio.height) {
-        return UIPhotoAspectVerticalRectangle;
+        return DZNPhotoAspectVerticalRectangle;
     }
     else if (aspectRatio.width == aspectRatio.height) {
-        return UIPhotoAspectSquare;
+        return DZNPhotoAspectSquare;
     }
     else {
-        return UIPhotoAspectUnknown;
+        return DZNPhotoAspectUnknown;
     }
 }
 
 - (UIImage *)overlayMask
 {
     switch (_cropMode) {
-        case UIPhotoEditViewControllerCropModeSquare:
-        case UIPhotoEditViewControllerCropModeCustom:
+        case DZNPhotoEditViewControllerCropModeSquare:
             return [self squareOverlayMask];
-        case UIPhotoEditViewControllerCropModeCircular:
-        {
-            UIImage *circular = [self circularOverlayMask];
-            NSLog(@"circular.size : %@", NSStringFromCGSize(circular.size));
-            
-            return circular;
-        }
+        case DZNPhotoEditViewControllerCropModeCircular:
+            return [self circularOverlayMask];
         default:
             return nil;
     }
 }
 
 /*
- * Created with PaintCode.
+ * The square overlay mask image to be displayed on top of the photo as cropping guideline.
+ * Created with PaintCode. The source file is available inside of Resource folder.
  */
 - (UIImage *)squareOverlayMask
 {
@@ -332,28 +304,28 @@ UIPhotoAspect photoAspectFromSize(CGSize aspectRatio)
     UIGraphicsBeginImageContextWithOptions(size, NO, 0);
 
     // Create the bezier path & drawing
-    UIBezierPath *maskPath = [UIBezierPath bezierPath];
-    [maskPath moveToPoint:CGPointMake(width, margin)];
-    [maskPath addLineToPoint:CGPointMake(0, margin)];
-    [maskPath addLineToPoint:CGPointMake(0, 0)];
-    [maskPath addLineToPoint:CGPointMake(width, 0)];
-    [maskPath addLineToPoint:CGPointMake(width, margin)];
-    [maskPath closePath];
-    [maskPath moveToPoint:CGPointMake(width, height)];
-    [maskPath addLineToPoint:CGPointMake(0, height)];
-    [maskPath addLineToPoint:CGPointMake(0, [self cropSize].height+margin)];
-    [maskPath addLineToPoint:CGPointMake(width, [self cropSize].height+margin)];
-    [maskPath addLineToPoint:CGPointMake(width, height)];
-    [maskPath closePath];
+    UIBezierPath *clipPath = [UIBezierPath bezierPath];
+    [clipPath moveToPoint:CGPointMake(width, margin)];
+    [clipPath addLineToPoint:CGPointMake(0, margin)];
+    [clipPath addLineToPoint:CGPointMake(0, 0)];
+    [clipPath addLineToPoint:CGPointMake(width, 0)];
+    [clipPath addLineToPoint:CGPointMake(width, margin)];
+    [clipPath closePath];
+    [clipPath moveToPoint:CGPointMake(width, height)];
+    [clipPath addLineToPoint:CGPointMake(0, height)];
+    [clipPath addLineToPoint:CGPointMake(0, [self cropSize].height+margin)];
+    [clipPath addLineToPoint:CGPointMake(width, [self cropSize].height+margin)];
+    [clipPath addLineToPoint:CGPointMake(width, height)];
+    [clipPath closePath];
     [fillColor setFill];
-    [maskPath fill];
+    [clipPath fill];
     
     // Add the square crop
-    CGRect cropRect = CGRectMake(lineWidth/2, margin+lineWidth/2, width-lineWidth, [self cropSize].height-lineWidth);
-    UIBezierPath *cropPath = [UIBezierPath bezierPathWithRect:cropRect];
+    CGRect rect = CGRectMake(lineWidth/2, margin+lineWidth/2, width-lineWidth, [self cropSize].height-lineWidth);
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRect:rect];
     [strokeColor setStroke];
-    cropPath.lineWidth = lineWidth;
-    [cropPath stroke];
+    maskPath.lineWidth = lineWidth;
+    [maskPath stroke];
     
     //Create the image using the current context.
     UIImage *_maskedImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -363,8 +335,8 @@ UIPhotoAspect photoAspectFromSize(CGSize aspectRatio)
 }
 
 /*
- * Created with PaintCode.
- * Base PaintCode file available inside of Resource folder.
+ * The circular overlay mask image to be displayed on top of the photo as cropping guideline.
+ * Created with PaintCode. The source file is available inside of Resource folder.
  */
 - (UIImage *)circularOverlayMask
 {
@@ -381,15 +353,17 @@ UIPhotoAspect photoAspectFromSize(CGSize aspectRatio)
     // Create the image context
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
     
-    // Create the bezier path
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRect:rect];
+    // Create the bezier paths
+    UIBezierPath *clipPath = [UIBezierPath bezierPathWithRect:rect];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(center.x-radius, center.y-radius, diameter, diameter)];
     
-    // Add the circular crop
-    [maskPath addArcWithCenter:center radius:radius startAngle:0 endAngle:2*M_PI clockwise:NO];
-    [maskPath addClip];
+    [clipPath appendPath:maskPath];
+    clipPath.usesEvenOddFillRule = YES;
+    
+    [clipPath addClip];
     [fillColor setFill];
-    [maskPath fill];
-
+    [clipPath fill];
+    
     UIImage *_maskedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
 
@@ -397,17 +371,18 @@ UIPhotoAspect photoAspectFromSize(CGSize aspectRatio)
 }
 
 /*
- * The edited photo is generated by generating an image from the current image context definition.
+ * The final edited photo rendering.
  */
 - (UIImage *)editedPhoto
 {
     UIImage *_image = nil;
     
     // Constant sizes
-    CGSize viewSize = self.navigationController.view.bounds.size;
+    CGRect bounds = self.navigationController.view.bounds;
+    
     CGRect cropRect = [self cropRect];
 
-    CGFloat verticalMargin = (viewSize.height-cropRect.size.height)/2;
+    CGFloat verticalMargin = (bounds.size.height-cropRect.size.height)/2;
 
     cropRect.origin.x = -_scrollView.contentOffset.x;
     cropRect.origin.y = -_scrollView.contentOffset.y - verticalMargin;
@@ -422,23 +397,27 @@ UIPhotoAspect photoAspectFromSize(CGSize aspectRatio)
         UIGraphicsEndImageContext();
     }
     
-    
-    if (_cropMode == UIPhotoEditViewControllerCropModeCircular) {
+    if (_cropMode == DZNPhotoEditViewControllerCropModeCircular) {
         
-        CGFloat diameter = [self circularDiameter];
-        CGRect roundedRect = CGRectMake(0, 0, diameter, diameter);
+        CGFloat diameter = bounds.size.width-(kInnerEdgeInset*2);
+        CGRect circulatRect = CGRectMake(0, 0, diameter, diameter);
         
-        UIGraphicsBeginImageContextWithOptions(roundedRect.size, NO, 0.0);{
+        CGFloat increment = 1.0/(((kInnerEdgeInset*2)*100.0)/bounds.size.width);
+        CGFloat scale = 1.0 + round(increment * 10) / 10.0;
+        
+        UIGraphicsBeginImageContextWithOptions(circulatRect.size, NO, 0.0);{
             
-            UIBezierPath *bezierPath = [UIBezierPath bezierPathWithOvalInRect:roundedRect];
-            [bezierPath addClip];
-            
-            // Draw the image
-            [_image drawInRect:CGRectMake(0, -kInnerEdgeInset, 320, 320)];
+            UIBezierPath *maskPath = [UIBezierPath bezierPathWithOvalInRect:circulatRect];
+            [maskPath addClip];
             
             CGContextRef context = UIGraphicsGetCurrentContext();
+            CGContextTranslateCTM(context, -kInnerEdgeInset, -kInnerEdgeInset);
+            CGContextScaleCTM(context, scale, scale);
+
+            // Draw the image
+            [_image drawInRect:circulatRect];
             
-            CGPathRef path = [bezierPath CGPath];
+            CGPathRef path = [maskPath CGPath];
             CGContextAddPath(context, path);
             
             _image = UIGraphicsGetImageFromCurrentImageContext();
@@ -465,7 +444,7 @@ UIPhotoAspect photoAspectFromSize(CGSize aspectRatio)
 }
 
 
-#pragma mark - UIPhotoEditViewController methods
+#pragma mark - DZNPhotoEditViewController methods
 
 /*
  * It is important to update the scroll view content inset, specilally after zooming.
@@ -473,41 +452,11 @@ UIPhotoAspect photoAspectFromSize(CGSize aspectRatio)
  */
 - (void)updateScrollViewContentInset
 {
-    CGFloat maskHeight = 0;
-    
-    if (_cropMode == UIPhotoEditViewControllerCropModeCircular) maskHeight = [self circularDiameter];
-    else maskHeight = [self cropSize].height;
-    
+    CGFloat maskHeight = (_cropMode == DZNPhotoEditViewControllerCropModeCircular) ? [self cropSize].width-(kInnerEdgeInset*2) : [self cropSize].height;
     CGSize imageSize = [self imageSize];
     
-    CGFloat hInset = (_cropMode == UIPhotoEditViewControllerCropModeCircular) ? kInnerEdgeInset : 0.0;
+    CGFloat hInset = (_cropMode == DZNPhotoEditViewControllerCropModeCircular) ? kInnerEdgeInset : 0.0;
     CGFloat vInset = fabs((maskHeight-imageSize.height)/2);
-    
-    NSLog(@"hInset : %f", hInset);
-    NSLog(@"vInset : %f", vInset);
-
-//    if (UIEdgeInsetsEqualToEdgeInsets(_scrollView.contentInset, UIEdgeInsetsZero)) {
-//        vInset = fabs((maskHeight-imageSize.height)/2);
-//    }
-//    else {
-//        vInset = _scrollView.contentInset.top;
-//    }
-//    
-//    CGFloat zoomDelta = (_scrollView.zoomScale-_lastZoomScale)*10;
-//
-//    switch (photoAspectFromSize(imageSize)) {
-//        case UIPhotoAspectSquare:
-//            break;
-//            
-//        case UIPhotoAspectHorizontalRectangle:
-//            break;
-//            
-//        case UIPhotoAspectVerticalRectangle:
-//            break;
-//            
-//        default:
-//            break;
-//    }
     
     if (vInset == 0) vInset = 0.5;
     
@@ -521,7 +470,7 @@ UIPhotoAspect photoAspectFromSize(CGSize aspectRatio)
     
     if (editedPhoto && !CGRectEqualToRect(cropRect, CGRectZero)) {
         
-        [UIPhotoEditViewController didFinishPickingEditedImage:editedPhoto
+        [DZNPhotoEditViewController didFinishPickingEditedImage:editedPhoto
                                                   withCropRect:cropRect
                                              fromOriginalImage:_imageView.image
                                                   referenceURL:_photoDescription.fullURL
@@ -542,10 +491,6 @@ UIPhotoAspect photoAspectFromSize(CGSize aspectRatio)
                          authorName:(NSString *)authorName
                          sourceName:(NSString *)sourceName
 {
-    static NSString *UIPhotoPickerControllerAuthorCredits = @"UIPhotoPickerControllerAuthorCredits";
-    static NSString *UIPhotoPickerControllerSourceName = @"UIPhotoPickerControllerAuthorCredits";
-    static NSString *kUIPhotoPickerDidFinishPickingNotification = @"kUIPhotoPickerDidFinishPickingNotification";
-
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                      [NSValue valueWithCGRect:cropRect],UIImagePickerControllerCropRect,
                                      @"public.image",UIImagePickerControllerMediaType,
@@ -554,10 +499,10 @@ UIPhotoAspect photoAspectFromSize(CGSize aspectRatio)
     if (editedImage != nil) [userInfo setObject:editedImage forKey:UIImagePickerControllerEditedImage];
     if (originalImage != nil) [userInfo setObject:originalImage forKey:UIImagePickerControllerOriginalImage];
     if (referenceURL != nil) [userInfo setObject:referenceURL.absoluteString forKey:UIImagePickerControllerReferenceURL];
-    if (authorName != nil) [userInfo setObject:authorName forKey:UIPhotoPickerControllerAuthorCredits];
-    if (sourceName != nil) [userInfo setObject:sourceName forKey:UIPhotoPickerControllerSourceName];
+    if (authorName != nil) [userInfo setObject:authorName forKey:DZNPhotoPickerControllerAuthorCredits];
+    if (sourceName != nil) [userInfo setObject:sourceName forKey:DZNPhotoPickerControllerSourceName];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kUIPhotoPickerDidFinishPickingNotification object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDZNPhotoPickerDidFinishPickingNotification object:nil userInfo:userInfo];
 }
 
 

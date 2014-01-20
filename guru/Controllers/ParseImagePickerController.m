@@ -8,7 +8,7 @@
 
 #import "ParseImagePickerController.h"
 #import "ParseImagePickerTableViewCell.h"
-#import "UIPhotoEditViewController.h"
+#import "DZNPhotoEditViewController.h"
 
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 #import <Parse/Parse.h>
@@ -261,8 +261,8 @@ NSString * const kParseImagePickerDidCancelPickingNotification = @"kParseImagePi
                                      nil];
     
     if (imageURL != nil) [userInfo setObject:imageURL.absoluteString forKey:UIImagePickerControllerReferenceURL];
-    if (authorName != nil) [userInfo setObject:authorName forKey:UIPhotoPickerControllerAuthorCredits];
-    if (sourceName != nil) [userInfo setObject:sourceName forKey:UIPhotoPickerControllerSourceName];
+    if (authorName != nil) [userInfo setObject:authorName forKey:DZNPhotoPickerControllerAuthorCredits];
+    if (sourceName != nil) [userInfo setObject:sourceName forKey:DZNPhotoPickerControllerSourceName];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kParseImagePickerDidFinishPickingNotification object:nil userInfo:userInfo];
 }

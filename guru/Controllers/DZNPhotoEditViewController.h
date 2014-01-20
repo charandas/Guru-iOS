@@ -1,35 +1,34 @@
 //
-//  UIPhotoEditViewController.h
-//  UIPhotoPickerController
-//  https://github.com/dzenbot/UIPhotoPickerController
+//  DZNPhotoEditViewController.h
+//  DZNPhotoPickerController
+//  https://github.com/dzenbot/DZNPhotoPickerController
 //
 //  Created by Ignacio Romero Zurbuchen on 10/5/13.
-//  Copyright (c) 2013 DZN Labs. All rights reserved.
+//  Copyright (c) 2014 DZN Labs. All rights reserved.
 //  Licence: MIT-Licence
 //
 
 #import <UIKit/UIKit.h>
 
-extern NSString * const kUIPhotoPickerDidFinishPickingNotification;
-extern NSString * const UIPhotoPickerControllerAuthorCredits;
-extern NSString * const UIPhotoPickerControllerSourceName;
+@class DZNPhotoDescription;
 
-@class UIPhotoDescription;
+extern NSString * const kDZNPhotoPickerDidFinishPickingNotification;
+extern NSString * const DZNPhotoPickerControllerAuthorCredits;
+extern NSString * const DZNPhotoPickerControllerSourceName;
 
-typedef NS_ENUM(NSInteger, UIPhotoEditViewControllerCropMode) {
-    UIPhotoEditViewControllerCropNone = -1,
-    UIPhotoEditViewControllerCropModeSquare = 0,
-    UIPhotoEditViewControllerCropModeCircular,
-    UIPhotoEditViewControllerCropModeCustom
+typedef NS_ENUM(NSInteger, DZNPhotoEditViewControllerCropMode) {
+    DZNPhotoEditViewControllerCropModeNone = -1,
+    DZNPhotoEditViewControllerCropModeSquare = 0,
+    DZNPhotoEditViewControllerCropModeCircular
 };
 
 /*
  * The controller in charge of displaying the big resolution image with the different cropping modes.
  */
-@interface UIPhotoEditViewController : UIViewController
+@interface DZNPhotoEditViewController : UIViewController
 
 /* The crop mode currently being used. */
-@property (nonatomic, readonly) UIPhotoEditViewControllerCropMode cropMode;
+@property (nonatomic, readonly) DZNPhotoEditViewControllerCropMode cropMode;
 /* The crop size proportions. */
 @property (nonatomic) CGSize cropSize;
 
@@ -40,17 +39,17 @@ typedef NS_ENUM(NSInteger, UIPhotoEditViewControllerCropMode) {
  * @param mode The crop mode.
  * @return A new instance of the editor controller.
  */
-- (instancetype)initWithPhotoDescription:(UIPhotoDescription *)description cropMode:(UIPhotoEditViewControllerCropMode)mode;
+- (instancetype)initWithPhotoDescription:(DZNPhotoDescription *)description cropMode:(DZNPhotoEditViewControllerCropMode)mode;
 
 /*
  * Initializes a photo editor initialized with the specified image and cropping mode (square, circular or custom).
- * Use this initializer to push a UIPhotoEditViewController after picking an image with UIImagePickerController, and use a custom crop mode. This will give users the ability to crop an avatar image, with a circular crop like the Contacts app.
+ * Use this initializer to push a DZNPhotoEditViewController after picking an image with UIImagePickerController, and use a custom crop mode. This will give users the ability to crop an avatar image, with a circular crop like the Contacts app.
  *
  * @param image The image to display in the photo editor.
  * @param mode The crop mode.
  * @return A new instance of the editor controller.
  */
-- (instancetype)initWithImage:(UIImage *)image cropMode:(UIPhotoEditViewControllerCropMode)mode;
+- (instancetype)initWithImage:(UIImage *)image cropMode:(DZNPhotoEditViewControllerCropMode)mode;
 
 /*
  * Proxy class method to be called whenever the user picks a photo, with or without editing the image.
@@ -60,7 +59,7 @@ typedef NS_ENUM(NSInteger, UIPhotoEditViewControllerCropMode) {
  * @param originalImage The original image before edition.
  * @param referenceURL The source url of the original image.
  * @param authorName The name of the author of the photo.
- * @param sourceName The name of the servicer provider where the photo was fetched.
+ * @param sourceName The name of the photo service from where the photo was fetched.
  */
 + (void)didFinishPickingEditedImage:(UIImage *)editedImage
                        withCropRect:(CGRect)cropRect

@@ -7,7 +7,7 @@
 //
 
 #import "BardoPhotoPickerViewController.h"
-#import "UIPhotoEditViewController.h"
+#import "DZNPhotoEditViewController.h"
 #import "ParseImagePickerController.h"
 #import "ImageUtils.h"
 
@@ -79,7 +79,7 @@
 #pragma mark - IBActions
 
 - (IBAction)launchEdit:(id)sender {
-    UIPhotoEditViewController *photoEditViewController = [[UIPhotoEditViewController alloc] initWithImage:self.image cropMode:UIPhotoEditViewControllerCropModeCircular];
+    DZNPhotoEditViewController *photoEditViewController = [[DZNPhotoEditViewController alloc] initWithImage:self.image cropMode:DZNPhotoEditViewControllerCropModeCircular];
     [self.navigationController pushViewController:photoEditViewController animated:YES];
 }
 
@@ -108,7 +108,7 @@
 
 }
 
-#pragma mark - UIPhotoPickerController methods
+#pragma mark - DZNPhotoPickerController methods
 - (void)didPickPhoto:(NSNotification *)notification
 {
     UIImage *image = [notification.userInfo objectForKey:UIImagePickerControllerEditedImage];
@@ -146,13 +146,13 @@
     }
 }
 
-#pragma mark - UIPhotoPickerController setup
+#pragma mark - DZNPhotoPickerController setup
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPickPhoto:) name:kUIPhotoPickerDidFinishPickingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPickPhoto:) name:kDZNPhotoPickerDidFinishPickingNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPickPhotoURL:) name:kParseImagePickerDidFinishPickingNotification object:nil];
 }
 
