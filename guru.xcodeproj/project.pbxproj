@@ -11,7 +11,6 @@
 		380A1934188592640030972D /* HomeScreenTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A192C188592640030972D /* HomeScreenTableViewController.m */; };
 		380A1935188592640030972D /* ParseImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A192E188592640030972D /* ParseImagePickerController.m */; };
 		380A193D188592C30030972D /* BardoPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A193C188592C30030972D /* BardoPhotoPickerViewController.m */; };
-		38289D6F187C337E003AE748 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38289D6E187C337E003AE748 /* Parse.framework */; };
 		38289D73187C488B003AE748 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38289D72187C488B003AE748 /* AudioToolbox.framework */; };
 		38289D75187C4898003AE748 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38289D74187C4898003AE748 /* CFNetwork.framework */; };
 		38289D77187C48A5003AE748 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38289D76187C48A5003AE748 /* CoreLocation.framework */; };
@@ -54,6 +53,7 @@
 		38D81D6D188195F800336655 /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D81D6B188195F800336655 /* placeholder@2x.png */; };
 		38D81D7118819A8F00336655 /* ParseImagePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D81D7018819A8F00336655 /* ParseImagePickerTableViewCell.m */; };
 		38F8F78518808E5C0031B4DC /* PhotoPickerPlus.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38F8F78318808E5C0031B4DC /* PhotoPickerPlus.strings */; };
+		38FBD559189E8F9900178BB0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38FBD558189E8F9900178BB0 /* Parse.framework */; };
 		3D4EA4BF3C92428E8C2F072D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5B7AC5FEFE4897B379D4E5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +76,6 @@
 		380A192E188592640030972D /* ParseImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseImagePickerController.m; sourceTree = "<group>"; };
 		380A193B188592C30030972D /* BardoPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BardoPhotoPickerViewController.h; sourceTree = "<group>"; };
 		380A193C188592C30030972D /* BardoPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BardoPhotoPickerViewController.m; sourceTree = "<group>"; };
-		38289D6E187C337E003AE748 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../../../ios/facebook_parse/guru/Parse.framework; sourceTree = "<group>"; };
 		38289D72187C488B003AE748 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		38289D74187C4898003AE748 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		38289D76187C48A5003AE748 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -133,6 +132,7 @@
 		38D81D6F18819A8F00336655 /* ParseImagePickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseImagePickerTableViewCell.h; sourceTree = "<group>"; };
 		38D81D7018819A8F00336655 /* ParseImagePickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseImagePickerTableViewCell.m; sourceTree = "<group>"; };
 		38F8F78418808E5C0031B4DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Pods/PhotoPickerPlus/PhotoPickerPlus/Resources/Localizations/en.lproj/PhotoPickerPlus.strings; sourceTree = "<group>"; };
+		38FBD558189E8F9900178BB0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		866BBDA7B3824B44A28810E4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		CB5B7AC5FEFE4897B379D4E5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -146,6 +146,7 @@
 				38289D81187C48D2003AE748 /* StoreKit.framework in Frameworks */,
 				38289D7F187C48C7003AE748 /* Security.framework in Frameworks */,
 				38289D7D187C48C0003AE748 /* QuartzCore.framework in Frameworks */,
+				38FBD559189E8F9900178BB0 /* Parse.framework in Frameworks */,
 				38289D7B187C48B8003AE748 /* MobileCoreServices.framework in Frameworks */,
 				38289D79187C48B0003AE748 /* libz.1.1.3.dylib in Frameworks */,
 				38289D77187C48A5003AE748 /* CoreLocation.framework in Frameworks */,
@@ -155,7 +156,6 @@
 				3883299B187995D4004836A2 /* UIKit.framework in Frameworks */,
 				38BC862C187C627B000B70B2 /* FacebookSDK.framework in Frameworks */,
 				38832997187995D4004836A2 /* Foundation.framework in Frameworks */,
-				38289D6F187C337E003AE748 /* Parse.framework in Frameworks */,
 				3D4EA4BF3C92428E8C2F072D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +240,7 @@
 		38832995187995D4004836A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38FBD558189E8F9900178BB0 /* Parse.framework */,
 				38BC862B187C627A000B70B2 /* FacebookSDK.framework */,
 				38289D82187C48DD003AE748 /* SystemConfiguration.framework */,
 				38289D80187C48D2003AE748 /* StoreKit.framework */,
@@ -250,7 +251,6 @@
 				38289D76187C48A5003AE748 /* CoreLocation.framework */,
 				38289D74187C4898003AE748 /* CFNetwork.framework */,
 				38289D72187C488B003AE748 /* AudioToolbox.framework */,
-				38289D6E187C337E003AE748 /* Parse.framework */,
 				38832996187995D4004836A2 /* Foundation.framework */,
 				38832998187995D4004836A2 /* CoreGraphics.framework */,
 				3883299A187995D4004836A2 /* UIKit.framework */,

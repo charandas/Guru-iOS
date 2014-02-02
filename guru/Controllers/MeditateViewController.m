@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) UIColor *backgroundColor;
 
-- (void)setImageForOrientation:(UIInterfaceOrientation)orientation;
+- (void)setImage;
 + (NSArray *)imageKeys;
 
 + (int)quoteCounterForCount:(NSUInteger)count;
@@ -30,8 +30,8 @@
 
 - (void)viewDidLoad {
     //[self.navigationController setNavigationBarHidden:YES];
-    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    [self setImageForOrientation:orientation];
+    //UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    //[self setImageForOrientation:orientation];
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) { // if iOS 7
         self.edgesForExtendedLayout = UIRectEdgeNone; //layout adjustements
     }
@@ -45,6 +45,10 @@
         int quoteCounter = [MeditateViewController quoteCounterForCount:numberOfQuotes];
         self.quote.text = quotes[quoteCounter][@"text"];
     }
+}
+
+- (void) viewDidLayoutSubviews {
+    [self setImage];
 }
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
@@ -73,22 +77,20 @@
 
 }
 
-- (void)setImageForOrientation:(UIInterfaceOrientation)orientation {
+- (void)setImage {
     NSArray *keys = [MeditateViewController imageKeys];
     UIImage *firstImage = [ImageUtils savedImageWithTitle:keys[0]];
     UIImage *secondImage = [ImageUtils savedImageWithTitle:keys[1]];
+    CGRect bounds = self.view.bounds;
     
-    if (orientation == UIInterfaceOrientationLandscapeLeft ||
-        orientation == UIInterfaceOrientationLandscapeRight) {
-        _imageView.image = [ImageUtils imageWithLeftImage:firstImage rightImage:secondImage inContainer:[[UIScreen mainScreen] bounds]];
-    } else if (orientation == UIInterfaceOrientationPortrait ||
-               orientation == UIInterfaceOrientationPortraitUpsideDown) {
-        _imageView.image = [ImageUtils imageWithTopImage:firstImage bottomImage:secondImage inContainer:[[UIScreen mainScreen] bounds]];
+    int widthDifference = abs(firstImage.size.width + secondImage.size.width - bounds.size.width);
+    int heightDifference = abs(firstImage.size.height + secondImage.size.height - bounds.size.height);
+    
+    if (widthDifference < heightDifference) {
+        _imageView.image = [ImageUtils imageWithLeftImage:firstImage rightImage:secondImage inContainer:bounds];
+    } else {
+        _imageView.image = [ImageUtils imageWithTopImage:firstImage bottomImage:secondImage inContainer:bounds];
     }
-}
-
--(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
-    [self setImageForOrientation:orientation];
 }
 
 @end

@@ -39,9 +39,6 @@
     CGRect photoBound = container;
     photoBound.size.width = photoBound.size.width / 2;
     
-    // Calculate container bound in landscape
-    container = CGRectMake(0, 0, container.size.height, container.size.width);
-    
     CGSize leftImageRect = MEDSizeScaleAspectFit(leftImage.size, photoBound.size);
     CGSize rightImageRect = MEDSizeScaleAspectFit(rightImage.size, photoBound.size);
     int leftOffset = (container.size.width - (leftImageRect.width + rightImageRect.width)) / 2;
