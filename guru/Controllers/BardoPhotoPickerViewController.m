@@ -16,7 +16,8 @@
 #import "GetChute.h"
 #import <PhotoPickerPlus/PhotoPickerViewController.h>
 
-@interface BardoPhotoPickerViewController () <PhotoPickerViewControllerDelegate, UINavigationControllerDelegate>
+@interface BardoPhotoPickerViewController () <PhotoPickerViewControllerDelegate, UINavigationControllerDelegate,
+    UIPopoverControllerDelegate>
 
 @property (strong, nonatomic) UIPopoverController *popoverController;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -95,17 +96,19 @@
             UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:picker];
             // [popover setPopoverBackgroundViewClass:[GCPopoverBackgroundView class]];
             [popover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            popover.delegate = self;
             self.popoverController = popover;
-        }
-        else {
-            [[self popoverController] dismissPopoverAnimated:YES];
+            [self.navigationController setNavigationBarHidden:YES animated:YES];
         }
     }
     else {
         [self presentViewController:picker animated:YES completion:nil];
     }
+}
 
-
+#pragma mark - PopoverControllerDelegate methods
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 #pragma mark - DZNPhotoPickerController methods
@@ -130,6 +133,7 @@
     // cleanup not performed by chute picker custom popover code
     if (self.popoverController) {
         [self.popoverController dismissPopoverAnimated:YES];
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
     else {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -140,6 +144,7 @@
     // cleanup not performed by chute picker custom popover code
     if (self.popoverController) {
         [self.popoverController dismissPopoverAnimated:YES];
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
     else {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -165,6 +170,7 @@
     
     if (self.popoverController) {
         [self.popoverController dismissPopoverAnimated:YES];
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
     else {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -175,6 +181,7 @@
 {
     if (self.popoverController) {
         [self.popoverController dismissPopoverAnimated:YES];
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
     else {
         [self dismissViewControllerAnimated:YES completion:nil];
