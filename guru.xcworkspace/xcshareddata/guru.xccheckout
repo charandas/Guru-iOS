@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>19930AE8-0ECB-4CCB-8EFC-34EDAB8BC22B</string>
+	<string>8ADCFAF6-E046-44DA-BD8D-BC416CF8D45C</string>
 	<key>IDESourceControlProjectName</key>
 	<string>guru</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>B4DC6881-4EF7-4890-BE7C-FD8475519206</key>
-		<string>ssh://bitbucket.org/kbdaitch/guru-ios.git</string>
+		<key>EEFB9268-7C9A-4B11-BD35-3D8BD01EE4DC</key>
+		<string>ssh://github.com/kbdaitch/Guru-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>guru.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>B4DC6881-4EF7-4890-BE7C-FD8475519206</key>
+		<key>EEFB9268-7C9A-4B11-BD35-3D8BD01EE4DC</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://bitbucket.org/kbdaitch/guru-ios.git</string>
+	<string>ssh://github.com/kbdaitch/Guru-iOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>B4DC6881-4EF7-4890-BE7C-FD8475519206</string>
+	<string>EEFB9268-7C9A-4B11-BD35-3D8BD01EE4DC</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B4DC6881-4EF7-4890-BE7C-FD8475519206</string>
+			<string>EEFB9268-7C9A-4B11-BD35-3D8BD01EE4DC</string>
 			<key>IDESourceControlWCCName</key>
-			<string>ios</string>
+			<string>ios_github</string>
 		</dict>
 	</array>
 </dict>
